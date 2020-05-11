@@ -23,7 +23,7 @@
     <header id="header" class="header header-transparent header-layout1">
       <nav class="navbar navbar-expand-lg sticky-navbar">
         <div class="container">
-          <a class="navbar-brand" href="base.html">
+          <a class="navbar-brand" href="{% url 'restaurant:index' %}">
             <img src="{% static 'images/logo/logo-light.png' %}" class="logo-light" alt="logo">
             <img src="{% static 'images/logo/logo-dark.png' %}" class="logo-dark" alt="logo">
           </a>
@@ -32,40 +32,22 @@
           </button>
           <div class="collapse navbar-collapse" id="mainNavigation">
             <ul class="navbar-nav ml-auto">
-              <li class="nav__item with-dropdown">
+              <li class="nav__item">
                 <a href="{% url 'restaurant:index' %}" data-toggle="dropdown" class="dropdown-toggle nav__item-link active">Home</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
+              <li class="nav__item">
                 <a href="{% url 'restaurant:faqs' %}" data-toggle="dropdown" class="dropdown-toggle nav__item-link">FAQs</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
+              <li class="nav__item">
                 <a href="{% url 'restaurant:menuBoard' %}" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Menu</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
-                <a href="{% url %}" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Gallery</a>
+              <li class="nav__item">
+                <a href="{% url 'restaurant:gallery' %}" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Gallery</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav__item"><a href="blog/blog-carousel.html" class="nav__item-link">blog carousel</a></li>
-                  <li class="nav__item dropdown-submenu">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Blog Grid</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav__item">
-                        <a href="blog-grid-sidebar.html" class="nav__item-link">Grid Sidebar</a>
-                      </li><!-- /.nav-item -->
-                      <li class="nav__item">
-                        <a href="blog-grid.html" class="nav__item-link">No Sidebar</a>
-                      </li><!-- /.nav-item -->
-                    </ul><!-- /.dropdown-menu -->
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item"><a href="blog-standard.html" class="nav__item-link">blog standard</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="blog/blog-single-post.html" class="nav__item-link">single post</a></li>
-                  <!-- /.nav-item -->
-                </ul><!-- /.dropdown-menu -->
+              <li class="nav__item">
+                <a href="" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Blog</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
+              <li class="nav__item">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Shop</a>
                 <ul class="dropdown-menu">
                   <li class="nav__item"><a href="shop/shop.html" class="nav__item-link">our Shop</a></li>
@@ -84,7 +66,7 @@
           <div class="navbar-actions-wrap">
             <div class="navbar-actions d-flex align-items-center">
               <a href="#" class="navbar__action-btn search-popup-trigger"><i class="fa fa-search"></i></a>
-              <a href="reservation.html"
+              <a href="{% url 'restaurant:reservation' %}"
                 class="navbar__action-btn navbar__action-btn-reserve btn btn__primary">Reservation</a>
               <ul class="social__icons">
                 <li><a href="#"><i class="fa fa-tripadvisor"></i></a></li>
