@@ -1,2 +1,2 @@
 # babette
-Premier sprint avec Paul
+Premier sprint avec Paul et Daouda
