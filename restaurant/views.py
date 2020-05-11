@@ -8,3 +8,33 @@ def index(request: HttpRequest) -> HttpResponse:
     data = {
     }
     return render(request, 'pages/index.html', data)
+
+
+def event(request: HttpRequest) -> HttpResponse:
+    data = {
+    }
+    return render(request, 'pages/events.html', data)
+
+
+def eventSingle(request: HttpRequest) -> HttpResponse:
+    data = {
+    }
+    return render(request, 'pages/event-single.html', data)
+
+
+def faqs(request: HttpRequest) -> HttpResponse:
+    data = {
+    }
+    return render(request, 'pages/faqs.html', data)
+
+
+def menuBoard(request: HttpRequest) -> HttpResponse:
+    data = {
+    }
+    return render(request, 'pages/menu-board.html', data)
+
+
+def menuBoard(request: HttpRequest) -> HttpResponse:
+    data = {
+    }
+    return render(request, 'pages/menu-board.html', data)
