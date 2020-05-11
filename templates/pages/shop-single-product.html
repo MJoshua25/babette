@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="Babette">
+  <link href="assets/images/favicon/favicon.png" rel="icon">
+  <title>Babette</title>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Rubik:400,500,700%7cShadows+Into+Light&display=swap">
+  <link rel="stylesheet" href="assets/css/libraries.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <!-- =========================
+        Header
+    =========================== -->
+    <header id="header" class="header header-transparent header-layout1">
+      <nav class="navbar navbar-expand-lg sticky-navbar">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="assets/images/logo/logo-light.png" class="logo-light" alt="logo">
+            <img src="assets/images/logo/logo-dark.png" class="logo-dark" alt="logo">
+          </a>
+          <button class="navbar-toggler" type="button">
+            <span class="menu-lines"><span></span></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNavigation">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav__item with-dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link active">Home</a>
+                <ul class="dropdown-menu">
+                  <li class="nav__item"><a href="index.html" class="nav__item-link">Home Main</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="home-gourmet.html" class="nav__item-link">Home Gourmet</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="home-classic.html" class="nav__item-link">Home Classic</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="home-cafe.html" class="nav__item-link">Home Cafe</a></li>
+                  <!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item with-dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">About</a>
+                <ul class="dropdown-menu">
+                  <li class="nav__item"><a href="our-story.html" class="nav__item-link">About Us</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="our-chefs.html" class="nav__item-link">Our chefs</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="our-guestbook.html" class="nav__item-link">Our Guestbook</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="contacts.html" class="nav__item-link">Contact Us</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="events.html" class="nav__item-link">Events</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="event-single.html" class="nav__item-link">Event Single</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="faqs.html" class="nav__item-link">FAQs</a></li> <!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item with-dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Menu</a>
+                <ul class="dropdown-menu">
+                  <li class="nav__item"><a href="menu-classic.html" class="nav__item-link">Menu Classic</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="menu-mixed.html" class="nav__item-link">Menu Mixed</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="menu-board.html" class="nav__item-link">Menu Board</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="menu-gallery.html" class="nav__item-link">Menu Gallery</a></li>
+                  <!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item with-dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Gallery</a>
+                <ul class="dropdown-menu">
+                  <li class="nav__item"><a href="gallery-grid.html" class="nav__item-link">Gallery grid</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="gallery-fullwidth.html" class="nav__item-link">Gallery Fullwidth</a>
+                  </li><!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item with-dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Blog</a>
+                <ul class="dropdown-menu">
+                  <li class="nav__item"><a href="blog-carousel.html" class="nav__item-link">blog carousel</a></li>
+                  <li class="nav__item dropdown-submenu">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Blog Grid</a>
+                    <ul class="dropdown-menu">
+                      <li class="nav__item">
+                        <a href="blog-grid-sidebar.html" class="nav__item-link">Grid Sidebar</a>
+                      </li><!-- /.nav-item -->
+                      <li class="nav__item">
+                        <a href="blog-grid.html" class="nav__item-link">No Sidebar</a>
+                      </li><!-- /.nav-item -->
+                    </ul><!-- /.dropdown-menu -->
+                  </li><!-- /.nav-item -->
+                  <li class="nav__item"><a href="blog-standard.html" class="nav__item-link">blog standard</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="blog-single-post.html" class="nav__item-link">single post</a></li>
+                  <!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <li class="nav__item with-dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Shop</a>
+                <ul class="dropdown-menu">
+                  <li class="nav__item"><a href="shop.html" class="nav__item-link">our Shop</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="shop-sidebar.html" class="nav__item-link">Shop with Sidebar</a></li>
+                  <!-- /.nav-item -->
+                  <li class="nav__item"><a href="shop-single-product.html" class="nav__item-link">Single Product</a>
+                  </li><!-- /.nav-item -->
+                  <li class="nav__item"><a href="shopping-cart.html" class="nav__item-link">cart</a></li>
+                  <!-- /.nav-item -->
+                </ul><!-- /.dropdown-menu -->
+              </li><!-- /.nav-item -->
+              <!-- /.nav-item -->
+            </ul><!-- /.navbar-nav -->
+          </div><!-- /.navbar-collapse -->
+          <div class="navbar-actions-wrap">
+            <div class="navbar-actions d-flex align-items-center">
+              <a href="#" class="navbar__action-btn search-popup-trigger"><i class="fa fa-search"></i></a>
+              <a href="reservation.html"
+                class="navbar__action-btn navbar__action-btn-reserve btn btn__primary">Reservation</a>
+              <a href="#" class="navbar__action-btn navbar__action-btn-cart">
+                <i class="icon-cart"></i><span class="cart__label">3</span>
+              </a>
+              <div class="cart-popup">
+                <ul class="list-unstyled">
+                  <li class="cart-item">
+                    <div class="cart__item-img"><img src="assets/images/shop/thumbs/1.png" alt="thumb"></div>
+                    <div class="cart__item-content">
+                      <h6 class="cart__item-title">Roast Sea Trout</h6>
+                      <div class="cart__item-detail">$ 38.00</div>
+                      <i class="cart__item-delete">&times;</i>
+                    </div><!-- /.cart-item-content -->
+                  </li><!-- /.cart-item -->
+                  <li class="cart-item">
+                    <div class="cart__item-img"><img src="assets/images/shop/thumbs/2.png" alt="thumb"></div>
+                    <div class="cart__item-content">
+                      <h6 class="cart__item-title">Roasted Steak Rou</h6>
+                      <div class="cart__item-detail">$ 29.00</div>
+                      <i class="cart__item-delete">&times;</i>
+                    </div><!-- /.cart-item-content -->
+                  </li><!-- /.cart-item -->
+                </ul>
+                <div class="cart-subtotal">
+                  <span>Subtotal:</span>
+                  <span class="color-theme">$67.00</span>
+                </div><!-- /.cart-subtotal -->
+                <div class="cart-action d-flex justify-content-between">
+                  <a href="#" class="btn btn__primary btn__hover2">View Cart</a>
+                  <a href="#" class="btn btn__white">Checkout</a>
+                </div><!-- /.cart-action -->
+              </div><!-- /.cart-popup -->
+            </div><!-- /.navbar-actions -->
+          </div><!-- /.navbar-actions-wrap -->
+        </div><!-- /.container -->
+      </nav><!-- /.navabr -->
+    </header><!-- /.Header -->
+
+    <!-- ========================
+       page title 
+    =========================== -->
+    <section id="page-title" class="page-title page-title-layout14 bg-overlay bg-overlay-2">
+      <div class="bg-img"><img src="assets/images/backgrounds/3.jpg" alt="background"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <h1 class="pagetitle__heading">Single Product</h1>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Single Product</li>
+              </ol>
+            </nav>
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.page-title -->
+
+    <!-- ========================
+       product single
+    =========================== -->
+    <section id="productSingle" class="shop product-single pb-0">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <div class="alert-panel d-flex align-items-center justify-content-between">
+              <div class="alert__content">
+                <h6 class="alert__title">“Grilled American Fillet” has been added to your cart.</h6>
+              </div><!-- /.alert__content-->
+              <div class="alert__action">
+                <a href="#" class="btn btn__primary">View Cart</a>
+              </div><!-- /.alert__action-->
+            </div><!-- /.alert-panel-->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="product__single-img">
+              <img src="assets/images/shop/full/1.jpg" class="zoomin" alt="product">
+            </div><!-- /.product-img -->
+          </div><!-- /.col-lg-6 -->
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <h4 class="product__title">Grilled American Fillet</h4>
+            <span class="product__price">$ 18.00</span>
+            <hr class="hr-dashed mt-30 mb-30">
+            <div class="product__desc">
+              <p>We’ve all been dying to know which type of magic the Gaines would bring to the café, a landmark on
+                Waco’s bustling traffic circle that closed down in February of 2016. The Fixer Upper stars’ Magnolia
+                brand, which includes the Magnolia Market, a premium interior paint line, and a quarterly home.</p>
+            </div><!-- /.product-desc -->
+            <form class="product__form-wrap mb-30">
+              <div class="product__quantity d-flex">
+                <div class="quantity__input-wrap mr-20">
+                  <i class="decrease-qty"></i>
+                  <input type="number" value="1" class="qty-input">
+                  <i class="increase-qty"></i>
+                </div>
+                <button class="btn btn__primary">add to cart</button>
+              </div><!-- /.product-quantity -->
+            </form>
+            <div class="product__meta">
+              <div class="product__meta-cat">
+                <span class="product__meta-title">Categories:</span>
+                <a href="#">Main</a>
+                <a href="#">Dinner</a>
+              </div><!-- /.product__meta-cat -->
+              <div class="product__meta-tags">
+                <span class="product__meta-title">Tags:</span>
+                <a href="#">Light</a>
+                <a href="#">Mexican</a>
+                <a href="#">Organic</a>
+              </div><!-- /.product__meta-tags -->
+            </div><!-- /.product__meta -->
+            <hr class="hr-dashed mt-30 mb-30">
+            <div class="product__share d-flex align-items-center">
+              <h6 class="product__share-title mb-0 mr-20">share:</h6>
+              <ul class="social__icons">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div><!-- /.product-share -->
+          </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+            <div class="product__tabs mt-90">
+              <nav class="nav nav-tabs justify-content-center">
+                <a class="nav__link active" data-toggle="tab" href="#Description">Description</a>
+                <a class="nav__link" data-toggle="tab" href="#Details">Additional Information</a>
+                <a class="nav__link" data-toggle="tab" href="#Reviews">Reviews (0)</a>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="Description">
+                  <p>The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
+                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
+                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
+                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
+                    support. We’ve all been dying to know which type of magic the Gaines would bring to the café, a
+                    landmark on Waco’s bustling traffic circle.</p>
+                </div><!-- /.desc-tab -->
+                <div class="tab-pane fade" id="Details">
+                  <p>The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
+                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
+                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
+                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
+                    support. We’ve all been dying to know which type of magic the Gaines would bring to the café, a
+                    landmark on Waco’s bustling traffic circle.</p>
+                  <p>The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
+                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
+                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
+                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
+                    support. We’ve all been dying to know which type of magic the Gaines would bring to the café, a
+                    landmark on Waco’s bustling traffic circle.</p>
+                </div><!-- /.details-tab -->
+                <div class="tab-pane fade" id="Reviews">
+                  <form class="row reviews__form">
+                    <div class="col-sm-6 form-group">
+                      <label for="reviewerName">Name</label>
+                      <input id="reviewerName" type="text" class="form-control">
+                    </div><!-- /.form-group -->
+                    <div class="col-sm-6 form-group">
+                      <label for="reviewerEmail">Email</label>
+                      <input id="reviewerEmail" type="text" class="form-control">
+                    </div><!-- /.form-group -->
+                    <div class="col-sm-12 form-group">
+                      <label for="reviewerReview">Review</label>
+                      <textarea id="reviewerReview" class="form-control"></textarea>
+                    </div><!-- /.form-group -->
+                    <div class="col-sm-12">
+                      <button type="submit" class="btn btn__primary">Submit</button>
+                    </div>
+                  </form>
+                </div><!-- /.reviews-tab -->
+              </div>
+            </div><!-- /.product-tabs -->
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.product single -->
+
+    <!-- ========================
+      Related products
+    =========================== -->
+    <section id="related-products" class="relted-products text-center pt-80 pb-40">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <h6 class="related__products-title font-weight-bold mb-30">Related Products</h6>
+          </div><!-- /.col-lg-12 -->
+        </div><!-- /.row -->
+        <div class="row">
+          <!-- Product item #1 -->
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="product-item">
+              <div class="product__img">
+                <img src="assets/images/shop/grid/1.jpg" alt="Product">
+                <div class="product__hover">
+                  <div class="product__action">
+                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
+                  </div><!-- /.product__action -->
+                </div><!-- /.product__hover-->
+              </div><!-- /.product-img -->
+              <div class="product__content">
+                <div class="product__cat">
+                  <a href="#">Light</a>
+                  <a href="#">Mexican</a>
+                  <a href="#">Organic</a>
+                </div>
+                <h4 class="product__title"><a href="#">T-Shirt With a Print</a></h4>
+                <span class="product__price">$18.99</span>
+              </div><!-- /.product-content -->
+            </div><!-- /.product-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- Product item #2 -->
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="product-item">
+              <div class="product__img">
+                <img src="assets/images/shop/grid/2.jpg" alt="Product">
+                <div class="product__hover">
+                  <div class="product__action">
+                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
+                  </div><!-- /.product__action -->
+                </div><!-- /.product__hover-->
+              </div><!-- /.product-img -->
+              <div class="product__content">
+                <div class="product__cat">
+                  <a href="#">Low Carb</a>
+                  <a href="#">Fresh</a>
+                </div>
+                <h4 class="product__title"><a href="#">Roast Sea Trout</a></h4>
+                <span class="product__price">$36.99</span>
+              </div><!-- /.product-content -->
+            </div><!-- /.product-item -->
+          </div><!-- /.col-lg-4 -->
+          <!-- Product item #3 -->
+          <div class="col-sm-6 col-md-6 col-lg-4">
+            <div class="product-item">
+              <div class="product__img">
+                <img src="assets/images/shop/grid/3.jpg" alt="Product">
+                <div class="product__hover">
+                  <div class="product__action">
+                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
+                  </div><!-- /.product__action -->
+                </div><!-- /.product__hover-->
+              </div><!-- /.product-img -->
+              <div class="product__content">
+                <div class="product__cat">
+                  <a href="#">Nut Free</a>
+                  <a href="#">Sweet</a>
+                  <a href="#">Fresh</a>
+                </div>
+                <h4 class="product__title"><a href="#">Grilled Seafood Paella</a></h4>
+                <span class="product__price">$34.99</span>
+              </div><!-- /.product-content -->
+            </div><!-- /.product-item -->
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div><!-- /.container -->
+    </section><!-- /.related-products -->
+
+    <!-- ========================
+      Footer
+    ========================== -->
+    <footer id="footer" class="footer footer-layout1 text-center bg-dark">
+      <div class="footer-inner">
+        <div class="container">
+          <div class="footer-top">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 position-static">
+                <svg class="footer__divider-shape" xmlns="http://www.w3.org/2000/svg" width="22" height="61"
+                  viewBox="0 0 22 61">
+                  <path
+                    d="M799,769h2v61h-2V769Zm8,24.8a0.969,0.969,0,0,0-1.911,0,3.012,3.012,0,0,1-.883,2.16,4.486,4.486,0,0,0,0,6.136,3.083,3.083,0,0,1,0,4.32,4.486,4.486,0,0,0,0,6.136,3.088,3.088,0,0,1,0,4.325,4.5,4.5,0,0,0,0,6.142,3.014,3.014,0,0,1,.884,2.163,0.969,0.969,0,0,0,1.911,0,4.414,4.414,0,0,0-1.213-3.07,3.091,3.091,0,0,1,0-4.328,4.491,4.491,0,0,0,0-6.14,3.08,3.08,0,0,1,0-4.319,4.488,4.488,0,0,0,0-6.137,3.081,3.081,0,0,1,0-4.32A4.407,4.407,0,0,0,807,793.8Zm0-20a0.969,0.969,0,0,0-1.911,0,3.014,3.014,0,0,1-.883,2.16,4.486,4.486,0,0,0,0,6.136,3.083,3.083,0,0,1,0,4.32,4.488,4.488,0,0,0,0,6.137,3.087,3.087,0,0,1,0,4.324,4.5,4.5,0,0,0,0,6.142,3.014,3.014,0,0,1,.884,2.163,0.969,0.969,0,0,0,1.911,0,4.414,4.414,0,0,0-1.213-3.07,3.089,3.089,0,0,1,0-4.327,4.491,4.491,0,0,0,0-6.14,3.081,3.081,0,0,1,0-4.32,4.488,4.488,0,0,0,0-6.137,3.081,3.081,0,0,1,0-4.32A4.409,4.409,0,0,0,807,773.8ZM793,793.8a0.969,0.969,0,0,1,1.911,0,3.012,3.012,0,0,0,.883,2.16,4.486,4.486,0,0,1,0,6.136,3.083,3.083,0,0,0,0,4.32,4.486,4.486,0,0,1,0,6.136,3.088,3.088,0,0,0,0,4.325,4.5,4.5,0,0,1,0,6.142,3.014,3.014,0,0,0-.884,2.163,0.969,0.969,0,0,1-1.911,0,4.414,4.414,0,0,1,1.213-3.07,3.091,3.091,0,0,0,0-4.328,4.491,4.491,0,0,1,0-6.14,3.08,3.08,0,0,0,0-4.319,4.488,4.488,0,0,1,0-6.137,3.081,3.081,0,0,0,0-4.32A4.407,4.407,0,0,1,793,793.8Zm0-20a0.969,0.969,0,0,1,1.911,0,3.014,3.014,0,0,0,.883,2.16,4.486,4.486,0,0,1,0,6.136,3.083,3.083,0,0,0,0,4.32,4.488,4.488,0,0,1,0,6.137,3.087,3.087,0,0,0,0,4.324,4.5,4.5,0,0,1,0,6.142,3.014,3.014,0,0,0-.884,2.163,0.969,0.969,0,0,1-1.911,0,4.414,4.414,0,0,1,1.213-3.07,3.089,3.089,0,0,0,0-4.327,4.491,4.491,0,0,1,0-6.14,3.081,3.081,0,0,0,0-4.32,4.488,4.488,0,0,1,0-6.137,3.081,3.081,0,0,0,0-4.32A4.409,4.409,0,0,1,793,773.8Zm-4,5.2h2v41h-2V779Zm20,0h2v41h-2V779Z"
+                    transform="translate(-789 -769)"></path>
+                </svg>
+              </div><!-- /.col-lg-12 -->
+              <div class="col-sm-12 col-md-12 col-lg-4">
+                <div class="contact-box">
+                  <h6 class="contact__box-title">Our Address</h6>
+                  <ul class="contact__box-list list-unstyled">
+                    <li>22 Alnahas Building, 2 AlBahr St, Tanta Al-Gharbia Governorate, Egypt</li>
+                  </ul>
+                </div><!-- /.contact-box -->
+              </div><!-- /.col-lg-4 -->
+              <div class="col-sm-12 col-md-12 col-lg-4">
+                <div class="contact-box">
+                  <h6 class="contact__box-title">Opening Hours</h6>
+                  <ul class="contact__box-list list-unstyled">
+                    <li>Mon - Fri: 10 AM - 11 PM</li>
+                    <li>Sat - Sun: 9 AM - 1 PM</li>
+                  </ul>
+                </div><!-- /.contact-box -->
+              </div><!-- /.col-lg-4 -->
+              <div class="col-sm-12 col-md-12 col-lg-4">
+                <div class="contact-box">
+                  <h6 class="contact__box-title">Private Dinning</h6>
+                  <ul class="contact__box-list list-unstyled">
+                    <li><span>Main Email:</span><a href="mailto:Babette@7oroof.com">Babette@7oroof.com</a></li>
+                    <li><span>Phone:</span><a href="tel:020101236547">02 0101236547</a></li>
+                  </ul>
+                </div><!-- /.contact-box -->
+              </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+          </div><!-- /.footer-top -->
+          <div class="footer-middle">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 position-static">
+                <div class="footer__logo-wrap text-center">
+                  <img src="assets/images/logo/footer-logo.png" alt="logo" class="footer__logo">
+                </div>
+              </div><!-- /.col-lg-12 -->
+            </div><!-- /.row -->
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
+                <p class="mb-20">Babette was designed with the history in mind we have created a soft industrial dining
+                  room, combined with an open kitchen, coffee take out bar and alovely awesome on site coffee roastery.
+                </p>
+                <a href="reservation.html" class="btn btn__primary btn__bordered btn__lg">Book Your Table Now!</a>
+              </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+          </div><!-- /.footer-middle -->
+        </div><!-- /.container -->
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="footer__copyright mb-30">
+                  <span>&copy; Babette, With Love by </span>
+                  <a href="http://themeforest.net/user/7oroof" class="color-theme">7oroof.com</a>
+                </div>
+                <ul class="social__icons social__icons-white justify-content-center">
+                  <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                  <li><a href="#"><i class="fa fa-tripadvisor"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                </ul><!-- /.social__icons -->
+              </div>
+            </div><!-- /.row -->
+          </div><!-- /.container -->
+          <svg class="footer__divider-shape-bottom" xmlns="http://www.w3.org/2000/svg" width="142" height="17"
+            viewBox="0 0 142 17">
+            <path
+              d="M800,600V583c8.782,15.985,46.811,11.315,56,12a35.721,35.721,0,0,1,15,5m-71,0V583c-8.782,15.985-46.811,11.315-56,12a35.717,35.717,0,0,0-15,5"
+              transform="translate(-729 -583)"></path>
+          </svg>
+        </div><!-- /.Footer-bottom -->
+      </div><!-- /.Footer-inner -->
+    </footer><!-- /.Footer -->
+    <button id="scrollTopBtn"><i class="fa fa-angle-up"></i></button>
+
+    <div class="search-popup">
+      <i class="fa fa-times close-search"></i>
+      <form class="module__search-form">
+        <input type="text" class="search__input" placeholder="Type Words Then Enter">
+        <button class="module__search-btn"><i class="fa fa-search"></i></button>
+      </form>
+    </div><!-- /.search-popup -->
+
+  </div>
+  <!-- /.wrapper -->
+
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <script src="assets/js/plugins.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
