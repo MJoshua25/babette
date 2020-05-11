@@ -28,10 +28,10 @@ def faqs(request: HttpRequest) -> HttpResponse:
     return render(request, 'pages/faqs.html', data)
 
 
-def menuBoard(request: HttpRequest) -> HttpResponse:
+def reservation(request: HttpRequest) -> HttpResponse:
     data = {
     }
-    return render(request, 'pages/menu-board.html', data)
+    return render(request, 'pages/reservation.html', data)
 
 
 def menuBoard(request: HttpRequest) -> HttpResponse:
