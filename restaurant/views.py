@@ -33,10 +33,12 @@ def reservation(request: HttpRequest) -> HttpResponse:
     }
     return render(request, 'pages/reservation.html', data)
 
+
 def gallery(request: HttpRequest) -> HttpResponse:
     data = {
     }
     return render(request, 'pages/gallery-grid.html', data)
+
 
 def menuBoard(request: HttpRequest) -> HttpResponse:
     data = {
