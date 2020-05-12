@@ -1,6 +1,8 @@
 from django.db import models
 import datetime
 from django.db.models.query import QuerySet
+import pytz
+
 
 # Create your models here.
 
@@ -39,6 +41,14 @@ class Categorie(models.Model):
     def getMenus(self) -> QuerySet:
         return self.menus.filter(status=True)
 
+    @property
+    def getMenusTwoPart(self) -> list:
+        if len(self.getMenus) > 0:
+            return [self.getMenus[:(self.getMenus.count() // 2)],
+                    self.getMenus[(self.getMenus.count() // 2):]]
+        else:
+            return []
+
 
 class Ingredient(models.Model):
     titre = models.CharField(max_length=255, unique=True)
@@ -76,4 +86,10 @@ class Menu(models.Model):
 
     @property
     def isNew(self) -> bool:
-        return (datetime.datetime.now() - self.date_add).days < 30
+        now = datetime.datetime.now()
+        now = pytz.utc.localize(now)
+        return (now - self.date_add).days < 30
+
+    @property
+    def getIngredients(self) -> QuerySet:
+        return self.ingredients.filter(status=True)

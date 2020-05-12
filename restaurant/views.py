@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
+from restaurant import models as rest_models
 
 
 # Create your views here.
 def index(request: HttpRequest) -> HttpResponse:
     data = {
+        'categories': rest_models.Categorie.objects.filter(status=True)
     }
     return render(request, 'pages/index.html', data)
 

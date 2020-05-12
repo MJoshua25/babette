@@ -139,249 +139,35 @@
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="menu-wrapper">
               <nav class="nav nav-tabs justify-content-center">
-                <a class="nav__link active" data-toggle="tab" href="#tab1">Lunch</a>
-                <a class="nav__link" data-toggle="tab" href="#tab2">Dinner</a>
-                <a class="nav__link" data-toggle="tab" href="#tab3">Dessert</a>
-                <a class="nav__link" data-toggle="tab" href="#tab4">Drinks</a>
+                  {% for category in categories %}
+                  <a class="nav__link{% if forloop.first %} active{% endif %}" data-toggle="tab" href="#tab{{ forloop.counter }}">{{ category.titre }}</a>
+                  {% endfor %}
               </nav>
               <div class="tab-content">
-                <div class="tab-pane fade show active" id="tab1">
+                  {% for category in categories %}
+                  <div class="tab-pane fade show{% if forloop.first %} active{% endif %}" id="tab{{ forloop.counter }}">
                   <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Smoked Meat Sandwich</h4>
-                        <span class="pricing__tag">New</span>
-                        <span class="menu__item-price">$12.95</span>
-                        <p class="menu__item-desc">Baguette, basil, arugula, olives, cherry-tomatoes.</p>
+                  {% for part in category.getMenusTwoPart %}
+                  <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
+                        {% for menu in part %}
+                        <div class="menu-item">
+                        <h4 class="menu__item-title">{{ menu.titre }}</h4>
+                            {% if menu.isNew %}
+                            <span class="pricing__tag">New</span>
+                            {% elif menu.isrecommended %}
+                            <span class="pricing__tag">Recommended</span>
+                            {% endif %}
+
+                        <span class="menu__item-price">${{ menu.prix }}</span>
+                        <p class="menu__item-desc">{% for ingredient in menu.getIngredients %}
+                        {{ ingredient.titre }}{% if not forloop.last %}, {% else %}.{% endif %}{% endfor %}</p>
                       </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Sandwich</h4>
-                        <span class="menu__item-price">$15.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Pan of Fried Eggs</h4>
-                        <span class="pricing__tag">Recommended</span>
-                        <span class="menu__item-price">$13.95</span>
-                        <p class="menu__item-desc">Eggs, bacon and cherry-tomatoes with bread.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Breakfast Set</h4>
-                        <span class="menu__item-price">$20.95</span>
-                        <p class="menu__item-desc">Croissants with strawberries, mascarpone, honey.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Healthy Breakfast</h4>
-                        <span class="menu__item-price">$18.95</span>
-                        <p class="menu__item-desc">Oat granola with fresh blueberries, almond, yogurt.</p>
-                      </div><!-- /.menu-item -->
+                        {% endfor %}
                     </div><!-- /.col-lg-6 -->
-                    <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Chicken Breast</h4>
-                        <span class="menu__item-price">$33.95</span>
-                        <p class="menu__item-desc">Paupiette of chicken, blue cheese, rosemary beans.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Steak</h4>
-                        <span class="menu__item-price">$41.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Chicken Crispy</h4>
-                        <span class="menu__item-price">$33.95</span>
-                        <p class="menu__item-desc">Smoked quail, crispy egg, spelt, girolles, parsley.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Grilled Fillet</h4>
-                        <span class="menu__item-price">$26.95</span>
-                        <p class="menu__item-desc">Pork fillet, ginger, garlic, honey, pepper & canola oil.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Steak</h4>
-                        <span class="menu__item-price">$27.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                    </div><!-- /.col-lg-6 -->
+                  {% endfor %}
                   </div><!-- /.row  -->
                 </div><!-- /.tab  -->
-                <div class="tab-pane fade" id="tab2">
-                  <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Pan of Fried Eggs</h4>
-                        <span class="pricing__tag">Recommended</span>
-                        <span class="menu__item-price">$13.95</span>
-                        <p class="menu__item-desc">Eggs, bacon and cherry-tomatoes with bread.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Smoked Meat Sandwich</h4>
-                        <span class="menu__item-price">$12.95</span>
-                        <p class="menu__item-desc">Baguette, basil, arugula, olives, cherry-tomatoes.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Sandwich</h4>
-                        <span class="menu__item-price">$15.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Breakfast Set</h4>
-                        <span class="menu__item-price">$20.95</span>
-                        <p class="menu__item-desc">Croissants with strawberries, mascarpone, honey.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Healthy Breakfast</h4>
-                        <span class="menu__item-price">$18.95</span>
-                        <p class="menu__item-desc">Oat granola with fresh blueberries, almond, yogurt.</p>
-                      </div><!-- /.menu-item -->
-                    </div><!-- /.col-lg-6 -->
-                    <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Chicken Crispy</h4>
-                        <span class="menu__item-price">$33.95</span>
-                        <p class="menu__item-desc">Smoked quail, crispy egg, spelt, girolles, parsley.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Chicken Breast</h4>
-                        <span class="menu__item-price">$33.95</span>
-                        <p class="menu__item-desc">Paupiette of chicken, blue cheese, rosemary beans.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Steak</h4>
-                        <span class="menu__item-price">$41.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Steak</h4>
-                        <span class="menu__item-price">$27.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Grilled Fillet</h4>
-                        <span class="menu__item-price">$26.95</span>
-                        <p class="menu__item-desc">Pork fillet, ginger, garlic, honey, pepper & canola oil.</p>
-                      </div><!-- /.menu-item -->
-                    </div><!-- /.col-lg-6 -->
-                  </div><!-- /.row  -->
-                </div><!-- /.tab  -->
-                <div class="tab-pane fade" id="tab3">
-                  <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Chicken Breast</h4>
-                        <span class="menu__item-price">$33.95</span>
-                        <p class="menu__item-desc">Paupiette of chicken, blue cheese, rosemary beans.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Steak</h4>
-                        <span class="menu__item-price">$41.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Chicken Crispy</h4>
-                        <span class="menu__item-price">$33.95</span>
-                        <p class="menu__item-desc">Smoked quail, crispy egg, spelt, girolles, parsley.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Grilled Fillet</h4>
-                        <span class="menu__item-price">$26.95</span>
-                        <p class="menu__item-desc">Pork fillet, ginger, garlic, honey, pepper & canola oil.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Steak</h4>
-                        <span class="menu__item-price">$27.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                    </div><!-- /.col-lg-6 -->
-                    <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Pan of Fried Eggs</h4>
-                        <span class="pricing__tag">Recommended</span>
-                        <span class="menu__item-price">$13.95</span>
-                        <p class="menu__item-desc">Eggs, bacon and cherry-tomatoes with bread.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Breakfast Set</h4>
-                        <span class="menu__item-price">$20.95</span>
-                        <p class="menu__item-desc">Croissants with strawberries, mascarpone, honey.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Smoked Meat Sandwich</h4>
-                        <span class="menu__item-price">$12.95</span>
-                        <p class="menu__item-desc">Baguette, basil, arugula, olives, cherry-tomatoes.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Sandwich</h4>
-                        <span class="menu__item-price">$15.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Healthy Breakfast</h4>
-                        <span class="menu__item-price">$18.95</span>
-                        <p class="menu__item-desc">Oat granola with fresh blueberries, almond, yogurt.</p>
-                      </div><!-- /.menu-item -->
-                    </div><!-- /.col-lg-6 -->
-                  </div><!-- /.row  -->
-                </div><!-- /.tab  -->
-                <div class="tab-pane fade" id="tab4">
-                  <div class="row">
-                    <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Breakfast Set</h4>
-                        <span class="menu__item-price">$20.95</span>
-                        <p class="menu__item-desc">Croissants with strawberries, mascarpone, honey.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Smoked Meat Sandwich</h4>
-                        <span class="menu__item-price">$12.95</span>
-                        <p class="menu__item-desc">Baguette, basil, arugula, olives, cherry-tomatoes.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Sandwich</h4>
-                        <span class="menu__item-price">$15.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Pan of Fried Eggs</h4>
-                        <span class="pricing__tag">Recommended</span>
-                        <span class="menu__item-price">$13.95</span>
-                        <p class="menu__item-desc">Eggs, bacon and cherry-tomatoes with bread.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Healthy Breakfast</h4>
-                        <span class="menu__item-price">$18.95</span>
-                        <p class="menu__item-desc">Oat granola with fresh blueberries, almond, yogurt.</p>
-                      </div><!-- /.menu-item -->
-                    </div><!-- /.col-lg-6 -->
-                    <div class="col-sm-12 col-md-12 col-lg-6 menu-wrapper-inner">
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Chicken Crispy</h4>
-                        <span class="menu__item-price">$33.95</span>
-                        <p class="menu__item-desc">Smoked quail, crispy egg, spelt, girolles, parsley.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Grilled Fillet</h4>
-                        <span class="menu__item-price">$26.95</span>
-                        <p class="menu__item-desc">Pork fillet, ginger, garlic, honey, pepper & canola oil.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Steak</h4>
-                        <span class="menu__item-price">$27.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Chicken Breast</h4>
-                        <span class="menu__item-price">$33.95</span>
-                        <p class="menu__item-desc">Paupiette of chicken, blue cheese, rosemary beans.</p>
-                      </div><!-- /.menu-item -->
-                      <div class="menu-item">
-                        <h4 class="menu__item-title">Salmon Steak</h4>
-                        <span class="menu__item-price">$41.95</span>
-                        <p class="menu__item-desc">Salmon, butter, lemon juice, onion, garlic & salad.</p>
-                      </div><!-- /.menu-item -->
-                    </div><!-- /.col-lg-6 -->
-                  </div><!-- /.row  -->
-                </div><!-- /.tab  -->
+                  {% endfor %}
               </div><!-- /.tab-content  -->
             </div><!-- /.menu-wrapper  -->
           </div><!-- /.col-lg-12 -->
