@@ -50,6 +50,7 @@ class Ingredient(models.Model):
 
 
 class Menu(models.Model):
+    categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE, related_name='menus')
     titre = models.CharField(max_length=255, unique=True)
     cover = models.ImageField('restaurant/menu')
     ingredients = models.ManyToManyField(Ingredient, related_name='menus')
