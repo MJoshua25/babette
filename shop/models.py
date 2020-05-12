@@ -63,18 +63,18 @@ class Produit(models.Model):
         self.titre_slug = slugify(str(self.titre) + ' ' + str(encoding_id.hexdigest()))
         super(Produit, self).save(*args, **kwargs)
 
-
-class Commande(models.Model):
-    client = models.OneToOneField(User, on_delete=models.CASCADE, related_name='commandes')
-    produit = models.ManyToManyField(Produit, related_name='commande')
-
-    status = models.BooleanField(default=True)
-    date_add = models.DateTimeField(auto_now_add=True)
-    date_update = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name = "Commande"
-        verbose_name_plural = "Commandes"
-
-    def __str__(self) -> str:
-        return str(self.produit)
+#
+# class Commande(models.Model):
+#     client = models.OneToOneField(User, on_delete=models.CASCADE, related_name='commandes')
+#     produit = models.ManyToManyField(Produit, related_name='commande')
+#
+#     status = models.BooleanField(default=True)
+#     date_add = models.DateTimeField(auto_now_add=True)
+#     date_update = models.DateTimeField(auto_now=True)
+#
+#     class Meta:
+#         verbose_name = "Commande"
+#         verbose_name_plural = "Commandes"
+#
+#     def __str__(self) -> str:
+#         return str(self.produit)
