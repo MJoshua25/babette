@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8" />
@@ -23,7 +23,7 @@
     <header id="header" class="header header-transparent header-layout1">
       <nav class="navbar navbar-expand-lg sticky-navbar">
         <div class="container">
-          <a class="navbar-brand" href="base.html">
+          <a class="navbar-brand" href="{% url 'restaurant:index' %}">
             <img src="{% static 'images/logo/logo-light.png' %}" class="logo-light" alt="logo">
             <img src="{% static 'images/logo/logo-dark.png' %}" class="logo-dark" alt="logo">
           </a>
@@ -32,92 +32,23 @@
           </button>
           <div class="collapse navbar-collapse" id="mainNavigation">
             <ul class="navbar-nav ml-auto">
-              <li class="nav__item with-dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link active">Home</a>
-                <ul class="dropdown-menu">
-                  <li class="nav__item"><a href="base.html" class="nav__item-link">Home Main</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="home-gourmet.html" class="nav__item-link">Home Gourmet</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="home-classic.html" class="nav__item-link">Home Classic</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="home-cafe.html" class="nav__item-link">Home Cafe</a></li>
-                  <!-- /.nav-item -->
-                </ul><!-- /.dropdown-menu -->
+              <li class="nav__item">
+                <a href="{% url 'restaurant:index' %}" class="dropdown-toggle nav__item-link active">Home</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">About</a>
-                <ul class="dropdown-menu">
-                  <li class="nav__item"><a href="our-story.html" class="nav__item-link">About Us</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="our-chefs.html" class="nav__item-link">Our chefs</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="our-guestbook.html" class="nav__item-link">Our Guestbook</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="contacts.html" class="nav__item-link">Contact Us</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="events.html" class="nav__item-link">Events</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="event-single.html" class="nav__item-link">Event Single</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="faqs.html" class="nav__item-link">FAQs</a></li> <!-- /.nav-item -->
-                </ul><!-- /.dropdown-menu -->
+              <li class="nav__item">
+                <a href="{% url 'restaurant:faqs' %}" class="dropdown-toggle nav__item-link">FAQs</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Menu</a>
-                <ul class="dropdown-menu">
-                  <li class="nav__item"><a href="menu-classic.html" class="nav__item-link">Menu Classic</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="menu-mixed.html" class="nav__item-link">Menu Mixed</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="menu-board.html" class="nav__item-link">Menu Board</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="menu-gallery.html" class="nav__item-link">Menu Gallery</a></li>
-                  <!-- /.nav-item -->
-                </ul><!-- /.dropdown-menu -->
+              <li class="nav__item">
+                <a href="{% url 'restaurant:menuBoard' %}" class="dropdown-toggle nav__item-link">Menu</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Gallery</a>
-                <ul class="dropdown-menu">
-                  <li class="nav__item"><a href="gallery-grid.html" class="nav__item-link">Gallery grid</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="gallery-fullwidth.html" class="nav__item-link">Gallery Fullwidth</a>
-                  </li><!-- /.nav-item -->
-                </ul><!-- /.dropdown-menu -->
+              <li class="nav__item">
+                <a href="{% url 'restaurant:gallery' %}" class="dropdown-toggle nav__item-link">Gallery</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Blog</a>
-                <ul class="dropdown-menu">
-                  <li class="nav__item"><a href="blog/blog-carousel.html" class="nav__item-link">blog carousel</a></li>
-                  <li class="nav__item dropdown-submenu">
-                    <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Blog Grid</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav__item">
-                        <a href="blog-grid-sidebar.html" class="nav__item-link">Grid Sidebar</a>
-                      </li><!-- /.nav-item -->
-                      <li class="nav__item">
-                        <a href="blog-grid.html" class="nav__item-link">No Sidebar</a>
-                      </li><!-- /.nav-item -->
-                    </ul><!-- /.dropdown-menu -->
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item"><a href="blog-standard.html" class="nav__item-link">blog standard</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="blog/blog-single-post.html" class="nav__item-link">single post</a></li>
-                  <!-- /.nav-item -->
-                </ul><!-- /.dropdown-menu -->
+              <li class="nav__item">
+                <a href="" class="dropdown-toggle nav__item-link">Blog</a>
               </li><!-- /.nav-item -->
-              <li class="nav__item with-dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link">Shop</a>
-                <ul class="dropdown-menu">
-                  <li class="nav__item"><a href="shop/shop.html" class="nav__item-link">our Shop</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="shop-sidebar.html" class="nav__item-link">Shop with Sidebar</a></li>
-                  <!-- /.nav-item -->
-                  <li class="nav__item"><a href="shop/shop-single-product.html" class="nav__item-link">Single Product</a>
-                  </li><!-- /.nav-item -->
-                  <li class="nav__item"><a href="shop/shopping-cart.html" class="nav__item-link">cart</a></li>
-                  <!-- /.nav-item -->
-                </ul><!-- /.dropdown-menu -->
+              <li class="nav__item">
+                <a href="{% url 'shop:shop' %}" class="dropdown-toggle nav__item-link">Shop</a>
               </li><!-- /.nav-item -->
               <!-- /.nav-item -->
             </ul><!-- /.navbar-nav -->
@@ -125,7 +56,7 @@
           <div class="navbar-actions-wrap">
             <div class="navbar-actions d-flex align-items-center">
               <a href="#" class="navbar__action-btn search-popup-trigger"><i class="fa fa-search"></i></a>
-              <a href="reservation.html"
+              <a href="{% url 'restaurant:reservation' %}"
                 class="navbar__action-btn navbar__action-btn-reserve btn btn__primary">Reservation</a>
               <ul class="social__icons">
                 <li><a href="#"><i class="fa fa-tripadvisor"></i></a></li>
