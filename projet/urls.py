@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('', include('restaurant.urls')),
-    path('shop', include('shop.urls')),
+    path('shop/', include('shop.urls')),
+    path('blog/', include('blog.urls')),
     path('admin/filebrowser/', site.urls),
 ]
 

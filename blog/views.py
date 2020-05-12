@@ -8,19 +8,15 @@ from . import models
 # Create your views here.
 
 
-
-
-
 def blog(request: HttpRequest) -> HttpResponse:
     data = {
-        
 
     }
-    return render(request, 'pages/blog-carousel.html', data)
+    return render(request, 'pages/blog/blog-carousel.html', data)
+
 
 def single_blog(request: HttpRequest) -> HttpResponse:
     data = {
-        
 
     }
-    return render(request, 'pages/blog-single-post.html', data)
+    return render(request, 'pages/blog/blog-single-post.html', data)
