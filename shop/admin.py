@@ -69,9 +69,9 @@ class ProduitAdmin(admin.ModelAdmin):
         'date_update'
     )
     list_filter = (
-        'categorie',
+        'categories',
         'status',
-        'tags'
+        'tag'
     )
     search_fields = (
         'titre',
@@ -84,8 +84,8 @@ class ProduitAdmin(admin.ModelAdmin):
         ('Info ', {'fields': [
             'titre',
             'categorie',
-            'prix',
             'tags',
+            'prix',
             'contenu'
         ]
         }),
