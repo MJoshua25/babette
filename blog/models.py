@@ -85,3 +85,5 @@ class Commentaire(models.Model):
 
     def __str__(self) -> str:
        return '{}  -  {}  -  {}'.format(self.article, self.user, self.date_add)
+
+
