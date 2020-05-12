@@ -1,5 +1,6 @@
 from django.db import models
-
+import datetime
+from django.db.models.query import QuerySet
 
 # Create your models here.
 
@@ -34,6 +35,11 @@ class Categorie(models.Model):
     def __str__(self) -> str:
         return str(self.titre)
 
+    @property
+    def getMenus(self) -> QuerySet:
+        return self.menus.filter(status=True)
+
+
 class Ingredient(models.Model):
     titre = models.CharField(max_length=255, unique=True)
 
@@ -56,7 +62,7 @@ class Menu(models.Model):
     ingredients = models.ManyToManyField(Ingredient, related_name='menus')
     isrecommended = models.BooleanField(default=False)
     prix = models.FloatField()
-    
+
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -67,3 +73,7 @@ class Menu(models.Model):
 
     def __str__(self):
         return str(self.titre)
+
+    @property
+    def isNew(self) -> bool:
+        return (datetime.datetime.now() - self.date_add).days < 30
