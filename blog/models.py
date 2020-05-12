@@ -5,7 +5,6 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 
 
-
 # Create your models here.
 
 
@@ -39,16 +38,13 @@ class Categorie(models.Model):
         return str(self.titre)
 
 
-
 class Article(models.Model):
-    
     tags = models.ManyToManyField(Tag, related_name='articles')
     titre = models.CharField(max_length=50)
     titre_slug = models.SlugField(editable=False, null=True, max_length=255)
     cover = models.ImageField(upload_to='articles')
     contenu = HTMLField('Content')
-    categorie=models.ForeignKey(Categorie, on_delete=models.CASCADE, related_name='article')
-    
+    categorie = models.ForeignKey(Categorie, on_delete=models.CASCADE, related_name='articles')
 
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
@@ -84,4 +80,4 @@ class Commentaire(models.Model):
         verbose_name_plural = "Commentaires"
 
     def __str__(self) -> str:
-       return '{}  -  {}  -  {}'.format(self.article, self.user, self.date_add)
+        return '{}  -  {}'.format(self.article, self.date_add)
