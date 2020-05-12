@@ -53,7 +53,7 @@ class Menu(models.Model):
     titre = models.CharField(max_length=255, unique=True)
     cover = models.ImageField('restaurant/menu')
     ingredients = models.ManyToManyField(Ingredient, related_name='menus')
-    isrecommended = models.BooleanField()
+    isrecommended = models.BooleanField(default=False)
     prix = models.FloatField()
     
     status = models.BooleanField(default=True)
