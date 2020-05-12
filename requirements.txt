@@ -3,7 +3,7 @@ Django==3.0.6
 django-admin-interface==0.12.0
 django-filter==2.2.0
 psycopg2-binary==2.8.4
-django-filebrowser-no-grappelli==3.7.8
+django-filebrowser-no-grappelli==3.8.0
 django-tinymce4-lite==1.7.5
 Pillow==6.2.1
 pytz==2019.3
