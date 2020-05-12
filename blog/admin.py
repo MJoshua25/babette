@@ -36,12 +36,12 @@ class TagAdmin(admin.ModelAdmin):
         'titre',
         'status',
         'date_add',
-        'date_upd'
+        'date_update'
     )
     list_filter = (
         'status',
         'date_add',
-        'date_upd',
+        'date_update',
     )
     search_fields = (
         'titre',

@@ -36,12 +36,12 @@ class TagAdmin(admin.ModelAdmin):
         'titre',
         'status',
         'date_add',
-        'date_upd'
+        'date_update'
     )
     list_filter = (
         'status',
         'date_add',
-        'date_upd',
+        'date_update',
     )
     search_fields = (
         'titre',
@@ -68,10 +68,9 @@ class ProduitAdmin(admin.ModelAdmin):
         'date_add',
         'date_update'
     )
-    list_filter = (
-        'categorie',
+    list_filter = ( 
         'status',
-        'tags'
+      
     )
     search_fields = (
         'titre',
@@ -83,8 +82,8 @@ class ProduitAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Info ', {'fields': [
             'titre',
+            'prix'
             'categorie',
-            'prix',
             'tags',
             'contenu'
         ]
