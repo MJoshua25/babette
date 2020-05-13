@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from restaurant import models as rest_models
+from . import models
+
 
 
 # Create your views here.
@@ -26,6 +28,9 @@ def eventSingle(request: HttpRequest) -> HttpResponse:
 
 def faqs(request: HttpRequest) -> HttpResponse:
     data = {
+        
+        "faqs": rest_models.Faq.objects.filter(status=True),
+      
     }
     return render(request, 'pages/faqs.html', data)
 

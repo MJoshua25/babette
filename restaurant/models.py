@@ -22,6 +22,12 @@ class Faq(models.Model):
     def __str__(self):
         return str(self.question)
 
+    
+
+
+
+
+
 
 class Categorie(models.Model):
     titre = models.CharField(max_length=255, unique=True)
