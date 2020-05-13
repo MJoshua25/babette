@@ -45,7 +45,7 @@ class Produit(models.Model):
     titre_slug = models.SlugField(editable=False, null=True, max_length=255)
     cover = models.ImageField(upload_to='Shop/Produits')
     prix = models.FloatField()
-
+    contenu = HTMLField('Content')
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
