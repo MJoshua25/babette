@@ -8,7 +8,7 @@ from . import models
 
 def shop(request: HttpRequest) -> HttpResponse:
     data = {
-        "categories": rest_models.Categorie.objects.filter(status=True),
+        "categories": models.Categorie.objects.filter(status=True),
         'produits': models.Produit.objects.filter(status=True),
 
     }
