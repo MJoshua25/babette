@@ -32,125 +32,57 @@
     <!-- =========================== 
       portfolio Gallery 
     ============================= -->
+   
     <section id="portfolioGallery" class="portfolio portfolio-gallery">
+    
       <div class="container">
+       
         <div class="row">
+          {% for category in categories %}
           <div class="col-sm-12 col-md-12 col-lg-12">
             <ul class="portfolio-filter justify-content-center">
-              <li><a class="filter active" href="#" data-filter="all">All</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-restaurant">Restaurant</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-staff">staff</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-clients">Clients</a></li>
+             
+             <li><a class="nav__link{% if forloop.first %} active{% endif %}" data-toggle="tab" href="#tab{{ forloop.counter }}">{{ category.titre }}</a></li> 
+              
             </ul><!-- /.portfolio-filter  -->
           </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->
+       
         <div class="row filtered-items-wrap">
+          {% for menu in category.getMenus %}
           <!-- portfolio item #1 -->
           <div class="col-sm-6 col-md-6 col-lg-4 mix filter-restaurant">
+           
             <div class="portfolio-item">
               <div class="portfolio__img">
-                <img src="{% static 'images/gallery/1.jpg' %}" alt="portfolio img">
+                <img src="{{menu.cover.url}}" alt="portfolio img">
               </div><!-- /.portfolio-img -->
               <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/1.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
+                <a href="{{menu.cover.url}}" data-lightbox="lightbox" class="zoom__icon"></a>
               </div><!-- /.portfolio__hover-->
             </div><!-- /.portfolio-item -->
+               
+             
+               
           </div><!-- /.col-lg-4 -->
+          {% endfor %}
           <!-- portfolio item #2 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-staff">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/2.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/2.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #3 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-clients">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/3.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/3.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #4 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-restaurant ">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/4.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/4.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #5 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-staff">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/5.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/5.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #6 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-clients">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/6.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/6.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #7 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-clients portfolio-hidden">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/7.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/7.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #8 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-staff portfolio-hidden">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/8.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/8.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #9 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-restaurant portfolio-hidden">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/1.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/1.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
+   
         </div><!-- /.row -->
+        
         <div class="row">
+          
           <div class="col-sm-12 col-md-12 col-lg-12 text-center">
             <a class="btn btn__secondary btn__link mt-20 loadMoreportfolio" href="#">Load more</a>
           </div><!-- /.col-lg-12 -->
+          {% endfor %}
         </div><!-- /.row -->
+
+
+        
       </div><!-- /.container -->
+   
     </section><!-- /.portfolio Gallery -->
+    
 
 {% endblock %}

@@ -3,7 +3,7 @@ from tinymce import HTMLField
 import hashlib
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-
+from django.db.models.query import QuerySet
 
 # Create your models here.
 
@@ -36,6 +36,13 @@ class Categorie(models.Model):
 
     def __str__(self) -> str:
         return str(self.titre)
+    
+    
+    @property
+    def getMenus(self) -> QuerySet:
+        return self.menus.filter(status=True)
+
+    
 
 
 class Produit(models.Model):
@@ -63,6 +70,13 @@ class Produit(models.Model):
         self.titre_slug = slugify(str(self.titre) + ' ' + str(encoding_id.hexdigest()))
         super(Produit, self).save(*args, **kwargs)
 
+    
+    @property
+    def getTags(self) -> QuerySet:
+        return self.tags.filter(status=True)
+
+
+#
 #
 # class Commande(models.Model):
 #     client = models.OneToOneField(User, on_delete=models.CASCADE, related_name='commandes')

@@ -43,6 +43,9 @@ def reservation(request: HttpRequest) -> HttpResponse:
 
 def gallery(request: HttpRequest) -> HttpResponse:
     data = {
+         'menus': models.Menu.objects.filter(status=True).order_by('-date_add')[:9],
+        
+        "categories": rest_models.Categorie.objects.filter(status=True),
     }
     return render(request, 'pages/gallery-grid.html', data)
 
