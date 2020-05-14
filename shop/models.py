@@ -39,8 +39,8 @@ class Categorie(models.Model):
     
     
     @property
-    def getMenus(self) -> QuerySet:
-        return self.menus.filter(status=True)
+    def getProduits(self) -> QuerySet:
+        return self.produits.filter(status=True)
 
     
 

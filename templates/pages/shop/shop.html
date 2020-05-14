@@ -34,25 +34,28 @@
     <!-- ========================
        shop 3 Columns
     =========================== -->
+    
     <section id="shop3Columns" class="shop shop-grid shop-grid-3col pb-90">
+     
       <div class="container">
+        {% for category in categories %}
         <div class="row">
+           
           <div class="col-sm-12 col-md-12 col-lg-12">
             <ul class="portfolio-filter justify-content-center">
-              <li><a class="filter active" href="#" data-filter="all">All</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-salads">salads</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-soup">Soup</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-main">Main</a></li>
-              <li><a class="filter" href="#" data-filter=".filter-desserts">Desserts</a></li>
+            <li><a class="nav__link{% if forloop.first %} active{% endif %}" data-toggle="tab" href="#tab{{ forloop.counter }}">{{ category.titre }}</a></li> 
             </ul><!-- /.portfolio-filter  -->
           </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->
+        
         <div class="row filtered-items-wrap">
+          {% for produit in category.getProduits %}
           <!-- Product item #1 -->
+          
           <div class="col-sm-6 col-md-6 col-lg-4 mix filter-soup">
             <div class="product-item">
               <div class="product__img">
-                <img src="{% static 'images/shop/grid/1.jpg' %}" alt="Product">
+                <img src="{{produit.cover.url}}" alt="Product">
                 <div class="product__hover">
                   <div class="product__action">
                     <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
@@ -61,187 +64,18 @@
               </div><!-- /.product-img -->
               <div class="product__content">
                 <div class="product__cat">
-                  <a href="#">Light</a>
-                  <a href="#">Mexican</a>
-                  <a href="#">Organic</a>
+                  <a href="#">{{produit.tag}}</a>
+                  
                 </div>
-                <h4 class="product__title"><a href="#">T-Shirt With a Print</a></h4>
-                <span class="product__price">$18.99</span>
+                <h4 class="product__title"><a href="#">{{produit.titre}}</a></h4>
+                <span class="product__price">{{produit.prix}}FcFA</span>
               </div><!-- /.product-content -->
             </div><!-- /.product-item -->
           </div><!-- /.col-lg-4 -->
-          <!-- Product item #2 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-salads">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/2.jpg' %}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Low Carb</a>
-                  <a href="#">Fresh</a>
-                </div>
-                <h4 class="product__title"><a href="#">Roast Sea Trout</a></h4>
-                <span class="product__price">$36.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Product item #3 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-desserts">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/3.jpg' %}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Nut Free</a>
-                  <a href="#">Sweet</a>
-                  <a href="#">Fresh</a>
-                </div>
-                <h4 class="product__title"><a href="#">Grilled Seafood Paella</a></h4>
-                <span class="product__price">$34.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Product item #4 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-main">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/4.jpg' %}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Grilled</a>
-                  <a href="#">Fresh</a>
-                </div>
-                <h4 class="product__title"><a href="#">Chicken Breast</a></h4>
-                <span class="product__price">$28.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Product item #5 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-salads">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/5.jpg' %}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Light</a>
-                  <a href="#">Low Carb</a>
-                  <a href="#">Mexican</a>
-                </div>
-                <h4 class="product__title"><a href="#">Roasted Steak Roulade</a></h4>
-                <span class="product__price">$37.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Product item #6 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-soup">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/6.jpg' %}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Sweet</a>
-                  <a href="#">Nut Free</a>
-                </div>
-                <h4 class="product__title"><a href="#">Roast Sea Trout</a></h4>
-                <span class="product__price">$18.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Product item #7 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-desserts">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/7.jpg' %}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Light</a>
-                  <a href="#">Mexican</a>
-                </div>
-                <h4 class="product__title"><a href="#">Cannoli Cream Cheese</a></h4>
-                <span class="product__price">$17.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Product item #8 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-main">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/8.jpg' %}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Light</a>
-                  <a href="#">Mexican</a>
-                  <a href="#">Organic</a>
-                </div>
-                <h4 class="product__title"><a href="#">T-Shirt With a Print</a></h4>
-                <span class="product__price">$18.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Product item #9 -->
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-salads">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/1.jpg' %}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Light</a>
-                  <a href="#">Organic</a>
-                </div>
-                <h4 class="product__title"><a href="#">Spain Tapas</a></h4>
-                <span class="product__price">$7.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
+          
+          {% endfor %}
         </div><!-- /.row -->
+        
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12 text-center">
             <nav class="pagination-area">
@@ -252,8 +86,13 @@
               </ul>
             </nav><!-- /.pagination-area -->
           </div><!-- /.col-lg-12 -->
+          
         </div><!-- /.row -->
+        {% endfor %}
       </div><!-- /.container -->
+     
+      
     </section><!-- /.shop 4 Columns -->
-{% endblock %}
+    
+  {% endblock %}
    
