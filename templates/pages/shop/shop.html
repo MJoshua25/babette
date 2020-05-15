@@ -5,7 +5,7 @@
   
 <!-- - FAQ (fait)
      - GALLERY(manque load more et alignement des menus) 
-     - SHOP(manque pagination et alignement des menus et le tag fait bizzard)
+     - SHOP(manque pagination et alignement des menus)
      - siteConfig( reste dynamisation dans index des 3 slides.)  
 --> 
 
@@ -69,7 +69,7 @@
               </div><!-- /.product-img -->
               <div class="product__content">
                 <div class="product__cat">
-                  <a href="#">{% for tag in produits.getTags %}
+                  <a href="#">{% for tag in produit.getTags %}
                     {{tag.titre}}{% if not forloop.last %}, {% else %}.{% endif %}{% endfor %}
                   </a>
                   

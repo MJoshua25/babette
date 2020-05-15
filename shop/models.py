@@ -73,7 +73,7 @@ class Produit(models.Model):
     
     @property
     def getTags(self) -> QuerySet:
-        return self.tags.filter(status=True)
+        return self.tag.filter(status=True)
 
 
 #
