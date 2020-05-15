@@ -4,7 +4,7 @@ from django.http.response import HttpResponse
 from restaurant import models as rest_models
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.views.generic import ListView
+
 
 # Create your views here.
 
