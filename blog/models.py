@@ -4,7 +4,6 @@ import hashlib
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.db.models.query import QuerySet
-
 # Create your models here.
 
 
@@ -64,8 +63,8 @@ class Article(models.Model):
         super(Article, self).save(*args, **kwargs)
 
     @property
-    def getArticles(self) -> Queryset:
-        return self.articles.filter(status=True)
+    def getArticle(self) -> QuerySet:
+        return self.titre.filter(status=True)
 
 
 class Commentaire(models.Model):

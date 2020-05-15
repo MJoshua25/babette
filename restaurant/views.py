@@ -53,5 +53,6 @@ def gallery(request: HttpRequest) -> HttpResponse:
 
 def menuBoard(request: HttpRequest) -> HttpResponse:
     data = {
+        'menu':models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
     }
     return render(request, 'pages/menu-board.html', data)

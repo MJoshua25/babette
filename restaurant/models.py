@@ -95,6 +95,7 @@ class Menu(models.Model):
         now = datetime.datetime.now()
         now = pytz.utc.localize(now)
         return (now - self.date_add).days < 30
+    
 
     @property
     def getIngredients(self) -> QuerySet:
