@@ -3,13 +3,16 @@ from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from restaurant import models as rest_models
 from . import models
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
 
 # Create your views here.
 
+
+
 def shop(request: HttpRequest) -> HttpResponse:
     
-  
+                
     data = {
         "categories": models.Categorie.objects.filter(status=True),
         'produits': models.Produit.objects.filter(status=True),
@@ -18,6 +21,8 @@ def shop(request: HttpRequest) -> HttpResponse:
 
     }
     return render(request, 'pages/shop/shop.html', data)
+
+
 
 
 def cart(request: HttpRequest) -> HttpResponse:
