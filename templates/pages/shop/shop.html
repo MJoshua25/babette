@@ -22,7 +22,7 @@
             <h1 class="pagetitle__heading">Our Shop</h1>
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb justify-content-center">
-                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{%  url 'restaurant:index' %}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Shop</li>
               </ol>
             </nav>
@@ -64,7 +64,9 @@
               </div><!-- /.product-img -->
               <div class="product__content">
                 <div class="product__cat">
-                  <a href="#">{{produit.tag}}</a>
+                  <a href="#">{% for tag in produits.getTags %}
+                    {{tag.titre}}{% if not forloop.last %}, {% else %}.{% endif %}{% endfor %}
+                  </a>
                   
                 </div>
                 <h4 class="product__title"><a href="#">{{produit.titre}}</a></h4>

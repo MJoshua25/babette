@@ -53,16 +53,18 @@
       <!-- =====================
        Banner layout1
        ======================== -->
+      
       <section id="bannerLayout1" class="banner banner-layout1 pb-70">
         <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
+               {% for ouverture in ouvertures %}
               <div class="banner__content">
                 <div class="banner__content-text" data-aos="fade-right">
                   <div class="banner__content-text-inner">
                     <div class="heading">
                       <span class="heading__subtitle">Hello Dear</span>
-                      <h2 class="heading__title">Welcome To Babette</h2>
+                      <h2 class="heading__title">{{ouverture.titre}}</h2>
                       <div class="heading__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                           <path
@@ -82,10 +84,12 @@
                   <img src="{% static 'images/banners/1.png' %}" alt="banner">
                 </div><!-- /.banner__content-img -->
               </div><!-- /.banner__content -->
+              {% endfor %}
             </div><!-- /.col-lg-12 -->
           </div><!-- /.row -->
         </div><!-- /.container -->
       </section><!-- /.Banner layout1 -->
+      
       <!-- =====================
        Clients
        ======================== -->
@@ -670,5 +674,10 @@
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.blog Grid -->
+
+
+       
+
+
 
 {% endblock %}
