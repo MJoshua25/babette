@@ -25,7 +25,7 @@ SECRET_KEY = 'cd%s)((tmg-vv80#f_j3*n9xsj08i-!j(5$l!axb1qsdj3*#5*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INTERNAL_IPS = [
     # ...

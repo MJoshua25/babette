@@ -55,10 +55,6 @@ class TagAdmin(admin.ModelAdmin):
         ('Status et Activations', {'fields': ['status', ]}),
     ]
 
-
-
-
-
 class ProduitAdmin(admin.ModelAdmin):
     list_display = (
         'titre',
