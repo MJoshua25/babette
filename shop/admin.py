@@ -79,8 +79,8 @@ class ProduitAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Info ', {'fields': [
             'titre',
-            'categorie',
-            'tags',
+            'categories',
+            'tag',
             'prix',
             'contenu'
         ]

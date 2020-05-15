@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('restaurant.urls')),
     path('shop/', include('shop.urls')),
     path('blog/', include('blog.urls')),
+    path('siteConfig/', include('siteConfig.urls')),
     path('admin/filebrowser/', site.urls),
 ]
 

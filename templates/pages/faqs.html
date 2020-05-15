@@ -29,99 +29,31 @@
     <section id="faq" class="faq pb-70">
       <div class="container">
         <div class="row" id="accordion">
+          {% for faq in faqs  %}
           <div class="col-sm-12 col-md-12 col-lg-6">
-            <div class="accordion-item">
-              <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse1">
-                <a class="accordion__item-title" href="#">Who is the owner of the restaurant?</a>
-              </div><!-- /.accordion-item-header -->
-              <div id="collapse1" class="collapse" data-parent="#accordion">
-                <div class="accordion__item-body">
-                  <p>With any financial product that you buy, it is important that you know you are getting the best
-                    advice from a reputable company as often</p>
-                </div><!-- /.accordion-item-body -->
-              </div>
-            </div><!-- /.accordion-item -->
-            <div class="accordion-item">
-              <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse2">
-                <a class="accordion__item-title" href="#">When did the restaurant established?</a>
-              </div><!-- /.accordion-item-header -->
-              <div id="collapse2" class="collapse" data-parent="#accordion">
-                <div class="accordion__item-body">
-                  <p>With any financial product that you buy, it is important that you know you are getting the best
-                    advice from a reputable company as often</p>
-                </div><!-- /.accordion-item-body -->
-              </div>
-            </div><!-- /.accordion-item -->
-            <div class="accordion-item">
-              <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse3">
-                <a class="accordion__item-title" href="#">How many chefs on the restaurant?</a>
-              </div><!-- /.accordion-item-header -->
-              <div id="collapse3" class="collapse" data-parent="#accordion">
-                <div class="accordion__item-body">
-                  <p>With any financial product that you buy, it is important that you know you are getting the best
-                    advice from a reputable company as often</p>
-                </div><!-- /.accordion-item-body -->
-              </div>
-            </div><!-- /.accordion-item -->
-            <div class="accordion-item">
-              <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse4">
-                <a class="accordion__item-title" href="#">Can i have a reservation on the restaurant?</a>
-              </div><!-- /.accordion-item-header -->
-              <div id="collapse4" class="collapse" data-parent="#accordion">
-                <div class="accordion__item-body">
-                  <p>With any financial product that you buy, it is important that you know you are getting the best
-                    advice from a reputable company as often</p>
-                </div><!-- /.accordion-item-body -->
-              </div>
-            </div><!-- /.accordion-item -->
-          </div><!-- /.col-lg-6 -->
+         
+        <div class="accordion-item">
+          <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse1">
+            <a class="accordion__item-title" href="#">{{faq.question}}</a>
+          </div><!-- /.accordion-item-header -->
+          <div id="collapse1" class="collapse" data-parent="#accordion">
+            <div class="accordion__item-body">
+              <p>{{faq.reponse}}</p>
+         
+            </div><!-- /.accordion-item-body -->
+            
+          </div>
+          
+        </div><!-- /.accordion-item -->
+        
+      </div>  
+      {% endfor %}
           <div class="col-sm-12 col-md-12 col-lg-6">
-            <div class="accordion-item">
-              <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse5">
-                <a class="accordion__item-title" href="#">How many tables in the resturant?</a>
-              </div><!-- /.accordion-item-header -->
-              <div id="collapse5" class="collapse" data-parent="#accordion">
-                <div class="accordion__item-body">
-                  <p>With any financial product that you buy, it is important that you know you are getting the best
-                    advice from a reputable company as often</p>
-                </div><!-- /.accordion-item-body -->
-              </div>
+            <div class="accordion-item"></div>
+              
             </div><!-- /.accordion-item -->
-            <div class="accordion-item">
-              <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse6">
-                <a class="accordion__item-title" href="#">Where is the restaurant?</a>
-              </div><!-- /.accordion-item-header -->
-              <div id="collapse6" class="collapse" data-parent="#accordion">
-                <div class="accordion__item-body">
-                  <p>With any financial product that you buy, it is important that you know you are getting the best
-                    advice from a reputable company as often</p>
-                </div><!-- /.accordion-item-body -->
-              </div>
-            </div><!-- /.accordion-item -->
-            <div class="accordion-item">
-              <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse7">
-                <a class="accordion__item-title" href="#">How many workers on the restaurant?</a>
-              </div><!-- /.accordion-item-header -->
-              <div id="collapse7" class="collapse" data-parent="#accordion">
-                <div class="accordion__item-body">
-                  <p>With any financial product that you buy, it is important that you know you are getting the best
-                    advice from a reputable company as often</p>
-                </div><!-- /.accordion-item-body -->
-              </div>
-            </div><!-- /.accordion-item -->
-            <div class="accordion-item">
-              <div class="accordion__item-header" data-toggle="collapse" data-target="#collapse8">
-                <a class="accordion__item-title" href="#">How many dishes in the resturant?</a>
-              </div><!-- /.accordion-item-header -->
-              <div id="collapse8" class="collapse" data-parent="#accordion">
-                <div class="accordion__item-body">
-                  <p>With any financial product that you buy, it is important that you know you are getting the best
-                    advice from a reputable company as often</p>
-                </div><!-- /.accordion-item-body -->
-              </div>
-            </div><!-- /.accordion-item -->
-          </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
+        
       </div><!-- /.container -->
     </section><!-- /.FAQ -->
 
