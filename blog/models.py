@@ -3,7 +3,7 @@ from tinymce import HTMLField
 import hashlib
 from django.utils.text import slugify
 from django.contrib.auth.models import User
-
+from django.db.models.query import QuerySet
 
 # Create your models here.
 
@@ -62,6 +62,10 @@ class Article(models.Model):
         encoding_id = hashlib.md5(str(self.id).encode())
         self.titre_slug = slugify(str(self.titre) + ' ' + str(encoding_id.hexdigest()))
         super(Article, self).save(*args, **kwargs)
+
+    @property
+    def getArticles(self) -> Queryset:
+        return self.articles.filter(status=True)
 
 
 class Commentaire(models.Model):
