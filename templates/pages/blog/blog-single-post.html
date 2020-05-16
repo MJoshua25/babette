@@ -17,9 +17,8 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-            <span class="pagetitle__subheading">Mar 21, 2018 - Mar 24, 2018</span>
-            <h1 class="pagetitle__heading">Healthy & Simple Recipes That
-              Are Perfect for Spring </h1>
+            <span class="pagetitle__subheading">{{ single.date_add }}</span>
+            <h1 class="pagetitle__heading">{{ single.titre }}</h1>
           </div><!-- /.col-lg-10 -->
         </div><!-- /.row -->
       </div><!-- /.container -->
@@ -36,51 +35,15 @@
             <div class="post-item">
               <div class="post__content">
                 <div class="post__desc">
-                  <p>We’ve all been dying to know which type of magic the Gaines would bring to the café, a landmark on
-                    Waco’s bustling traffic circle that closed down in February of 2016. The Fixer Upper stars’ Magnolia
-                    brand, which includes the Magnolia Market, a premium interior paint line, a bakery, and a quarterly
-                    home magazine, has already reshaped the culture and perception of Waco, Texas.</p>
-                  <p>The Elite Café, which was originally opened in 1919, has catered to Elvis Presley when he was
-                    training at Fort Hood in the 1950s, and previously served steaks, burgers, and salads. It was a
-                    landmark for locals and passersby traveling from Austin to Dallas, most recognizable by a baby-blue
-                    ’56 Cadillac parked right out front. “I’ve always been a breakfast connoisseur. I always do a heavy,
-                    bigger breakfast, but Jo is the exact opposite. She was kind enough to come with me on this one, and
-                    we are going to do up a breakfast joint here in town.” </p>
-                  <div class="post__img">
-                    <a href="#">
-                      <img src="{% static 'images/blog/grid/2.jpg'%}" alt="post image">
-                    </a>
-                  </div><!-- /.post-img -->
-                  <p>“The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
-                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
-                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
-                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
-                    support. We’ve all been dying to know which type of magic the Gaines would bring to the café, a
-                    landmark on Waco’s bustling traffic circle that closed down in February of 2016. The Fixer Upper
-                    stars’ Magnolia brand, which includes the Magnolia Market, a premium interior paint line, a bakery,
-                    and a quarterly home magazine, has already reshaped the culture and perception of Waco, Texas.</p>
-                  <p>The Elite Café, which was originally opened in 1919, has catered to Elvis Presley when he was
-                    training at Fort Hood in the 1950s, and previously served steaks, burgers, and salads. It was a
-                    landmark for locals and passersby traveling from Austin to Dallas, most recognizable by a baby-blue
-                    ’56 Cadillac parked right out front. “I’ve always been a breakfast connoisseur. I always do a heavy,
-                    bigger breakfast, but Jo is the exact opposite. She was kind enough to come with me on this one, and
-                    we are going to do up a breakfast joint here in town.” According to Chip, renovating the restaurant
-                    took a lot of “elbow grease,” but it was worth it.</p>
-                  <p>“The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
-                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
-                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
-                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
-                    support.</p>
+                    {{ single.contenu|safe }}
                 </div><!-- /.post-desc -->
               </div><!-- /.post-content -->
             </div><!-- /.post-item -->
             <div class="widget-tags mb-40">
               <ul class="list-unstyled">
-                <li><a href="#">Responsive</a></li>
-                <li><a href="#">Fresh</a></li>
-                <li><a href="#">Modern</a></li>
-                <li><a href="#">Corporate</a></li>
-                <li><a href="#">Business</a></li>
+                  {% for tag in single.getTags %}
+                  <li><a href="#">{{ tag.titre }}</a></li>
+                  {% endfor %}
               </ul>
             </div>
             <div class="blog-share mb-40">
@@ -183,13 +146,14 @@
                   </form>
                 </div><!-- /.widget-content -->
               </div><!-- /.widget-search -->
-              {% for categorie in categories  %} 
+
               <div class="widget widget-categories">
                 <h5 class="widget__title">categories</h5>
                 <div class="widget-content">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="#">{{categorie.titre}}<span>{{count.Categorie}} </span></a></li>
-                   
+                  {% for categorie in categories %}
+                    <li><a href="#">{{categorie.titre}}<span>({{ categorie.countArticles }}) </span></a></li>
+                  {% endfor %}
                   </ul>
                 </div><!-- /.widget-content -->
               </div><!-- /.widget-categories -->
@@ -198,7 +162,7 @@
               <div class="widget widget-posts">
                 
                 <h5 class="widget__title">Recent Posts</h5>
-                {% for article in categorie.getArticles %}
+                {% for article in articles %}
                 <div class="widget__content">
                   <!-- post item #1 -->
                   <div class="widget-post-item">
@@ -215,16 +179,13 @@
                 </div><!-- /.widget-content -->
                 
               </div><!-- /.widget-posts -->
-              {% endfor %}
               <div class="widget widget-tags">
                 <h5 class="widget__title">Tags</h5>
                 <div class="widget-content">
                   <ul class="list-unstyled">
-                    <li><a href="#">Responsive</a></li>
-                    <li><a href="#">Fresh</a></li>
-                    <li><a href="#">Modern</a></li>
-                    <li><a href="#">Corporate</a></li>
-                    <li><a href="#">Business</a></li>
+                      {% for tag in single.getTags %}
+                      <li><a href="#">{{ tag.titre }}</a></li>
+                      {% endfor %}
                   </ul>
                 </div><!-- /.widget-content -->
               </div><!-- /.widget-Tags -->

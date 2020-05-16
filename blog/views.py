@@ -15,11 +15,10 @@ def blog(request: HttpRequest) -> HttpResponse:
     return render(request, 'pages/blog/blog-carousel.html', data)
 
 
-def single_blog(request: HttpRequest) -> HttpResponse:
+def single_blog(request: HttpRequest, titre_slug: str) -> HttpResponse:
     data = {
         'categories': models.Categorie.objects.filter(status=True).order_by('-date_add')[:6],
-        'article': models.Article.objects.filter(status=True).order_by('-date_add')[:6]
-        
-
+        'articles': models.Article.objects.filter(status=True).order_by('-date_add')[:2],
+        'single': models.Article.objects.filter(titre_slug=titre_slug)[:1].get(),
     }
     return render(request, 'pages/blog/blog-single-post.html', data)

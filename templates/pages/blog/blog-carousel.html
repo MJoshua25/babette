@@ -65,8 +65,7 @@
                      </a>
                     </div><!-- /.post-meta-cat -->
                   </div><!-- /.post-meta -->
-                  <h4 class="post__title"><a href="#">{{art.titre}}</a></h4>
-                  <p class="post__desc"></p>{{art.content|safe}}</p>
+                  <h4 class="post__title"><a href="{% url 'blog:single_blog' art.titre_slug %}">{{art.titre}}</a></h4>
                   <a href="#" class="btn btn__secondary btn__link">Read More</a>
                 </div><!-- /.post__content -->
               </div><!-- /.post-item -->
