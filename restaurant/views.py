@@ -5,12 +5,10 @@ from restaurant import models as rest_models
 from . import models
 
 
-
 # Create your views here.
 def index(request: HttpRequest) -> HttpResponse:
     data = {
         'categories': rest_models.Categorie.objects.filter(status=True),
-        
     }
     return render(request, 'pages/index.html', data)
 
@@ -29,9 +27,9 @@ def eventSingle(request: HttpRequest) -> HttpResponse:
 
 def faqs(request: HttpRequest) -> HttpResponse:
     data = {
-        
+
         "faqs": rest_models.Faq.objects.filter(status=True),
-      
+
     }
     return render(request, 'pages/faqs.html', data)
 
@@ -44,15 +42,15 @@ def reservation(request: HttpRequest) -> HttpResponse:
 
 def gallery(request: HttpRequest) -> HttpResponse:
     data = {
-         'menus': models.Menu.objects.filter(status=True).order_by('-date_add')[:9],
-        
+        'menus': models.Menu.objects.filter(status=True),
         "categories": rest_models.Categorie.objects.filter(status=True),
     }
+    print(data)
     return render(request, 'pages/gallery-grid.html', data)
 
 
 def menuBoard(request: HttpRequest) -> HttpResponse:
     data = {
-        'menu':models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
+        'menu': models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
     }
     return render(request, 'pages/menu-board.html', data)
