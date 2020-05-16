@@ -11,7 +11,7 @@ from . import models
 
 def index(request: HttpRequest) -> HttpResponse:
     data = {
-        'categories': rest_models.Categorie.objects.filter(status=True),
+    
         "ouvertures": rest_models.Ouverture.objects.filter(status=True),
         "affichmenus": rest_models.Affichmenu.objects.filter(status=True),
         "mainevents": rest_models.Mainevent.objects.filter(status=True),
