@@ -192,7 +192,7 @@
                 <h5 class="widget__title">categories</h5>
                 <div class="widget-content">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="{{ forloop.counter }}">{{categorie.titre}}<span>{{count.categorie}} </span></a></li>
+                    <li><a href="#">{{categorie.titre}}<span>{{count.Categorie}} </span></a></li>
                    
                   </ul>
                 </div><!-- /.widget-content -->
@@ -202,16 +202,16 @@
               <div class="widget widget-posts">
                 
                 <h5 class="widget__title">Recent Posts</h5>
-                {% for art in categorie.getArticles %}
+                {% for article in categorie.getArticles %}
                 <div class="widget__content">
                   <!-- post item #1 -->
                   <div class="widget-post-item">
                     <div class="widget__post-img">
-                      <a href="#"><img src="{{art.cover.url}}" alt="product"></a>
+                      <a href="#"><img src="{{article.cover.url}}" alt="product"></a>
                     </div><!-- /.widget-post-img -->
                     <div class="widget__post-content">
-                      <span class="widget__post-date">{{art.date_add}}</span>
-                      <h6 class="widget__post-title"><a href="#">{{art.titre}}</a></h6>
+                      <span class="widget__post-date">{{article.date_add}}</span>
+                      <h6 class="widget__post-title"><a href="#">{{article.titre}}</a></h6>
                     </div><!-- /.widget-post-content -->
                   </div><!-- /.widget-post-item -->
                  
