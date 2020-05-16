@@ -28,11 +28,7 @@
     <!-- ======================
       Blog Single
     ========================= -->
-    
   
-      
-    
-    {% for categorie in categories  %} 
     <section id="blogSingleRightSidebar" class="blog blog-single pb-50">
       <div class="container">
         <div class="row">
@@ -187,7 +183,7 @@
                   </form>
                 </div><!-- /.widget-content -->
               </div><!-- /.widget-search -->
-              
+              {% for categorie in categories  %} 
               <div class="widget widget-categories">
                 <h5 class="widget__title">categories</h5>
                 <div class="widget-content">
@@ -219,7 +215,7 @@
                 </div><!-- /.widget-content -->
                 
               </div><!-- /.widget-posts -->
-               
+              {% endfor %}
               <div class="widget widget-tags">
                 <h5 class="widget__title">Tags</h5>
                 <div class="widget-content">
@@ -238,6 +234,6 @@
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.blog Single -->
-    {% endfor %}
+   
 
   {% endblock %}

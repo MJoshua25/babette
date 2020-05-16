@@ -12,10 +12,10 @@ from . import models
 def index(request: HttpRequest) -> HttpResponse:
     data = {
     
-        "ouvertures": rest_models.Ouverture.objects.filter(status=True),
-        "affichmenus": rest_models.Affichmenu.objects.filter(status=True),
-        "mainevents": rest_models.Mainevent.objects.filter(status=True),
-      
+        "ouvertures": models.Ouverture.objects.filter(status=True),
+        "affichmenus": models.Affichmenu.objects.filter(status=True),
+        "mainevents": models.Mainevent.objects.filter(status=True),
+        "footers": models.Footer.objects.filter(status=True),
 
     }
     return render(request, 'pages/index.html', data)

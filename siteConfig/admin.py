@@ -118,6 +118,45 @@ class OuvertureAdmin(admin.ModelAdmin):
     def affiche_image(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
     
+
+class FooterAdmin(admin.ModelAdmin):
+        
+    list_display = (
+        
+        'adress',
+        'jours',
+        'message',
+        'email',
+        'tel',
+        
+        
+        'status',
+        'date',
+    )
+
+    list_filter = (
+        'status',
+    )
+    search_fields = (
+        'status',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date'
+    
+    fieldsets = [
+        ('Info ', {'fields': [
+        'adress',
+        'jours',
+        'message',
+        'email',
+        'tel',
+        'date',
+        ]
+        }),
+        
+        ('Status et Activations', {'fields': ['status', ]}),
+    ]
+    
     
     
 def _register(model, admin_class):
@@ -127,3 +166,4 @@ def _register(model, admin_class):
 _register(models.Ouverture, OuvertureAdmin)
 _register(models.Affichmenu, AffichmenuAdmin)
 _register(models.Mainevent, MaineventAdmin)
+_register(models.Footer, FooterAdmin)

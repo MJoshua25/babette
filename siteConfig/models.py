@@ -66,3 +66,22 @@ class Mainevent(models.Model):
     def __str__(self) -> str:
         return str(self.titre)    
     
+ 
+class Footer(models.Model):
+    
+    adress = models.CharField(max_length=50, unique=True)
+    jours = models.CharField(max_length=50, unique=True)    
+    email = models.EmailField()
+    message = models.TextField()
+    tel = models.CharField(max_length=50, unique=True)  
+    status = models.BooleanField(default=True)
+    date = models.DateTimeField()
+   
+
+    class Meta:
+        verbose_name = "footer"
+        verbose_name_plural = "footers"
+
+    def __str__(self) -> str:
+        return str(self.date)       
+    

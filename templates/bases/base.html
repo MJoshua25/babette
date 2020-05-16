@@ -75,10 +75,12 @@
     <!-- ========================
       Footer
     ========================== -->
+    
     <footer id="footer" class="footer footer-layout1 text-center bg-dark">
       <div class="footer-inner">
         <div class="container">
           <div class="footer-top">
+            {% for footer in footers %}
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-12 position-static">
                 <svg class="footer__divider-shape" xmlns="http://www.w3.org/2000/svg" width="22" height="61"
@@ -92,7 +94,7 @@
                 <div class="contact-box">
                   <h6 class="contact__box-title">Our Address</h6>
                   <ul class="contact__box-list list-unstyled">
-                    <li>22 Alnahas Building, 2 AlBahr St, Tanta Al-Gharbia Governorate, Egypt</li>
+                    <li>{{footer.adress}}</li>
                   </ul>
                 </div><!-- /.contact-box -->
               </div><!-- /.col-lg-4 -->
@@ -100,8 +102,8 @@
                 <div class="contact-box">
                   <h6 class="contact__box-title">Opening Hours</h6>
                   <ul class="contact__box-list list-unstyled">
-                    <li>Mon - Fri: 10 AM - 11 PM</li>
-                    <li>Sat - Sun: 9 AM - 1 PM</li>
+                    <li>{{footer.jours}}: {{footer.date}}</li>
+                    
                   </ul>
                 </div><!-- /.contact-box -->
               </div><!-- /.col-lg-4 -->
@@ -109,8 +111,8 @@
                 <div class="contact-box">
                   <h6 class="contact__box-title">Private Dinning</h6>
                   <ul class="contact__box-list list-unstyled">
-                    <li><span>Main Email:</span><a href="mailto:Babette@7oroof.com">Babette@7oroof.com</a></li>
-                    <li><span>Phone:</span><a href="tel:020101236547">02 0101236547</a></li>
+                    <li><span>Main Email:</span><a href="mailto:{{footer.email}}.com">{{footer.email}}</a></li>
+                    <li><span>Phone:</span><a href="{{footer.tel}}">{{footer.tel}}</a></li>
                   </ul>
                 </div><!-- /.contact-box -->
               </div><!-- /.col-lg-4 -->
@@ -120,18 +122,18 @@
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-12 position-static">
                 <div class="footer__logo-wrap text-center">
-                  <img src="{% static 'images/logo/footer-logo.png' %}" alt="logo" class="footer__logo">
+                  <img src="{% static 'assets/images/logo/footer-logo.png' %}" alt="logo" class="footer__logo">
                 </div>
               </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
-                <p class="mb-20">Babette was designed with the history in mind we have created a soft industrial dining
-                  room, combined with an open kitchen, coffee take out bar and alovely awesome on site coffee roastery.
+                <p class="mb-20">{{footer.message}}
                 </p>
-                <a href="reservation.html" class="btn btn__primary btn__bordered btn__lg">Book Your Table Now!</a>
+                <a href="{% url 'reservation'%}" class="btn btn__primary btn__bordered btn__lg">Book Your Table Now!</a>
               </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
+            {% endfor %}
           </div><!-- /.footer-middle -->
         </div><!-- /.container -->
         <div class="footer-bottom">
@@ -159,6 +161,7 @@
         </div><!-- /.Footer-bottom -->
       </div><!-- /.Footer-inner -->
     </footer><!-- /.Footer -->
+    
     <button id="scrollTopBtn"><i class="fa fa-angle-up"></i></button>
 
     <div class="search-popup">
@@ -172,9 +175,10 @@
   </div>
   <!-- /.wrapper -->
 
-  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-  <script src="{% static 'js/plugins.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugins.js' %}"></script>
+  <!-- <script src="{% static 'assets/js/wow.min.js' %}"></script> -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 
 </html>
