@@ -36,6 +36,11 @@ class Categorie(models.Model):
     def __str__(self) -> str:
         return str(self.titre)
 
+    @property
+    def getArticles(self) -> QuerySet:
+        return self.articles.filter(status=True)
+    
+    
 
 class Article(models.Model):
     tags = models.ManyToManyField(Tag, related_name='articles')
@@ -63,8 +68,10 @@ class Article(models.Model):
         super(Article, self).save(*args, **kwargs)
 
     @property
-    def getArticle(self) -> QuerySet:
-        return self.titre.filter(status=True)
+    def getTags(self) -> QuerySet:
+        return self.tags.filter(status=True)
+    
+   
 
 
 class Commentaire(models.Model):

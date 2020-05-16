@@ -33,6 +33,11 @@
     <!-- ======================
       Blog carousel
     ========================= -->
+    
+ 
+      
+
+      
     <section id="blogCarousel" class="blog blog-carousel pb-60">
       <div class="container">
         <div class="row">
@@ -40,6 +45,7 @@
           
           {% for art in article %}
           <div class="col-sm-12 col-md-12 col-lg-12">
+            
             <div class="carousel owl-carousel carousel-dots" data-slide="3" data-slide-md="2" data-slide-sm="1"
               data-autoplay="true" data-nav="false" data-dots="true" data-space="30" data-loop="true" data-speed="700">
               <div class="post-item">
@@ -52,9 +58,10 @@
                   <div class="post__meta">
                     <span class="post__meta-date">{{art.date_add}}</span>
                     <div class="post__meta-cat">
-                      <a href="#">{% for tag in art.tags.all  %}
+                      <a href="#">{% for tag in art.getTags %}
+                        {{tag.titre}}{% if not forloop.last %}, {% else %}.{% endif %}{% endfor %}
                         
-                      {% endfor %}</a>
+                     </a>
                     </div><!-- /.post-meta-cat -->
                   </div><!-- /.post-meta -->
                   <h4 class="post__title"><a href="#">{{art.titre}}</a></h4>
@@ -68,5 +75,5 @@
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.blog carousel -->
-
+    
   {% endblock %}

@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-
+  <!-- Il reste à dynamiser entierement la page et toutes les categories s'affichent pas entierement avec le recent posts-->
     <!-- ========================
        page title 
     =========================== -->
@@ -28,6 +28,11 @@
     <!-- ======================
       Blog Single
     ========================= -->
+    
+  
+      
+    
+    {% for categorie in categories  %} 
     <section id="blogSingleRightSidebar" class="blog blog-single pb-50">
       <div class="container">
         <div class="row">
@@ -170,6 +175,7 @@
               </form>
             </div><!-- /.post-comments-form -->
           </div><!-- /.col-lg-8 -->
+          
           <div class="col-sm-12 col-md-12 col-lg-4">
             <aside class="sidebar">
               <div class="widget widget-search">
@@ -181,45 +187,39 @@
                   </form>
                 </div><!-- /.widget-content -->
               </div><!-- /.widget-search -->
+              
               <div class="widget widget-categories">
                 <h5 class="widget__title">categories</h5>
                 <div class="widget-content">
                   <ul class="list-unstyled mb-0">
-                    <li><a href="#">Dinner Recipes <span>(1)</span></a></li>
-                    <li><a href="#">Vegan Recipes <span>(3)</span></a></li>
-                    <li><a href="#">Healthy Food <span>(2)</span></a></li>
-                    <li><a href="#">Italian Food <span>(1)</span></a></li>
-                    <li><a href="#">Indian Food <span>(4)</span></a></li>
-                    <li><a href="#">Korean Food <span>(2)</span></a></li>
+                    <li><a href="{{ forloop.counter }}">{{categorie.titre}}<span>{{count.categorie}} </span></a></li>
+                   
                   </ul>
                 </div><!-- /.widget-content -->
               </div><!-- /.widget-categories -->
+             
+              
               <div class="widget widget-posts">
+                
                 <h5 class="widget__title">Recent Posts</h5>
+                {% for art in categorie.getArticles %}
                 <div class="widget__content">
                   <!-- post item #1 -->
                   <div class="widget-post-item">
                     <div class="widget__post-img">
-                      <a href="#"><img src="{% static 'images/blog/thumbs/1.jpg'%}" alt="product"></a>
+                      <a href="#"><img src="{{art.cover.url}}" alt="product"></a>
                     </div><!-- /.widget-post-img -->
                     <div class="widget__post-content">
-                      <span class="widget__post-date">Oct 23, 2020</span>
-                      <h6 class="widget__post-title"><a href="#">Tiny Apple Pies with Cinnamon Buns for Two</a></h6>
+                      <span class="widget__post-date">{{art.date_add}}</span>
+                      <h6 class="widget__post-title"><a href="#">{{art.titre}}</a></h6>
                     </div><!-- /.widget-post-content -->
                   </div><!-- /.widget-post-item -->
-                  <!-- post item #2 -->
-                  <div class="widget-post-item">
-                    <div class="widget__post-img">
-                      <a href="#"><img src="{% static 'images/blog/thumbs/2.jpg'%}" alt="product"></a>
-                    </div><!-- /.widget-post-img -->
-                    <div class="widget__post-content">
-                      <span class="widget__post-date">Oct 7, 2020</span>
-                      <h6 class="widget__post-title"><a href="#">Healthy & Simple Recipes That Are Perfect for
-                          Spring</a></h6>
-                    </div><!-- /.widget-post-content -->
-                  </div><!-- /.widget-post-item -->
+                 
+                  {% endfor %}
                 </div><!-- /.widget-content -->
+                
               </div><!-- /.widget-posts -->
+               
               <div class="widget widget-tags">
                 <h5 class="widget__title">Tags</h5>
                 <div class="widget-content">
@@ -234,8 +234,10 @@
               </div><!-- /.widget-Tags -->
             </aside><!-- /.sidebar -->
           </div><!-- /.col-lg-4 -->
+    
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.blog Single -->
+    {% endfor %}
 
   {% endblock %}

@@ -17,6 +17,9 @@ def blog(request: HttpRequest) -> HttpResponse:
 
 def single_blog(request: HttpRequest) -> HttpResponse:
     data = {
+        'categories': models.Categorie.objects.filter(status=True)[:6],
+        'article': models.Article.objects.filter(status=True).order_by('-date_add')[:6]
+        
 
     }
     return render(request, 'pages/blog/blog-single-post.html', data)
