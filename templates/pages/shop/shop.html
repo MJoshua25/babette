@@ -1,19 +1,11 @@
 {% extends 'bases/base.html' %}
 {% load static %} 
 {% block content %}
-
-  
-<!-- - FAQ (fait)
-     - GALLERY(manque load more et alignement des menus) 
-     - SHOP(manque pagination et alignement des menus)
-     - siteConfig( reste dynamisation dans index des 3 slides.)  
---> 
-
     <!-- ========================
        page title 
     =========================== -->
     <section id="page-title" class="page-title page-title-layout6 text-center bg-overlay bg-overlay-2 bg-parallax">
-      <div class="bg-img"><img src="{% static 'images/backgrounds/14.jpg' %}' %}" alt="background"></div>
+      <div class="bg-img"><img src="{% static 'images/backgrounds/14.jpg' %}" alt="background"></div>
       <svg class="pagetitle__divider-shape" xmlns="http://www.w3.org/2000/svg" width="22" height="61"
         viewBox="0 0 22 61">
         <path
@@ -43,18 +35,20 @@
     <section id="shop3Columns" class="shop shop-grid shop-grid-3col pb-90">
      
       <div class="container">
-        {% for category in categories %}
         <div class="row">
            
           <div class="col-sm-12 col-md-12 col-lg-12">
             <ul class="portfolio-filter justify-content-center">
-            <li><a class="nav__link{% if forloop.first %} active{% endif %}" data-toggle="tab" href="#tab{{ forloop.counter }}">{{ category.titre }}</a></li> 
+            <li><a class="filter active" href="#" data-filter="all">All</a></li>
+            {% for category in categories %}
+            <li><a class="nav__link" data-toggle="tab" href="#tab{{ category.id }}">{{ category.titre }}</a></li>
+            {% endfor %}
             </ul><!-- /.portfolio-filter  -->
           </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->
         
         <div class="row filtered-items-wrap">
-          {% for produit in category.getProduits %}
+          {% for produit in produits %}
           <!-- Product item #1 -->
           
           <div class="col-sm-6 col-md-6 col-lg-4 mix filter-soup">
@@ -79,8 +73,7 @@
               </div><!-- /.product-content -->
             </div><!-- /.product-item -->
           </div><!-- /.col-lg-4 -->
-          
-          {% endfor %}
+        {% endfor %}
         </div><!-- /.row -->
           
           
@@ -99,7 +92,7 @@
           </div><!-- /.col-lg-12 -->
           
         </div><!-- /.row -->
-        {% endfor %}
+
       </div><!-- /.container -->
      
       
