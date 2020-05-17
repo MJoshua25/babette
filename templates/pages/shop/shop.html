@@ -41,7 +41,7 @@
             <ul class="portfolio-filter justify-content-center">
             <li><a class="filter active" href="#" data-filter="all">All</a></li>
             {% for category in categories %}
-            <li><a class="nav__link" data-toggle="tab" href="#tab{{ category.id }}">{{ category.titre }}</a></li>
+            <li><a class="filter" href="#" data-filter=".filter-{{ category.id }}">{{ category.titre }}</a></li>
             {% endfor %}
             </ul><!-- /.portfolio-filter  -->
           </div><!-- /.col-lg-12 -->
@@ -51,10 +51,10 @@
           {% for produit in produits %}
           <!-- Product item #1 -->
           
-          <div class="col-sm-6 col-md-6 col-lg-4 mix filter-soup">
+          <div class="col-sm-6 col-md-6 col-lg-4 mix{% for categori in produit.getCategories %} filter-{{ categori.id }}{% endfor %}">
             <div class="product-item">
               <div class="product__img">
-                <img src="{{produit.cover.url}}" alt="Product">
+                <img src="{{ produit.cover.url }}" alt="Product">
                 <div class="product__hover">
                   <div class="product__action">
                     <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
