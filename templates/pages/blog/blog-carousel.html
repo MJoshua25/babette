@@ -43,11 +43,12 @@
         <div class="row">
           <!-- Post Item #1 -->
           
-          {% for art in article %}
+
           <div class="col-sm-12 col-md-12 col-lg-12">
             
             <div class="carousel owl-carousel carousel-dots" data-slide="3" data-slide-md="2" data-slide-sm="1"
               data-autoplay="true" data-nav="false" data-dots="true" data-space="30" data-loop="true" data-speed="700">
+            {% for art in article %}
               <div class="post-item">
                 <div class="post__img">
                   <a href="#">
@@ -64,14 +65,14 @@
                      </a>
                     </div><!-- /.post-meta-cat -->
                   </div><!-- /.post-meta -->
-                  <h4 class="post__title"><a href="#">{{art.titre}}</a></h4>
-                  <p class="post__desc"></p>{{art.content|safe}}</p>
+                  <h4 class="post__title"><a href="{% url 'blog:single_blog' art.titre_slug %}">{{art.titre}}</a></h4>
                   <a href="#" class="btn btn__secondary btn__link">Read More</a>
                 </div><!-- /.post__content -->
               </div><!-- /.post-item -->
+            {% endfor %}
             </div><!-- /.carousel-->
           </div><!-- /.col-lg-12 -->
-          {% endfor %}
+
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.blog carousel -->

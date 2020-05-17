@@ -4,6 +4,8 @@ import hashlib
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from django.db.models.query import QuerySet
+
+
 # Create your models here.
 
 
@@ -39,8 +41,11 @@ class Categorie(models.Model):
     @property
     def getArticles(self) -> QuerySet:
         return self.articles.filter(status=True)
-    
-    
+
+    @property
+    def countArticles(self):
+        return self.getArticles.count()
+
 
 class Article(models.Model):
     tags = models.ManyToManyField(Tag, related_name='articles')
@@ -70,8 +75,6 @@ class Article(models.Model):
     @property
     def getTags(self) -> QuerySet:
         return self.tags.filter(status=True)
-    
-   
 
 
 class Commentaire(models.Model):
@@ -90,6 +93,4 @@ class Commentaire(models.Model):
         verbose_name_plural = "Commentaires"
 
     def __str__(self) -> str:
-       return '{}  -  {}  -  {}'.format(self.article, self.date_add)
-
-
+        return '{}  -  {}'.format(self.article, self.date_add)
