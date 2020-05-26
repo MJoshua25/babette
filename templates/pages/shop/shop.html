@@ -85,13 +85,13 @@
             <nav class="pagination-area">
               <ul class="pagination justify-content-center">
                 {% if produits.has_previous %}
-                <li><a href="{% url 'shop:shop' %}?page={{produits.previous_page_number}}"><i class="fa fa-angle-left"></i></a></li>
+                <li><a href="{% url 'shop:shop' %}?page={{ produits.previous_page_number }}"><i class="fa fa-angle-left"></i></a></li>
                 {% endif %}
                 {% for i in range %}
                 <li><a {% if i == produits.number %} class="current"{% endif %} href="{% url 'shop:shop' %}?page={{i}}">{{ i }}</a></li>
                 {% endfor %}
-                {% if produits.has_previous %}
-                <li><a href="{% url 'shop:shop' %}?page={{produits.next_page_number}}"><i class="fa fa-angle-right"></i></a></li>
+                {% if produits.has_next %}
+                <li><a href="{% url 'shop:shop' %}?page={{ produits.next_page_number }}"><i class="fa fa-angle-right"></i></a></li>
                 {% endif %}
               </ul>
             </nav><!-- /.pagination-area -->
