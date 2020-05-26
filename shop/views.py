@@ -38,6 +38,7 @@ def cart(request: HttpRequest) -> HttpResponse:
 
 
 def product(request: HttpRequest) -> HttpResponse:
+    # TODO: Affichage Daouda
     data = {
 
     }

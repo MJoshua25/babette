@@ -22,3 +22,5 @@ def single_blog(request: HttpRequest, titre_slug: str) -> HttpResponse:
         'single': models.Article.objects.filter(titre_slug=titre_slug)[:1].get(),
     }
     return render(request, 'pages/blog/blog-single-post.html', data)
+
+# TODO: Validation formulaire commentaire Paul

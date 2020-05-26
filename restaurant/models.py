@@ -93,3 +93,7 @@ class Menu(models.Model):
     @property
     def getIngredients(self) -> QuerySet:
         return self.ingredients.filter(status=True)
+
+
+
+# TODO: Model Réservation et Physique_data

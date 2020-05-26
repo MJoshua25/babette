@@ -2,7 +2,7 @@ from django.contrib import admin
 from . import models
 from django.utils.safestring import mark_safe
 
-
+# TODO: Admin models Réservation et physique data
 # Register your models here.
 
 class FaqAdmin(admin.ModelAdmin):

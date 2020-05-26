@@ -5,6 +5,7 @@ from restaurant import models as rest_models
 from . import models
 
 
+# TODO: Dynamisation formulaire Réservation
 # Create your views here.
 def index(request: HttpRequest) -> HttpResponse:
     data = {
