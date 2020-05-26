@@ -11,23 +11,18 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def shop(request: HttpRequest) -> HttpResponse:
-    produits = models.Produit.objects.filter(status=True),
-    p = Paginator(produits, 3)
-    print(p, p.count, p.num_pages, p.page_range)
-    page_number = request.GET.get('page')
-    if not page_number:
-        print('test')
-        page_obj = p.get_page(1)
-    print(page_number)
-
-    print(page_obj, type(page_obj))
-    for i in page_obj.object_list:
-        print('1')
-    print(page_obj.object_list)
+    produits = models.Produit.objects.filter(status=True)
+    paginator = Paginator(produits, 3)
+    page = request.GET.get('page')
+    try:
+        p = paginator.page(page)
+    except PageNotAnInteger:
+        p = paginator.page(1)
+    except EmptyPage:
+        p = paginator.page(paginator.num_pages)
     data = {
         "categories": models.Categorie.objects.filter(status=True),
-        'produits': models.Produit.objects.filter(status=True),
-
+        'produits': p,
     }
     print(data)
     return render(request, 'pages/shop/shop.html', data)
@@ -37,7 +32,7 @@ def cart(request: HttpRequest) -> HttpResponse:
     data = {
 
     }
-    return render(request, 'pages/shop/shop-cart.html', data)
+    return render(request, 'pages/shop/shopping-cart.html', data)
 
 
 def product(request: HttpRequest) -> HttpResponse:
