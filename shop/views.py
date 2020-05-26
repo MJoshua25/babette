@@ -19,10 +19,12 @@ def shop(request: HttpRequest) -> HttpResponse:
     except PageNotAnInteger:
         p = paginator.page(1)
     except EmptyPage:
+        print('test')
         p = paginator.page(paginator.num_pages)
     data = {
         "categories": models.Categorie.objects.filter(status=True),
         'produits': p,
+        'range': range(1, p.paginator.num_pages+1)
     }
     print(data)
     return render(request, 'pages/shop/shop.html', data)
