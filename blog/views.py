@@ -38,7 +38,9 @@ def single_blog(request: HttpRequest, titre_slug: str) -> HttpResponse:
             'categories': models.Categorie.objects.filter(status=True).order_by('-date_add')[:6],
             'articles': models.Article.objects.filter(status=True).order_by('-date_add')[:2],
             'single': models.Article.objects.filter(titre_slug=titre_slug)[:1].get(),
+            'formulaires': models.Commentaire.objects.filter(status=True).order_by('-date_add')[:2],
         }
+        
         return render(request, 'pages/blog/blog-single-post.html', data)
 
 # TODO: Validation formulaire commentaire Paul

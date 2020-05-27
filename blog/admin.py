@@ -65,8 +65,8 @@ class CommentaireAdmin(admin.ModelAdmin):
         'nom',
         'email',
         'message',
+
         'cover',
-        'affiche_image',
         'status',
         'date_add',
         'date_update' 

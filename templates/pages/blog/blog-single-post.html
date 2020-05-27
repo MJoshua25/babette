@@ -73,34 +73,19 @@
             <div class="blog-widget blog-comments">
               <h5 class="blog__widget-title">comments</h5>
               <ul class="comments-list list-unstyled mb-0">
+                {% for formulaire in formulaires %}
                 <li class="comment__item">
                   <div class="comment__avatar">
-                    <img src="{% static 'images/blog/author/2.jpg'%}" alt="avatar">
+                    <img src="{{formulaire.url}}" alt="avatar">
                   </div>
                   <div class="comment__content">
-                    <h6 class="comment__author">Ahmed Abdallah</h6>
-                    <span class="comment__date">Mar 20, 2020 - 08:07 pm</span>
-                    <p class="comment__desc">The example about the mattress sizing page you mentioned in the last WBF
-                      can be a perfect example
-                      of new keywords and content, and broadening the funnel as well. I can only imagine the sale
-                      numbers if that was the site of a mattress selling company.</p>
+                    <h6 class="comment__author">{{formulaire.prenom}} {{formulaire.nom}}</h6>
+                    <span class="comment__date">{{formulaire.date_add}} </span>
+                    <p class="comment__desc">{{formulaire.message}}</p>
                     <a class="comment__reply" href="#">reply</a>
                   </div>
                 </li><!-- /.comment -->
-                <li class="comment__item">
-                  <div class="comment__avatar">
-                    <img src="{% static 'images/blog/author/2.jpg'%}" alt="avatar">
-                  </div>
-                  <div class="comment__content">
-                    <h6 class="comment__author">Mahmoud Baghago</h6>
-                    <span class="comment__date">Feb 28, 2020 - 03:28 pm</span>
-                    <p class="comment__desc">The example about the mattress sizing page you mentioned in the last WBF
-                      can be a perfect example
-                      of new keywords and content, and broadening the funnel as well. I can only imagine the sale
-                      numbers if that was the site of a mattress selling company.</p>
-                    <a class="comment__reply" href="#">reply</a>
-                  </div>
-                </li><!-- /.comment -->
+               {% endfor %}
               </ul><!-- /.comments-list -->
             </div><!-- /.post-comments -->
             <div class="blog-widget blog-comments-form">
