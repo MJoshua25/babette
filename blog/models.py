@@ -96,6 +96,8 @@ class Commentaire(models.Model):
     def __str__(self) -> str:
         return '{}  -  {}'.format(self.nom, self.date_add)
 
+   
+    
     @property
     def getcover(self) :
         if self.cover and hasattr(self.cover,'url'):
