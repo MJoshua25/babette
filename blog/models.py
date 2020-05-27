@@ -78,11 +78,12 @@ class Article(models.Model):
 
 
 class Commentaire(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='commentaires')
-    nom = models.CharField(max_length=255, null=True, blank=True)
+    
     prenom = models.URLField(null=True, blank=True)
+    nom = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     message = models.TextField()
+    cover = models.ImageField(upload_to='singleblog')
 
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
@@ -93,4 +94,11 @@ class Commentaire(models.Model):
         verbose_name_plural = "Commentaires"
 
     def __str__(self) -> str:
-        return '{}  -  {}'.format(self.article, self.date_add)
+        return '{}  -  {}'.format(self.nom, self.date_add)
+
+    @property
+    def getcover(self) :
+        if self.cover and hasattr(self.cover,'url'):
+            return self.cover.url
+        else:
+             return "/static/images/5.jpg"

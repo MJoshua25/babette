@@ -60,11 +60,13 @@ class TagAdmin(admin.ModelAdmin):
 
 class CommentaireAdmin(admin.ModelAdmin):
     list_display = (
-        'article',
-        'message',
+      
+        'prenom',
         'nom',
         'email',
-        'prenom',
+        'message',
+        'cover',
+        'affiche_image',
         'status',
         'date_add',
         'date_update' 
@@ -72,25 +74,30 @@ class CommentaireAdmin(admin.ModelAdmin):
 
     list_filter = (
         'status',
-        'article',
         'date_add',
         'date_update'
     )
     search_fields = (
         'message',
+        'date_add'
     )
     fieldsets = [
         ('Info ', {'fields': [
             
-            'article',
-            'message',
-            'nom',
-            'email',
-            'prenom',
+       
+        'prenom',
+        'nom',
+        'email',
+        'message',
+        
         ]
         }),
+        ('Image', {'fields': ['cover', 'affiche_image']}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
+
+    def affiche_image(self, obj):
+        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
 
 
 class ArticleAdmin(admin.ModelAdmin):

@@ -105,36 +105,36 @@
             </div><!-- /.post-comments -->
             <div class="blog-widget blog-comments-form">
               <h5 class="blog__widget-title">Leave A Reply</h5>
-              <form enctype="multipart/form-data">
+              <form  method="post" id="postForm"   enctype="multipart/form-data">
                   {% csrf_token %}
                 <div class="row">
                   <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="First Name:">
+                      <input type="text" class="form-control" name="prenom" placeholder="First Name:">
                     </div><!-- /.form-group -->
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Last Name:">
+                      <input type="text" class="form-control" name="nom" placeholder="Last Name:">
                     </div><!-- /.form-group -->
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
-                      <input type="email" class="form-control" placeholder="Email:">
+                      <input type="email" class="form-control" name="email" placeholder="Email:">
                     </div><!-- /.form-group -->
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group">
-                      <textarea class="form-control" placeholder="Comment"></textarea>
+                      <textarea class="form-control" name="message" placeholder="Comment"></textarea>
                     </div><!-- /.form-group -->
                   </div><!-- /.col-lg-12 -->
                     <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group">
-                      <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                      <input type="file" id="avatar" name="cover" accept="image/png, image/jpeg">
                     </div><!-- /.form-group -->
                   </div><!-- /.col-lg-12 -->
                   <div class="col-sm-12 col-md-12 col-lg-12">
-                    <button type="submit" class="btn btn__primary btn__block">Submit Comment</button>
+                    <button type="submit" name="envoyer" class="btn btn__primary btn__block">Submit Comment</button>
                   </div><!-- /.col-lg-12 -->
                 </div><!-- /.row -->
               </form>
