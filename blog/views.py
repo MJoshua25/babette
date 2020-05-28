@@ -17,6 +17,7 @@ def blog(request: HttpRequest) -> HttpResponse:
 
 def single_blog(request: HttpRequest, titre_slug: str) -> HttpResponse:
     if request.method == 'POST':
+        article_id = request.POST.get('article')
         prenom = request.POST.get('prenom')
         nom = request.POST.get('nom')
         email = request.POST.get('email')

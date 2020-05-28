@@ -9,7 +9,7 @@ from . import models
 # Create your views here.
 def index(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
-        
+
         place = request.POST.get('place')
         date = request.POST.get('date')
         heure = request.POST.get('heure')
@@ -19,26 +19,24 @@ def index(request: HttpRequest) -> HttpResponse:
         requete = request.POST.get('requete')
 
         c = models.Reservation(
-            
-            place = place,
-            date = date,
-            heure = heure,
-            name = name,
-            email = email,
-            phone = phone,
-            requete = requete
-            )
+
+            place=place,
+            date=date,
+            heure=heure,
+            name=name,
+            email=email,
+            phone=phone,
+            requete=requete
+        )
         c.save()
         return redirect('restaurant:index')
     else:
-         
-        data = {
-            
-            'categories': rest_models.Categorie.objects.filter(status=True),
-            'photo':models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
 
-       
-          
+        data = {
+
+            'categories': rest_models.Categorie.objects.filter(status=True),
+            'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
+
         }
         return render(request, 'pages/index.html', data)
 

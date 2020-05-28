@@ -76,9 +76,13 @@ class Article(models.Model):
     def getTags(self) -> QuerySet:
         return self.tags.filter(status=True)
 
+    # @property
+    # def getCommentaires(self) -> QuerySet:
+    #     return self..filter(status=True)
+
 
 class Commentaire(models.Model):
-    
+    article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='commentaires')
     prenom = models.URLField(null=True, blank=True)
     nom = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)

@@ -60,7 +60,7 @@ class TagAdmin(admin.ModelAdmin):
 
 class CommentaireAdmin(admin.ModelAdmin):
     list_display = (
-      
+        'article',
         'prenom',
         'nom',
         'email',
@@ -73,6 +73,7 @@ class CommentaireAdmin(admin.ModelAdmin):
     )
 
     list_filter = (
+        'article',
         'status',
         'date_add',
         'date_update'
