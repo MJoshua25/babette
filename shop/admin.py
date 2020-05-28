@@ -82,7 +82,9 @@ class ProduitAdmin(admin.ModelAdmin):
             'categories',
             'tag',
             'prix',
-            'contenu'
+            'contenu',
+            'description',
+            'information'
         ]
         }),
         ('Image', {'fields': ['cover', 'affiche_image']}),

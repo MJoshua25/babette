@@ -226,94 +226,20 @@
       <div class="container-fluid col-padding-0">
         <div class="row">
           <!-- portfolio item #1 -->
+          
+          {% for p in photo %}
           <div class="col-sm-6 col-md-4 col-lg-3">
             <div class="portfolio-item">
               <div class="portfolio__img">
-                <img src="{% static 'images/gallery/1.jpg' %}" alt="portfolio img">
+                <img src="{{p.cover.url}}" alt="portfolio img">
               </div><!-- /.portfolio-img -->
               <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/1.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
+                <a href="{{p.cover.url}}" data-lightbox="lightbox" class="zoom__icon"></a>
               </div><!-- /.portfolio__hover-->
             </div><!-- /.portfolio-item -->
           </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #2 -->
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/2.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/2.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #3 -->
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/3.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/3.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #4 -->
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/4.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/4.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #5 -->
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/5.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/5.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #6 -->
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/6.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/6.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #7 -->
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/7.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/7.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- portfolio item #8 -->
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="portfolio-item">
-              <div class="portfolio__img">
-                <img src="{% static 'images/gallery/8.jpg' %}" alt="portfolio img">
-              </div><!-- /.portfolio-img -->
-              <div class="portfolio__hover">
-                <a href="{% static 'images/gallery/8.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-              </div><!-- /.portfolio__hover-->
-            </div><!-- /.portfolio-item -->
-          </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+          {% endfor %}
+         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.portfolio Gallery -->
 
@@ -519,8 +445,9 @@
                     </div><!-- /.heading -->
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-6">
-                    <div class="form-group">
-                      <select class="form-control">
+                    <div class="form-group" action="" method="post" id="reserForm" novalidate="novalidate">
+                      {% csrf_token %}
+                      <select class="form-control"  id="place" name="place">
                         <option value="2">2 people</option>
                         <option value="3">3 people</option>
                         <option value="4">4 people</option>
@@ -532,7 +459,7 @@
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
-                      <select class="form-control">
+                      <select class="form-control" id="date" name="date">
                         <option value="0">March 23, 2020</option>
                         <option value="1">March 24, 2020</option>
                         <option value="2">March 25, 2020</option>
@@ -542,7 +469,7 @@
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
-                      <select class="form-control">
+                      <select class="form-control"  id="heure" name="heure">
                         <option value="8">8:00 PM</option>
                         <option value="9">9:00 PM</option>
                         <option value="10">10:00 PM</option>
@@ -552,22 +479,22 @@
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Your Name">
+                      <input type="text" class="form-control" placeholder="Your Name" id="name" name="name">
                     </div>
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
-                      <input type="email" class="form-control" placeholder="Email">
+                      <input type="email" class="form-control" placeholder="Email" id="email" name="email">
                     </div>
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Phone Number">
+                      <input type="text" class="form-control" placeholder="Phone Number" id="phone" name="phone">
                     </div>
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group">
-                      <textarea class="form-control" placeholder="Add a special request (optional)"></textarea>
+                      <textarea class="form-control" placeholder="Add a special request (optional)" id="requete" name="requete"></textarea>
                     </div>
                   </div><!-- /.col-lg-12 -->
                   <div class="col-sm-12 col-md-12 col-lg-12">

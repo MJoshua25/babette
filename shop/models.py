@@ -51,6 +51,10 @@ class Produit(models.Model):
     cover = models.ImageField(upload_to='Shop/Produits')
     prix = models.FloatField()
     contenu = HTMLField('Content')
+    description = HTMLField('Content/description')
+    information = HTMLField('Content/information')
+    
+
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)

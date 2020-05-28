@@ -32,7 +32,7 @@
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="alert-panel d-flex align-items-center justify-content-between">
               <div class="alert__content">
-                <h6 class="alert__title">“Grilled American Fillet” has been added to your cart.</h6>
+                <h6 class="alert__title">“{{single.titre}}” has been added to your cart.</h6>
               </div><!-- /.alert__content-->
               <div class="alert__action">
                 <a href="#" class="btn btn__primary">View Cart</a>
@@ -43,17 +43,15 @@
         <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-6">
             <div class="product__single-img">
-              <img src="{% static 'images/shop/full/1.jpg '%}" class="zoomin" alt="product">
+              <img src="{{single.cover.url}}" class="zoomin" alt="product">
             </div><!-- /.product-img -->
           </div><!-- /.col-lg-6 -->
           <div class="col-sm-12 col-md-6 col-lg-6">
-            <h4 class="product__title">Grilled American Fillet</h4>
-            <span class="product__price">$ 18.00</span>
+            <h4 class="product__title">{{single.titre}}</h4>
+            <span class="product__price">{{single.prix}}Fcfa</span>
             <hr class="hr-dashed mt-30 mb-30">
             <div class="product__desc">
-              <p>We’ve all been dying to know which type of magic the Gaines would bring to the café, a landmark on
-                Waco’s bustling traffic circle that closed down in February of 2016. The Fixer Upper stars’ Magnolia
-                brand, which includes the Magnolia Market, a premium interior paint line, and a quarterly home.</p>
+              <p>{{single.content|safe}}.</p>
             </div><!-- /.product-desc -->
             <form class="product__form-wrap mb-30">
               <div class="product__quantity d-flex">
@@ -68,14 +66,21 @@
             <div class="product__meta">
               <div class="product__meta-cat">
                 <span class="product__meta-title">Categories:</span>
-                <a href="#">Main</a>
-                <a href="#">Dinner</a>
+                <a href="#">  
+                {% for cat in single.categories.all %}
+                  {{cat.titre}}
+                {% endfor %}
+                  </a>
+                
               </div><!-- /.product__meta-cat -->
               <div class="product__meta-tags">
                 <span class="product__meta-title">Tags:</span>
-                <a href="#">Light</a>
-                <a href="#">Mexican</a>
-                <a href="#">Organic</a>
+                <a href="#"> 
+                {% for tg in single.tag.all %}
+                  {{tg.titre}}
+                {% endfor %}
+                   </a>
+               
               </div><!-- /.product__meta-tags -->
             </div><!-- /.product__meta -->
             <hr class="hr-dashed mt-30 mb-30">
@@ -100,29 +105,13 @@
               </nav>
               <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="Description">
-                  <p>The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
-                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
-                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
-                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
-                    support. We’ve all been dying to know which type of magic the Gaines would bring to the café, a
-                    landmark on Waco’s bustling traffic circle.</p>
+                  <p>{{single.description|safe}}.</p>
                 </div><!-- /.desc-tab -->
                 <div class="tab-pane fade" id="Details">
-                  <p>The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
-                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
-                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
-                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
-                    support. We’ve all been dying to know which type of magic the Gaines would bring to the café, a
-                    landmark on Waco’s bustling traffic circle.</p>
-                  <p>The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
-                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
-                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
-                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
-                    support. We’ve all been dying to know which type of magic the Gaines would bring to the café, a
-                    landmark on Waco’s bustling traffic circle.</p>
+                  <p>{{single.information|safe}}.</p>
                 </div><!-- /.details-tab -->
                 <div class="tab-pane fade" id="Reviews">
-                  <form class="row reviews__form">
+                  <form class="row reviews__form" action="" method="post" id="ReviewForm" novalidate="novalidate">
                     <div class="col-sm-6 form-group">
                       <label for="reviewerName">Name</label>
                       <input id="reviewerName" type="text" class="form-control">
@@ -159,10 +148,13 @@
         </div><!-- /.row -->
         <div class="row">
           <!-- Product item #1 -->
+          
+          {% for p in prod %}
+            
           <div class="col-sm-6 col-md-6 col-lg-4">
             <div class="product-item">
               <div class="product__img">
-                <img src="{% static 'images/shop/grid/1.jpg '%}" alt="Product">
+                <img src="{{p.cover.url}}" alt="Product">
                 <div class="product__hover">
                   <div class="product__action">
                     <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
@@ -171,58 +163,17 @@
               </div><!-- /.product-img -->
               <div class="product__content">
                 <div class="product__cat">
-                  <a href="#">Light</a>
-                  <a href="#">Mexican</a>
-                  <a href="#">Organic</a>
+                  <a href="#">{% for tg in p.tag.all %}
+                    {{tg.titre}}
+                  {% endfor %}</a>
                 </div>
-                <h4 class="product__title"><a href="#">T-Shirt With a Print</a></h4>
-                <span class="product__price">$18.99</span>
+                <h4 class="product__title"><a href="#">{{p.titre}}</a></h4>
+                <span class="product__price">{{p.prix}}Fcfa</span>
               </div><!-- /.product-content -->
             </div><!-- /.product-item -->
           </div><!-- /.col-lg-4 -->
-          <!-- Product item #2 -->
-          <div class="col-sm-6 col-md-6 col-lg-4">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/2.jpg '%}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Low Carb</a>
-                  <a href="#">Fresh</a>
-                </div>
-                <h4 class="product__title"><a href="#">Roast Sea Trout</a></h4>
-                <span class="product__price">$36.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Product item #3 -->
-          <div class="col-sm-6 col-md-6 col-lg-4">
-            <div class="product-item">
-              <div class="product__img">
-                <img src="{% static 'images/shop/grid/3.jpg '%}" alt="Product">
-                <div class="product__hover">
-                  <div class="product__action">
-                    <a href="#" class="btn btn__primary btn__hover2">Add To Cart</a>
-                  </div><!-- /.product__action -->
-                </div><!-- /.product__hover-->
-              </div><!-- /.product-img -->
-              <div class="product__content">
-                <div class="product__cat">
-                  <a href="#">Nut Free</a>
-                  <a href="#">Sweet</a>
-                  <a href="#">Fresh</a>
-                </div>
-                <h4 class="product__title"><a href="#">Grilled Seafood Paella</a></h4>
-                <span class="product__price">$34.99</span>
-              </div><!-- /.product-content -->
-            </div><!-- /.product-item -->
-          </div><!-- /.col-lg-4 -->
+
+          {% endfor %}
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.related-products -->
