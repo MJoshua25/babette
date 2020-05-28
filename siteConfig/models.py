@@ -83,5 +83,16 @@ class Footer(models.Model):
         verbose_name_plural = "footers"
 
     def __str__(self) -> str:
-        return str(self.date)       
-    
+        return str(self.date)
+
+
+
+class Logo(models.Model):
+    logo = models.ImageField(upload_to='siteConfig')
+
+    class Meta:
+        verbose_name = "Logo"
+        verbose_name_plural = "Logos"
+
+    def __str__(self):
+        pass
