@@ -77,13 +77,12 @@
                 {% for formulaire in formulaires %}
                 <li class="comment__item">
                   <div class="comment__avatar">
-                    <img src="{{formulaire.url}}" alt="avatar">
+                    <img src="{% if formulaire.cover %}{{formulaire.cover.url}}{% else %}#{% endif %}" alt="avatar">
                   </div>
                   <div class="comment__content">
                     <h6 class="comment__author">{{formulaire.prenom}} {{formulaire.nom}}</h6>
                     <span class="comment__date">{{formulaire.date_add}} </span>
                     <p class="comment__desc">{{formulaire.message}}</p>
-                    <a class="comment__reply" href="#">reply</a>
                   </div>
                 </li><!-- /.comment -->
                {% endfor %}
