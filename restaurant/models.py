@@ -97,3 +97,25 @@ class Menu(models.Model):
 
 
 # TODO: Model Réservation et Physique_data
+
+class Reservation(models.Model):
+    
+    place = models.CharField(max_length=50)
+    date = models.CharField(max_length=50)
+    heure = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.CharField(max_length=50)
+    requete = models.TextField(blank=True,null=True)
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+    
+
+    class Meta:
+        verbose_name = ("Reservation")
+        verbose_name_plural = ("Reservations")
+
+    def __str__(self):
+        return self.name

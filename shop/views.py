@@ -37,9 +37,10 @@ def cart(request: HttpRequest) -> HttpResponse:
     return render(request, 'pages/shop/shopping-cart.html', data)
 
 
-def product(request: HttpRequest) -> HttpResponse:
+def product(request: HttpRequest, titre_slug: str) -> HttpResponse:
     # TODO: Affichage Daouda
     data = {
-
+        "prod": models.Produit.objects.filter(status=True).order_by('-date_add')[:3],
+        'single': models.Produit.objects.filter(status=True, titre_slug=titre_slug)[:1].get()
     }
     return render(request, 'pages/shop/shop-single-product.html', data)

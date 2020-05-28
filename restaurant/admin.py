@@ -36,10 +36,7 @@ class FaqAdmin(admin.ModelAdmin):
         ('Status et Activations', {'fields': ['status', ]}),
     ]
     
-    
-    
-    
-    
+
 class  CategorieAdmin(admin.ModelAdmin):
     
         
@@ -75,9 +72,6 @@ class  CategorieAdmin(admin.ModelAdmin):
     
     
 
-
-
-
 class IngredientAdmin(admin.ModelAdmin):
     list_display = (
         'titre',
@@ -108,13 +102,6 @@ class IngredientAdmin(admin.ModelAdmin):
         ('Status et Activations', {'fields': ['status', ]}),
     ]
     
-    
-    
-
-
-
-
-
 
 
 class MenuAdmin(admin.ModelAdmin):
@@ -156,6 +143,47 @@ class MenuAdmin(admin.ModelAdmin):
     def affiche_image(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
     
+
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = (
+        'place',
+        'date',
+        'heure',
+        'name',
+        'email',
+        'phone',
+        'status',
+        'date_add',
+        'date_update'
+        
+        
+    )
+    list_filter = (
+        'name',
+
+        'status',
+        'date_add',
+        'date_update'
+       
+    )
+    search_fields = (
+        'titre',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+   
+    
+   
+
+    fieldsets = [
+        ('Info ', {'fields': [ 'place',
+        'date',
+        'heure',
+        'name',
+        'email',
+        'phone','requete',]}),
+        ('Status et Activations', {'fields': ['status', ]}),
+    ]
     
     
     
@@ -167,3 +195,4 @@ _register(models.Faq, FaqAdmin)
 _register(models.Categorie, CategorieAdmin)  
 _register(models.Ingredient, IngredientAdmin)   
 _register(models.Menu, MenuAdmin)      
+_register(models.Reservation,ReservationAdmin)
