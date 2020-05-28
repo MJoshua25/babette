@@ -156,7 +156,34 @@ class FooterAdmin(admin.ModelAdmin):
         
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
+
+
+class LogoAdmin(admin.ModelAdmin):
+    list_display = (
+        'titre',
+        'affiche_image',
+        'status',
+        'date_add',
+        'date_upd'
+    )
+    list_filter = (
+        'status',
+        'date_add'
+    )
+    search_fields = (
+        'titre',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+    readonly_fields = ['affiche_image']
+
+    fieldsets = [
+        ('Info ', {'fields': ['titre',]}),
+        ('Image', {'fields': ['logo','affiche_image', ]}),
+        ('Status et Activations', {'fields': ['status', ]}),]
+
+    def affiche_image(self, obj):
+        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.logo.url))
     
     
 def _register(model, admin_class):

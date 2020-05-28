@@ -91,6 +91,10 @@ class Logo(models.Model):
     titre = models.CharField(max_length=50)
     logo = models.ImageField(upload_to='siteConfig')
 
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)
+
     class Meta:
         verbose_name = "Logo"
         verbose_name_plural = "Logos"
