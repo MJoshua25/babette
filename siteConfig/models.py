@@ -88,6 +88,7 @@ class Footer(models.Model):
 
 
 class Logo(models.Model):
+    titre = models.CharField(max_length=50)
     logo = models.ImageField(upload_to='siteConfig')
 
     class Meta:
@@ -95,4 +96,4 @@ class Logo(models.Model):
         verbose_name_plural = "Logos"
 
     def __str__(self):
-        pass
+        str(self.titre)
