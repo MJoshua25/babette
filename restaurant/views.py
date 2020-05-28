@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from restaurant import models as rest_models
-from siteConfig import models as site_models
+from siteConfig.datamanager import mergeData
 from . import models
 
 
@@ -33,12 +33,10 @@ def index(request: HttpRequest) -> HttpResponse:
     else:
 
         data = {
-            'logo': site_models.Logo.objects.filter(status=True)[:1].get(),
             'categories': rest_models.Categorie.objects.filter(status=True),
             'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
         }
-        print(data)
-        return render(request, 'pages/index.html', data)
+        return render(request, 'pages/index.html', mergeData(request, data))
 
 
 def event(request: HttpRequest) -> HttpResponse:
@@ -59,7 +57,7 @@ def faqs(request: HttpRequest) -> HttpResponse:
         "faqs": rest_models.Faq.objects.filter(status=True),
 
     }
-    return render(request, 'pages/faqs.html', data)
+    return render(request, 'pages/faqs.html', mergeData(request, data))
 
 
 def reservation(request: HttpRequest) -> HttpResponse:
@@ -73,12 +71,11 @@ def gallery(request: HttpRequest) -> HttpResponse:
         'menus': models.Menu.objects.filter(status=True),
         "categories": rest_models.Categorie.objects.filter(status=True),
     }
-    print(data)
-    return render(request, 'pages/gallery-grid.html', data)
+    return render(request, 'pages/gallery-grid.html', mergeData(request, data))
 
 
 def menuBoard(request: HttpRequest) -> HttpResponse:
     data = {
         'menu': models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
     }
-    return render(request, 'pages/menu-board.html', data)
+    return render(request, 'pages/menu-board.html', mergeData(request, data))
