@@ -55,14 +55,20 @@
        ======================== -->
        <section id="bannerLayout1" class="banner banner-layout1 pb-70">
         <div class="container">
+          {% for ouverture  in ouvertures  %}
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
               <div class="banner__content">
                 <div class="banner__content-text" data-aos="fade-right">
                   <div class="banner__content-text-inner">
+                    
+                    
+                      
+                    
+                      
                     <div class="heading">
-                      <span class="heading__subtitle">Hello Dear</span>
-                      <h2 class="heading__title">Welcome To Babette</h2>
+                      <span class="heading__subtitle">{{ouverture.head}}</span>
+                      <h2 class="heading__title">{{ouverture.titre}}</h2>
                       <div class="heading__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                           <path
@@ -70,20 +76,18 @@
                             transform="translate(-505 -925)"></path>
                         </svg>
                       </div>
-                      <p class="heading__desc">Babette was the first restaurant to open in Egypt, the resturant was
-                        designed
-                        with the history in mind we have created a soft industrial dining room, combined with an open
-                        kitchen, coffee take out bar and alovely awesome on site coffee roastery..</p>
+                      <p class="heading__desc">{{ouverture.message}}</p>
                       <img src="{% static 'images/about/signature.png' %}" alt="signature">
                     </div><!-- /.heading -->
                   </div><!-- /.banner__content-text-inner -->
                 </div><!-- /.banner__content-text -->
                 <div class="banner__content-img" data-aos="fade-left">
-                  <img src="{% static 'images/banners/1.png' %}" alt="banner">
+                  <img src="{{ouverture.cover.url}}" alt="banner">
                 </div><!-- /.banner__content-img -->
               </div><!-- /.banner__content -->
             </div><!-- /.col-lg-12 -->
           </div><!-- /.row -->
+          {% endfor %}
         </div><!-- /.container -->
       </section><!-- /.Banner layout1 -->
       
@@ -97,24 +101,15 @@
               <h2 class="heading__title mb-30">A recognized track-record of excellence</h2>
               <div class="carousel owl-carousel" data-slide="6" data-slide-md="4" data-slide-sm="3" data-autoplay="true"
                 data-nav="false" data-dots="false" data-space="0" data-loop="true" data-speed="700">
+                
+                {% for sponsor in sponsors %}
+                  
+               
+                  
                 <div class="client">
-                  <a href="#"><img src="{% static 'images/clients/1.png' %}" alt="client"></a>
+                  <a href="#"><img src="{{sponsor.logo_1.url}}" alt="client"></a>
                 </div><!-- /.client -->
-                <div class="client">
-                  <a href="#"><img src="{% static 'images/clients/2.png' %}" alt="client"></a>
-                </div><!-- /.client -->
-                <div class="client">
-                  <a href="#"><img src="{% static 'images/clients/3.png' %}" alt="client"></a>
-                </div><!-- /.client -->
-                <div class="client">
-                  <a href="#"><img src="{% static 'images/clients/4.png' %}" alt="client"></a>
-                </div><!-- /.client -->
-                <div class="client">
-                  <a href="#"><img src="{% static 'images/clients/5.png' %}" alt="client"></a>
-                </div><!-- /.client -->
-                <div class="client">
-                  <a href="#"><img src="{% static 'images/clients/6.png' %}" alt="client"></a>
-                </div><!-- /.client -->
+                {% endfor %}
               </div><!-- /.carousel -->
             </div><!-- /.col-lg-12 -->
           </div><!-- /.row -->

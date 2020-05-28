@@ -89,3 +89,19 @@ class Logo(models.Model):
 
     def __str__(self):
         return str(self.titre)
+
+class Sponsor(models.Model):
+    titre = models.CharField(max_length=50)
+    logo_1 = models.ImageField(upload_to='siteConfig')
+    
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_upd = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Sponsor"
+        verbose_name_plural = "Sponsors"
+
+    def __str__(self):
+        return str(self.titre)

@@ -190,6 +190,38 @@ class LogoAdmin(admin.ModelAdmin):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.logo_light.url))
     
     
+class SponsorAdmin(admin.ModelAdmin):
+    list_display = (
+        'titre',
+        'affiche_image_1',
+        
+        'status',
+        'date_add',
+        'date_upd'
+    )
+    list_filter = (
+        'status',
+        'date_add'
+    )
+    search_fields = (
+        'titre',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+    readonly_fields = ['affiche_image_1']
+
+    fieldsets = [
+        ('Info ', {'fields': ['titre',]}),
+        ('Image', {'fields': ['logo_1','affiche_image_1']}),
+        ('Status et Activations', {'fields': ['status', ]}),]
+
+    def affiche_image_1(self, obj):
+        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.logo_1.url))
+
+  
+    
+    
+    
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
@@ -199,3 +231,4 @@ _register(models.Affichmenu, AffichmenuAdmin)
 _register(models.Mainevent, MaineventAdmin)
 _register(models.Footer, FooterAdmin)
 _register(models.Logo, LogoAdmin)
+_register(models.Sponsor, SponsorAdmin)
