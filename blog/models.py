@@ -76,9 +76,9 @@ class Article(models.Model):
     def getTags(self) -> QuerySet:
         return self.tags.filter(status=True)
 
-    # @property
-    # def getCommentaires(self) -> QuerySet:
-    #     return self..filter(status=True)
+    @property
+    def getCommentaires(self) -> QuerySet:
+        return self.commentaires.filter(status=True).order_by('-date_add')
 
 
 class Commentaire(models.Model):

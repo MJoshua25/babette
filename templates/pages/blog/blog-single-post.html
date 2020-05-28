@@ -74,15 +74,15 @@
             <div class="blog-widget blog-comments">
               <h5 class="blog__widget-title">comments</h5>
               <ul class="comments-list list-unstyled mb-0">
-                {% for formulaire in formulaires %}
+                {% for commentaire in single.getCommentaires %}
                 <li class="comment__item">
                   <div class="comment__avatar">
-                    <img src="{% if formulaire.cover %}{{formulaire.cover.url}}{% else %}#{% endif %}" alt="avatar">
+                    <img src="{% if commentaire.cover %}{{commentaire.cover.url}}{% else %}#{% endif %}" alt="avatar">
                   </div>
                   <div class="comment__content">
-                    <h6 class="comment__author">{{formulaire.prenom}} {{formulaire.nom}}</h6>
-                    <span class="comment__date">{{formulaire.date_add}} </span>
-                    <p class="comment__desc">{{formulaire.message}}</p>
+                    <h6 class="comment__author">{{commentaire.prenom}} {{commentaire.nom}}</h6>
+                    <span class="comment__date">{{commentaire.date_add}} </span>
+                    <p class="comment__desc">{{commentaire.message}}</p>
                   </div>
                 </li><!-- /.comment -->
                {% endfor %}
