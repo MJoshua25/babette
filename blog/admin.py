@@ -61,7 +61,8 @@ class TagAdmin(admin.ModelAdmin):
 class CommentaireAdmin(admin.ModelAdmin):
 
     def affiche_image(self, obj):
-        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
+        if obj.cover:
+            return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
 
     list_display = (
         'article',
@@ -86,6 +87,7 @@ class CommentaireAdmin(admin.ModelAdmin):
         'message',
         'date_add'
     )
+    readonly_fields = ['affiche_image']
     fieldsets = [
         ('Info ', {'fields': [
             'article',
@@ -95,7 +97,10 @@ class CommentaireAdmin(admin.ModelAdmin):
             'message',
         ]
         }),
-        ('Image', {'fields': ['cover', 'affiche_image']}),
+        ('Image', {'fields': [
+            'cover',
+            'affiche_image'
+        ]}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
 
