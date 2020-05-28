@@ -84,13 +84,11 @@ class CommentaireAdmin(admin.ModelAdmin):
     )
     fieldsets = [
         ('Info ', {'fields': [
-            
-       
-        'prenom',
-        'nom',
-        'email',
-        'message',
-        
+            'article',
+            'prenom',
+            'nom',
+            'email',
+            'message',
         ]
         }),
         ('Image', {'fields': ['cover', 'affiche_image']}),
