@@ -156,14 +156,46 @@ class FooterAdmin(admin.ModelAdmin):
         
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
+
+
+class LogoAdmin(admin.ModelAdmin):
+    list_display = (
+        'titre',
+        'affiche_image_dark',
+        'affiche_image_light',
+        'status',
+        'date_add',
+        'date_upd'
+    )
+    list_filter = (
+        'status',
+        'date_add'
+    )
+    search_fields = (
+        'titre',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+    readonly_fields = ['affiche_image_dark', 'affiche_image_light']
+
+    fieldsets = [
+        ('Info ', {'fields': ['titre',]}),
+        ('Image', {'fields': ['logo_dark','affiche_image_dark', 'logo_light','affiche_image_light', ]}),
+        ('Status et Activations', {'fields': ['status', ]}),]
+
+    def affiche_image_dark(self, obj):
+        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.logo_dark.url))
+
+    def affiche_image_light(self, obj):
+        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.logo_light.url))
     
     
 def _register(model, admin_class):
-        admin.site.register(model, admin_class)
+    admin.site.register(model, admin_class)
 
 
 _register(models.Ouverture, OuvertureAdmin)
 _register(models.Affichmenu, AffichmenuAdmin)
 _register(models.Mainevent, MaineventAdmin)
 _register(models.Footer, FooterAdmin)
+_register(models.Logo, LogoAdmin)
