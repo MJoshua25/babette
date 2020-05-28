@@ -68,7 +68,7 @@
                   </a>
                   
                 </div>
-                <h4 class="product__title"><a href="#">{{produit.titre}}</a></h4>
+                <h4 class="product__title"><a href="{% url 'shop:product' produit.titre_slug %}">{{produit.titre}}</a></h4>
                 <span class="product__price">{{produit.prix}}FcFA</span>
               </div><!-- /.product-content -->
             </div><!-- /.product-item -->
