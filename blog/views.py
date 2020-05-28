@@ -22,8 +22,9 @@ def single_blog(request: HttpRequest, titre_slug: str) -> HttpResponse:
         nom = request.POST.get('nom')
         email = request.POST.get('email')
         message = request.POST.get('message')
-        cover = request.POST.get('cover')
+        cover = request.FILES['cover']
         c = models.Commentaire(
+            article_id=int(article_id),
             prenom=prenom,
             nom=nom,
             email=email,
@@ -35,11 +36,9 @@ def single_blog(request: HttpRequest, titre_slug: str) -> HttpResponse:
     else:
     
         data = {
-             
             'categories': models.Categorie.objects.filter(status=True).order_by('-date_add')[:6],
             'articles': models.Article.objects.filter(status=True).order_by('-date_add')[:2],
             'single': models.Article.objects.filter(titre_slug=titre_slug)[:1].get(),
-            'formulaires': models.Commentaire.objects.filter(status=True).order_by('-date_add')[:2],
         }
         
         return render(request, 'pages/blog/blog-single-post.html', data)

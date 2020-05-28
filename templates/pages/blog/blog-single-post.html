@@ -91,17 +91,18 @@
            
             <div class="blog-widget blog-comments-form">
               <h5 class="blog__widget-title">Leave A Reply</h5>
-              <form  method="post" id="postForm"   enctype="multipart/form-data">
+              <form  method="post" id="postForm" enctype="multipart/form-data">
                   {% csrf_token %}
+                  <input type="hidden" name="article" value="{{ single.id }}">
                 <div class="row">
                   <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="prenom" placeholder="First Name:">
+                      <input type="text" class="form-control" name="nom" placeholder="First Name:">
                     </div><!-- /.form-group -->
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-4 col-lg-4">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="nom" placeholder="Last Name:">
+                      <input type="text" class="form-control" name="prenom" placeholder="Last Name:">
                     </div><!-- /.form-group -->
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-4 col-lg-4">
