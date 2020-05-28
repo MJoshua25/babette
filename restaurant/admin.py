@@ -2,6 +2,7 @@ from django.contrib import admin
 from . import models
 from django.utils.safestring import mark_safe
 
+
 # TODO: Admin models Réservation et physique data
 # Register your models here.
 
@@ -12,65 +13,54 @@ class FaqAdmin(admin.ModelAdmin):
         'status',
         'date_add',
         'date_update',
-        
-        
+
     )
     list_filter = (
         'status',
         'date_add',
         'date_update'
-       
+
     )
     search_fields = (
         'titre',
     )
     list_per_pages = 50
     date_hierarchy = 'date_add'
-   
-    
-   
 
     fieldsets = [
-        ('Info ', {'fields': [ 'question','reponse',
-        ]}),
+        ('Info ', {'fields': ['question', 'reponse',
+                              ]}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
 
-class  CategorieAdmin(admin.ModelAdmin):
-    
-        
+
+class CategorieAdmin(admin.ModelAdmin):
     list_display = (
-        
+
         'titre',
         'status',
         'date_add',
         'date_update'
-        
-        
+
     )
     list_filter = (
         'status',
         'date_add',
         'date_update'
-       
+
     )
     search_fields = (
         'titre',
     )
     list_per_pages = 50
     date_hierarchy = 'date_add'
-   
-    
-   
 
     fieldsets = [
-        ('Info ', {'fields': [ 'titre',
-        ]}),
+        ('Info ', {'fields': ['titre',
+                              ]}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
-    
+
 
 class IngredientAdmin(admin.ModelAdmin):
     list_display = (
@@ -78,30 +68,25 @@ class IngredientAdmin(admin.ModelAdmin):
         'status',
         'date_add',
         'date_update'
-        
-        
+
     )
     list_filter = (
         'status',
         'date_add',
         'date_update'
-       
+
     )
     search_fields = (
         'titre',
     )
     list_per_pages = 50
     date_hierarchy = 'date_add'
-   
-    
-   
 
     fieldsets = [
-        ('Info ', {'fields': [ 'titre',
-        ]}),
+        ('Info ', {'fields': ['titre',
+                              ]}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
 
 
 class MenuAdmin(admin.ModelAdmin):
@@ -114,13 +99,12 @@ class MenuAdmin(admin.ModelAdmin):
         'status',
         'date_add',
         'date_update'
-        
-        
+
     )
     list_filter = (
         'status',
         'date_add'
-       
+
     )
     search_fields = (
         'titre',
@@ -128,21 +112,19 @@ class MenuAdmin(admin.ModelAdmin):
     list_per_pages = 50
     date_hierarchy = 'date_add'
     readonly_fields = ['affiche_image']
-    
-   
 
     fieldsets = [
-        ('Info ', {'fields': [ 'titre','categorie',
-        'ingredients',
-        'isrecommended',
-        'prix',]}),
+        ('Info ', {'fields': ['titre', 'categorie',
+                              'ingredients',
+                              'isrecommended',
+                              'prix', ]}),
         ('Image', {'fields': ['cover', 'affiche_image']}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
+
     def affiche_image(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
-    
+
 
 class ReservationAdmin(admin.ModelAdmin):
     list_display = (
@@ -155,8 +137,7 @@ class ReservationAdmin(admin.ModelAdmin):
         'status',
         'date_add',
         'date_update'
-        
-        
+
     )
     list_filter = (
         'name',
@@ -164,35 +145,31 @@ class ReservationAdmin(admin.ModelAdmin):
         'status',
         'date_add',
         'date_update'
-       
+
     )
     search_fields = (
         'titre',
     )
     list_per_pages = 50
     date_hierarchy = 'date_add'
-   
-    
-   
 
     fieldsets = [
-        ('Info ', {'fields': [ 'place',
-        'date',
-        'heure',
-        'name',
-        'email',
-        'phone','requete',]}),
+        ('Info ', {'fields': ['place',
+                              'date',
+                              'heure',
+                              'name',
+                              'email',
+                              'phone', 'requete', ]}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
-    
-    
+
+
 def _register(model, admin_class):
-        admin.site.register(model, admin_class)
+    admin.site.register(model, admin_class)
 
 
-_register(models.Faq, FaqAdmin)  
-_register(models.Categorie, CategorieAdmin)  
-_register(models.Ingredient, IngredientAdmin)   
-_register(models.Menu, MenuAdmin)      
-_register(models.Reservation,ReservationAdmin)
+_register(models.Faq, FaqAdmin)
+_register(models.Categorie, CategorieAdmin)
+_register(models.Ingredient, IngredientAdmin)
+_register(models.Menu, MenuAdmin)
+_register(models.Reservation, ReservationAdmin)
