@@ -59,13 +59,17 @@ class TagAdmin(admin.ModelAdmin):
 
 
 class CommentaireAdmin(admin.ModelAdmin):
+
+    def affiche_image(self, obj):
+        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
+
     list_display = (
         'article',
         'prenom',
         'nom',
         'email',
         'message',
-
+        'affiche_image',
         'cover',
         'status',
         'date_add',
@@ -95,8 +99,7 @@ class CommentaireAdmin(admin.ModelAdmin):
         ('Status et Activations', {'fields': ['status', ]}),
     ]
 
-    def affiche_image(self, obj):
-        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
+
 
 
 class ArticleAdmin(admin.ModelAdmin):
