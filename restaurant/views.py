@@ -11,8 +11,33 @@ def index(request: HttpRequest) -> HttpResponse:
     data = {
         'categories': rest_models.Categorie.objects.filter(status=True),
         'photo':models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
-    }
-    return render(request, 'pages/index.html', data)
+
+        if request.method == 'POST':
+            place = request.POST.get('place')
+            date = request.POST.get('date')
+            heure = request.POST.get('heure')
+            name = request.POST.get('name')
+            email = request.POST.get('email')
+            phone = request.POST.get('phone')
+            requete = request.POST.get('requete')
+
+            c = models.Reservation(
+                place = place,
+                date = date,
+                heure = heure,
+                name = name,
+                email = email,
+                phone = phone,
+                requete = requete
+            )
+            c.save()
+            return redirect('pages/index.html')
+        else:
+            data = {
+
+            }
+        }
+        return render(request, 'pages/index.html', data)
 
 
 def event(request: HttpRequest) -> HttpResponse:
