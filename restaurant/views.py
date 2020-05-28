@@ -63,7 +63,7 @@ def faqs(request: HttpRequest) -> HttpResponse:
 def reservation(request: HttpRequest) -> HttpResponse:
     data = {
     }
-    return render(request, 'pages/reservation.html', data)
+    return render(request, 'pages/reservation.html', mergeData(request, data))
 
 
 def gallery(request: HttpRequest) -> HttpResponse:
