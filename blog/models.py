@@ -83,7 +83,7 @@ class Article(models.Model):
 
 class Commentaire(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE, related_name='commentaires')
-    prenom = models.CharField(null=True, blank=True)
+    prenom = models.CharField(max_length=255, null=True, blank=True)
     nom = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
     message = models.TextField()
