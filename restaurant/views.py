@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from restaurant import models as rest_models
+from siteConfig import models as site_models
 from . import models
 
 
@@ -9,7 +10,6 @@ from . import models
 # Create your views here.
 def index(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
-
         place = request.POST.get('place')
         date = request.POST.get('date')
         heure = request.POST.get('heure')
@@ -33,11 +33,11 @@ def index(request: HttpRequest) -> HttpResponse:
     else:
 
         data = {
-
+            'logo': site_models.Logo.objects.filter(status=True)[:1].get(),
             'categories': rest_models.Categorie.objects.filter(status=True),
             'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
-
         }
+        print(data)
         return render(request, 'pages/index.html', data)
 
 
