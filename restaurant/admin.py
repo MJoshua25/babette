@@ -163,6 +163,70 @@ class ReservationAdmin(admin.ModelAdmin):
         ('Status et Activations', {'fields': ['status', ]}),
     ]
 
+class TitreguestAdmin(admin.ModelAdmin):
+    list_display = (
+        'titre',
+        'soustitre',
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    list_filter = (
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    search_fields = (
+        'titre',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+
+    fieldsets = [
+        ('Info ', {'fields': ['titre','soustitre',
+                              ]}),
+        ('Status et Activations', {'fields': ['status', ]}),
+    ]
+
+
+class GuestAdmin(admin.ModelAdmin):
+    list_display = (
+       
+        'nom',
+        'metier',
+        'message',
+        'affiche_image',
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    list_filter = (
+        'status',
+        'date_add'
+
+    )
+    search_fields = (
+        'titre',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+    readonly_fields = ['affiche_image']
+
+    fieldsets = [
+        ('Info ', {'fields': [
+        'nom',
+        'metier',
+        'message',]}),
+        ('Image', {'fields': ['cover', 'affiche_image']}),
+        ('Status et Activations', {'fields': ['status', ]}),
+    ]
+
+    def affiche_image(self, obj):
+        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
+
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
@@ -173,3 +237,5 @@ _register(models.Categorie, CategorieAdmin)
 _register(models.Ingredient, IngredientAdmin)
 _register(models.Menu, MenuAdmin)
 _register(models.Reservation, ReservationAdmin)
+_register(models.Guest, GuestAdmin)
+_register(models.Titreguest, TitreguestAdmin)
