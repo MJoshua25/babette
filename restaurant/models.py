@@ -160,3 +160,21 @@ class Guest(models.Model):
 
     def __str__(self):
         return str(self.nom)
+    
+class Phydata(models.Model):
+      
+    jours = models.CharField(max_length=255, unique=True)
+    hdebut = models.TimeField(null=True, blank=True)
+    hfin = models.TimeField(null=True, blank=True)
+    tel = models.CharField(max_length=255, unique=True)
+   
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Phydata"
+        verbose_name_plural = "Phydatas"
+
+    def __str__(self):
+        return str(self.tel)

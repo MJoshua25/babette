@@ -227,6 +227,38 @@ class GuestAdmin(admin.ModelAdmin):
     def affiche_image(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
 
+class PhydataAdmin(admin.ModelAdmin):
+    list_display = (
+        'jours',
+        'hdebut',
+        'hfin',
+        'tel',
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    list_filter = (
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    search_fields = (
+        'tel',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+
+    fieldsets = [
+        ('Info ', {'fields': ['jours','hdebut',
+        'hfin',
+        'tel',
+                              ]}),
+        ('Status et Activations', {'fields': ['status', ]}),
+    ]
+
+
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
@@ -239,3 +271,4 @@ _register(models.Menu, MenuAdmin)
 _register(models.Reservation, ReservationAdmin)
 _register(models.Guest, GuestAdmin)
 _register(models.Titreguest, TitreguestAdmin)
+_register(models.Phydata, PhydataAdmin)
