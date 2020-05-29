@@ -36,6 +36,8 @@ def index(request: HttpRequest) -> HttpResponse:
             'categories': rest_models.Categorie.objects.filter(status=True),
             'guests':models.Guest.objects.filter(status=True),
             'titreguests':models.Titreguest.objects.filter(status=True),
+            'phydatas': models.Phydata.objects.filter(status=True),
+            'tels': models.Tel.objects.filter(status=True),
             'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
         }
         return render(request, 'pages/index.html', mergeData(request, data))

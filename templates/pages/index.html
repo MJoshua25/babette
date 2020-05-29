@@ -313,19 +313,22 @@
             <div class="col-sm-12 col-md-12 col-lg-5">
               <div class="reservation__banner">
                 <img class="reservation__banner-img" src="{% static 'images/backgrounds/pattern/3.png' %}" alt="background">
+                  
                 <div class="reservation__banner-inner">
                   <span class="reservation__banner-inner-subtitle">Check Availability</span>
                   <h5 class="reservation__banner-inner-title">Opening Times</h5>
+                  {% for phydata in phydatas %}
                   <ul class="list-unstyled">
-                    <li><span>Week days</span><span>09.00 – 24:00</span></li>
-                    <li><span>Saturday</span><span>08:00 – 03.00</span></li>
-                    <li><span>Saturday</span><span>Day off</span></li>
+                    <li><span>{{phydata.jours}}</span>{% if phydata.hdebut="" and phydata.hfin=""  %}<span>Day off</span> {% else %}<span> {{phydata.hdebut}} – {{phydata.hfin}}</span>{% endif %}</li>
+                   
                   </ul>
+                  {% endfor %}
                   <div class="reservation__banner-contact">
                     <span class="reservation__banner-contact-label">Call Us Now</span>
-                    <a class="reservation__banner-contact-phone" href="tel:0201023456789">0201023456789</a>
+                    <a class="reservation__banner-contact-phone" href="tel:{{tel.tel}}">{{tel.tel}}</a>
                   </div><!-- /.reservation__banner-contact -->
                 </div><!-- /.reservation__banner-inner -->
+                
               </div><!-- /.reservation__banner -->
             </div><!-- /.col-lg-5 -->
             <div class="col-sm-12 col-md-12 col-lg-7">
