@@ -119,3 +119,81 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.name
+
+class Titreguest(models.Model):
+    
+    titre = models.CharField(max_length=255, unique=True)
+    soustitre = models.CharField(max_length=255, unique=True)
+   
+   
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Titreguest"
+        verbose_name_plural = "Titreguests"
+
+    def __str__(self):
+        return str(self.titre)
+
+    @property
+    def getGuests(self) -> QuerySet:
+        return self.guests.filter(status=True)
+class Guest(models.Model):
+
+   
+    nom = models.CharField(max_length=255, unique=True)
+    metier = models.CharField(max_length=255, unique=True)
+    message = models.TextField()
+    cover = models.ImageField('restaurant/ourgest')
+   
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Guest"
+        verbose_name_plural = "Guests"
+
+    def __str__(self):
+        return str(self.nom)
+
+
+class Tel(models.Model):
+    
+   
+    titre = models.CharField(max_length=255, unique=True)
+    dispo = models.CharField(max_length=255, unique=True)
+    call = models.CharField(max_length=255, unique=True)
+    tel = models.CharField(max_length=255, unique=True)
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Tel"
+        verbose_name_plural = "Tels"
+
+    def __str__(self):
+        return str(self.titre)
+    
+class Phydata(models.Model):
+      
+    jours = models.CharField(max_length=255, unique=True)
+    hdebut = models.TimeField(null=True, blank=True)
+    hfin = models.TimeField(null=True, blank=True)
+   
+   
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Phydata"
+        verbose_name_plural = "Phydatas"
+
+    def __str__(self):
+        return str(self.jours)

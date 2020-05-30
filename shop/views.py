@@ -5,6 +5,7 @@ from restaurant import models as rest_models
 from django.core.paginator import Paginator
 from . import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from siteConfig.datamanager import mergeData
 
 
 # Create your views here.
@@ -27,14 +28,14 @@ def shop(request: HttpRequest) -> HttpResponse:
         'range': range(1, p.paginator.num_pages+1)
     }
     print(data)
-    return render(request, 'pages/shop/shop.html', data)
+    return render(request, 'pages/shop/shop.html', mergeData(request, data))
 
 
 def cart(request: HttpRequest) -> HttpResponse:
     data = {
 
     }
-    return render(request, 'pages/shop/shopping-cart.html', data)
+    return render(request, 'pages/shop/shopping-cart.html', mergeData(request, data))
 
 
 def product(request: HttpRequest, titre_slug: str) -> HttpResponse:
@@ -43,4 +44,4 @@ def product(request: HttpRequest, titre_slug: str) -> HttpResponse:
         "prod": models.Produit.objects.filter(status=True).order_by('-date_add')[:3],
         'single': models.Produit.objects.filter(status=True, titre_slug=titre_slug)[:1].get()
     }
-    return render(request, 'pages/shop/shop-single-product.html', data)
+    return render(request, 'pages/shop/shop-single-product.html', mergeData(request, data))

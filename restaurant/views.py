@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http.request import HttpRequest
 from django.http.response import HttpResponse
 from restaurant import models as rest_models
+from siteConfig.datamanager import mergeData
 from . import models
 
 
@@ -9,7 +10,6 @@ from . import models
 # Create your views here.
 def index(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
-        
         place = request.POST.get('place')
         date = request.POST.get('date')
         heure = request.POST.get('heure')
@@ -19,28 +19,28 @@ def index(request: HttpRequest) -> HttpResponse:
         requete = request.POST.get('requete')
 
         c = models.Reservation(
-            
-            place = place,
-            date = date,
-            heure = heure,
-            name = name,
-            email = email,
-            phone = phone,
-            requete = requete
-            )
+
+            place=place,
+            date=date,
+            heure=heure,
+            name=name,
+            email=email,
+            phone=phone,
+            requete=requete
+        )
         c.save()
         return redirect('restaurant:index')
     else:
-         
-        data = {
-            
-            'categories': rest_models.Categorie.objects.filter(status=True),
-            'photo':models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
 
-       
-          
+        data = {
+            'categories': rest_models.Categorie.objects.filter(status=True),
+            'guests':models.Guest.objects.filter(status=True),
+            'titreguests':models.Titreguest.objects.filter(status=True),
+            'phydatas': models.Phydata.objects.filter(status=True),
+            'tels': models.Tel.objects.filter(status=True),
+            'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
         }
-        return render(request, 'pages/index.html', data)
+        return render(request, 'pages/index.html', mergeData(request, data))
 
 
 def event(request: HttpRequest) -> HttpResponse:
@@ -61,13 +61,13 @@ def faqs(request: HttpRequest) -> HttpResponse:
         "faqs": rest_models.Faq.objects.filter(status=True),
 
     }
-    return render(request, 'pages/faqs.html', data)
+    return render(request, 'pages/faqs.html', mergeData(request, data))
 
 
 def reservation(request: HttpRequest) -> HttpResponse:
     data = {
     }
-    return render(request, 'pages/reservation.html', data)
+    return render(request, 'pages/reservation.html', mergeData(request, data))
 
 
 def gallery(request: HttpRequest) -> HttpResponse:
@@ -75,12 +75,11 @@ def gallery(request: HttpRequest) -> HttpResponse:
         'menus': models.Menu.objects.filter(status=True),
         "categories": rest_models.Categorie.objects.filter(status=True),
     }
-    print(data)
-    return render(request, 'pages/gallery-grid.html', data)
+    return render(request, 'pages/gallery-grid.html', mergeData(request, data))
 
 
 def menuBoard(request: HttpRequest) -> HttpResponse:
     data = {
         'menu': models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
     }
-    return render(request, 'pages/menu-board.html', data)
+    return render(request, 'pages/menu-board.html', mergeData(request, data))
