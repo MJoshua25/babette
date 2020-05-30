@@ -101,8 +101,7 @@ class Menu(models.Model):
 class Reservation(models.Model):
     
     place = models.CharField(max_length=50)
-    date = models.CharField(max_length=50)
-    heure = models.CharField(max_length=50)
+    date = models.DateTimeField(max_length=50)
     name = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=50)

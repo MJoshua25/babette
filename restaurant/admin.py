@@ -130,7 +130,7 @@ class ReservationAdmin(admin.ModelAdmin):
     list_display = (
         'place',
         'date',
-        'heure',
+
         'name',
         'email',
         'phone',
@@ -156,7 +156,7 @@ class ReservationAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Info ', {'fields': ['place',
                               'date',
-                              'heure',
+
                               'name',
                               'email',
                               'phone', 'requete', ]}),
