@@ -3,6 +3,24 @@ import datetime
 from django.db.models.query import QuerySet
 import pytz
 from tinymce import HTMLField
+from django.utils.translation import ugettext as _
+
+DAY_OF_THE_WEEK = {
+    '1': _(u'Monday'),
+    '2': _(u'Tuesday'),
+    '3': _(u'Wednesday'),
+    '4': _(u'Thursday'),
+    '5': _(u'Friday'),
+    '6': _(u'Saturday'),
+    '7': _(u'Sunday'),
+}
+
+
+class DayOfTheWeekField(models.CharField):
+    def __init__(self, *args, **kwargs):
+        kwargs['choices'] = tuple(sorted(DAY_OF_THE_WEEK.items()))
+        kwargs['max_length'] = 1
+        super(DayOfTheWeekField, self).__init__(*args, **kwargs)
 
 
 # Create your models here.
@@ -96,22 +114,19 @@ class Menu(models.Model):
         return self.ingredients.filter(status=True)
 
 
-
 # TODO: Model Réservation et Physique_data
 
 class Reservation(models.Model):
-    
-    place = models.CharField(max_length=50)
+    place = models.IntegerField(default=1)
     date = models.DateTimeField(max_length=50)
     name = models.CharField(max_length=50)
     email = models.EmailField()
     phone = models.CharField(max_length=50)
-    requete = models.TextField(blank=True,null=True)
+    requete = models.TextField(blank=True, null=True)
 
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
-    
 
     class Meta:
         verbose_name = ("Reservation")
@@ -120,12 +135,10 @@ class Reservation(models.Model):
     def __str__(self):
         return self.name
 
+
 class Titreguest(models.Model):
-    
     titre = models.CharField(max_length=255, unique=True)
     soustitre = models.CharField(max_length=255, unique=True)
-   
-   
 
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
@@ -141,14 +154,13 @@ class Titreguest(models.Model):
     @property
     def getGuests(self) -> QuerySet:
         return self.guests.filter(status=True)
-class Guest(models.Model):
 
-   
+
+class Guest(models.Model):
     nom = models.CharField(max_length=255, unique=True)
     metier = models.CharField(max_length=255, unique=True)
     message = models.TextField()
     cover = models.ImageField('restaurant/ourgest')
-   
 
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
@@ -163,8 +175,6 @@ class Guest(models.Model):
 
 
 class Tel(models.Model):
-    
-   
     titre = models.CharField(max_length=255, unique=True)
     dispo = models.CharField(max_length=255, unique=True)
     call = models.CharField(max_length=255, unique=True)
@@ -179,14 +189,13 @@ class Tel(models.Model):
 
     def __str__(self):
         return str(self.titre)
-    
+
+
 class Phydata(models.Model):
-      
-    jours = models.CharField(max_length=255, unique=True)
+    jours = DayOfTheWeekField()
     hdebut = models.TimeField(null=True, blank=True)
     hfin = models.TimeField(null=True, blank=True)
-   
-   
+
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
     date_update = models.DateTimeField(auto_now=True)
@@ -195,17 +204,34 @@ class Phydata(models.Model):
         verbose_name = "Phydata"
         verbose_name_plural = "Phydatas"
 
+    @property
+    def afficheHeure(self) -> tuple:
+        nom = "Weekdays" if self.jours == '1' else DAY_OF_THE_WEEK[self.jours]
+        heure = "{} - {}".format(self.hdebut, self.hfin) if self.hdebut is not None else "Fermé"
+        return nom, heure
+
+    @property
+    def isOpen(self):
+        return self.hdebut is not None
+
+    @property
+    def getDateTimeHeureDebut(self):
+        return datetime.datetime.combine(datetime.date.today(), self.hdebut)
+
+    @property
+    def getDateTimeHeureFin(self):
+        dhfin = datetime.datetime.combine(datetime.date.today(), self.hfin)
+        return dhfin if dhfin > self.getDateTimeHeureDebut else dhfin + datetime.timedelta(days=1)
+
     def __str__(self):
         return str(self.jours)
 
 
-
 class Ticket(models.Model):
-    titre = models.CharField(max_length=50,unique = True)
+    titre = models.CharField(max_length=50, unique=True)
     ticket = models.IntegerField()
-    tick_rest=models.IntegerField()
+    tick_rest = models.IntegerField()
     prix = models.FloatField()
-
 
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
@@ -219,14 +245,13 @@ class Ticket(models.Model):
         return self.titre
 
 
-
 class Event(models.Model):
     titre = models.CharField(max_length=50)
     cover = models.ImageField('events/images')
     titre_slug = models.SlugField(editable=False, null=True, max_length=255)
-    date_deb=models.DateField()
+    date_deb = models.DateField()
     date_fin = models.DateField()
-    ticket = models.ManyToManyField(Ticket,related_name='Events')
+    ticket = models.ManyToManyField(Ticket, related_name='Events')
     description = HTMLField('events/description')
 
     status = models.BooleanField(default=True)

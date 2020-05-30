@@ -280,7 +280,7 @@
                 <div class="testimonial__icon"></div>
                 <div class="testimonial__content">
                   <div class="testimonial__thumb">
-                    <img src="{{guest.cover.url}} alt="author thumb">
+                    <img src="{{ guest.cover.url }}" alt="author thumb">
                   </div><!-- /.testimonial-thumb -->
                   <div class="testimonial__rating">
                     <i class="fa fa-star"></i>
@@ -320,7 +320,7 @@
                   <h5 class="reservation__banner-inner-title">{{tel.titre}}</h5>
                   {% for phydata in phydatas %}
                   <ul class="list-unstyled">
-                  <li><span>{{phydata.jours}}</span><span>{{phydata.hdebut|default_if_none:"FERME"}}-{{phydata.hfin|default_if_none:"FERME"}}</span></li>
+                  <li><span>{{phydata.afficheHeure.0}}</span><span>{{phydata.afficheHeure.1}}</span></li>
                    
                   </ul>
                   {% endfor %}
@@ -349,32 +349,27 @@
                     <div class="form-group" action="{% url 'restaurant:reservation' %}" method="post" id="reserForm" novalidate="novalidate">
                       {% csrf_token %}
                       <select class="form-control"  id="place" name="place">
-                        <option value="2">2 people</option>
-                        <option value="3">3 people</option>
-                        <option value="4">4 people</option>
-                        <option value="5">5 people</option>
-                        <option value="6">6 people</option>
-                        <option value="7">7 people</option>
+                        {% for people in formData.people %}
+                        <option value="{{ people }}">{{ people }} people{% if people > 1 %}s{% endif %} </option>
+                        {% endfor %}
                       </select>
                     </div>
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
                       <select class="form-control" id="date" name="date">
-                        <option value="0">March 23, 2020</option>
-                        <option value="1">March 24, 2020</option>
-                        <option value="2">March 25, 2020</option>
-                        <option value="26">March 26, 2020</option>
+                        {% for day in formData.days %}
+                        <option value="{{ day.value }}">{{ day.libelle|date:"F j, Y" }}</option>
+                        {% endfor %}
                       </select>
                     </div>
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
                       <select class="form-control"  id="heure" name="heure">
-                        <option value="8">8:00 PM</option>
-                        <option value="9">9:00 PM</option>
-                        <option value="10">10:00 PM</option>
-                        <option value="11">11:00 PM</option>
+                        {% for hour in formData.hours %}
+                        <option value="{{ hour.value }}">{{ hour.libelle|date:"H" }}:00</option>
+                        {% endfor %}
                       </select>
                     </div>
                   </div><!-- /.col-lg-6 -->
