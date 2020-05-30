@@ -290,6 +290,80 @@ class PhydataAdmin(admin.ModelAdmin):
     ]
 
 
+class TicketAdmin(admin.ModelAdmin):
+    list_display = (
+        'titre',
+        'ticket',
+        'tick_rest',
+        'prix',
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    list_filter = (
+        'titre',
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    search_fields = (
+        'jours',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+
+    fieldsets = [
+        ('Info ', {'fields': ['titre','ticket',
+        'tick_rest',
+        
+                              ]}),
+        ('Status et Activations', {'fields': ['status', ]}),
+    ]
+
+
+
+
+
+class EventAdmin(admin.ModelAdmin):
+    list_display = (
+        'titre',
+        'date_deb',
+        'date_fin',
+        'affiche_image',
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    list_filter = (
+        'titre',
+        'status',
+        'date_add',
+        'date_update'
+
+    )
+    search_fields = (
+        'titre',
+    )
+    list_per_pages = 50
+    date_hierarchy = 'date_add'
+    readonly_fields = ['affiche_image']
+
+    fieldsets = [
+        ('Info ', {'fields': ['titre',
+        'date_deb',
+        'date_fin',
+        'ticket', ]}),
+        ('Image', {'fields': ['cover', 'affiche_image']}),
+        ('Status et Activations', {'fields': ['status', ]}),
+    ]
+
+    def affiche_image(self, obj):
+        return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
+
+
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
@@ -304,3 +378,5 @@ _register(models.Guest, GuestAdmin)
 _register(models.Titreguest, TitreguestAdmin)
 _register(models.Phydata, PhydataAdmin)
 _register(models.Tel, TelAdmin)
+_register(models.Ticket,TicketAdmin)
+_register(models.Event,EventAdmin)

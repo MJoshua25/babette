@@ -18,7 +18,7 @@
                   <span class="slide__subtitle">We Offer You</span>
                   <h2 class="slide__title">Fresh Ingredient, Tasty Meals & True Flavour</h2>
                   <p class="slide__desc">We have awesome recipes and the most talented chefs in town!</p>
-                  <a href="reservation.html" class="btn btn__white btn__bordered my-1">Book A Table</a>
+                  <a href="{% url 'restaurant:reservation' %}" class="btn btn__white btn__bordered my-1">Book A Table</a>
                 </div><!-- /.slide-content -->
               </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
@@ -33,8 +33,8 @@
                   <span class="slide__subtitle">Fresh Ingredient, Tasty Meals</span>
                   <h2 class="slide__title">Awesome Recipes By <br> The Most Talented Chefs!</h2>
                   <p class="slide__desc">We have awesome recipes and the most talented chefs in town!</p>
-                  <a href="reservation.html" class="btn btn__primary mx-2 my-1">Discover Our Menu</a>
-                  <a href="menu-classic.html" class="btn btn__white mx-2 my-1">Book A Table</a>
+                  <a href="{% url 'restaurant:reservation' %}" class="btn btn__primary mx-2 my-1">Discover Our Menu</a>
+                  <a href="{% url 'restaurant:menuBoard' %}" class="btn btn__white mx-2 my-1">Book A Table</a>
                 </div><!-- /.slide-content -->
               </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
@@ -345,7 +345,7 @@
                     </div><!-- /.heading -->
                   </div>
                   <div class="col-sm-6 col-md-6 col-lg-6">
-                    <div class="form-group" action="" method="post" id="reserForm" novalidate="novalidate">
+                    <div class="form-group" action="{% url 'restaurant:reservation' %}" method="post" id="reserForm" novalidate="novalidate">
                       {% csrf_token %}
                       <select class="form-control"  id="place" name="place">
                         <option value="2">2 people</option>

@@ -2,6 +2,7 @@ from django.db import models
 import datetime
 from django.db.models.query import QuerySet
 import pytz
+from tinymce import HTMLField
 
 
 # Create your models here.
@@ -197,3 +198,45 @@ class Phydata(models.Model):
 
     def __str__(self):
         return str(self.jours)
+
+
+
+class Ticket(models.Model):
+    titre = models.CharField(max_length=50,unique = True)
+    ticket = models.IntegerField()
+    tick_rest=models.IntegerField()
+    prix = models.FloatField()
+
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Ticket"
+        verbose_name_plural = "Tickets"
+
+    def __str__(self):
+        return self.titre
+
+
+
+class Event(models.Model):
+    titre = models.CharField(max_length=50)
+    cover = models.ImageField('events/images')
+    titre_slug = models.SlugField(editable=False, null=True, max_length=255)
+    date_deb=models.DateField()
+    date_fin = models.DateField()
+    ticket = models.ManyToManyField(Ticket,related_name='Events')
+    description = HTMLField('events/description')
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"
+
+    def __str__(self):
+        return self.titre

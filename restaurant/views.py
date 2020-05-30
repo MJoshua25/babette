@@ -45,12 +45,15 @@ def index(request: HttpRequest) -> HttpResponse:
 
 def event(request: HttpRequest) -> HttpResponse:
     data = {
+        'event':models.Event.objects.filter(status=True).order_by('-date_add')[:6]
     }
     return render(request, 'pages/events.html', data)
 
 
-def eventSingle(request: HttpRequest) -> HttpResponse:
+def eventSingle(request: HttpRequest,titre_slug: str) -> HttpResponse:
     data = {
+        'evsing': models.Event.objects.filter(status=True, titre_slug=titre_slug)[:1].get()
+        
     }
     return render(request, 'pages/event-single.html', data)
 
