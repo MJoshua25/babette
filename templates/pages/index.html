@@ -367,10 +367,9 @@
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
                       <select class="form-control"  id="heure" name="heure">
-                        <option value="8">8:00 PM</option>
-                        <option value="9">9:00 PM</option>
-                        <option value="10">10:00 PM</option>
-                        <option value="11">11:00 PM</option>
+                        {% for hour in formData.hours %}
+                        <option value="{{ hour.value }}">{{ hour.libelle|date:"H" }}:00</option>
+                        {% endfor %}
                       </select>
                     </div>
                   </div><!-- /.col-lg-6 -->
