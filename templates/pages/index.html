@@ -265,12 +265,13 @@
             
           </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
-        {% for guest in guests  %} 
+
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="carousel owl-carousel carousel-dots" data-slide="3" data-slide-md="2" data-slide-sm="1"
               data-autoplay="true" data-nav="false" data-dots="true" data-space="30" data-loop="true" data-speed="800">
               <!-- Testimonial Item #1 -->
+                  {% for guest in guests  %}
               <div class=" testimonial-item">
                 <div class="testimonial__icon"></div>
                 <div class="testimonial__content">
@@ -290,11 +291,11 @@
                   <p class="testimonial__meta-desc">{{guest.metier}}</p>
                 </div><!-- /.testimonial-meta -->
               </div><!-- /. testimonial-item -->
-       
+       {% endfor %}
             </div><!-- /.carousel -->
           </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->
-        {% endfor %}
+
       </div><!-- /.container -->
     </section><!-- /.Testimonials Layout 1 -->
     {% endfor %}
