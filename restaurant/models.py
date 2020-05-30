@@ -138,9 +138,7 @@ class Titreguest(models.Model):
     def __str__(self):
         return str(self.titre)
 
-    @property
-    def getGuests(self) -> QuerySet:
-        return self.guests.filter(status=True)
+  
 class Guest(models.Model):
 
    
@@ -160,6 +158,10 @@ class Guest(models.Model):
 
     def __str__(self):
         return str(self.nom)
+    
+    @property
+    def getGuests(self) -> QuerySet:
+        return self.guests.filter(status=True)
 
 
 class Tel(models.Model):
