@@ -320,7 +320,7 @@
                   <h5 class="reservation__banner-inner-title">{{tel.titre}}</h5>
                   {% for phydata in phydatas %}
                   <ul class="list-unstyled">
-                  <li><span>{{phydata.jours}}</span><span>{{phydata.hdebut|default_if_none:"FERME"}}-{{phydata.hfin|default_if_none:"FERME"}}</span></li>
+                  <li><span>{{phydata.afficheHeure.0}}</span><span>{{phydata.afficheHeure.1}}</span></li>
                    
                   </ul>
                   {% endfor %}

@@ -206,9 +206,22 @@ class Phydata(models.Model):
 
     @property
     def afficheHeure(self) -> tuple:
-        nom = "Weekdays" if self.jours == '1' else self.jours
+        nom = "Weekdays" if self.jours == '1' else DAY_OF_THE_WEEK[self.jours]
         heure = "{} - {}".format(self.hdebut, self.hfin) if self.hdebut is not None else "Fermé"
         return nom, heure
+
+    @property
+    def isOpen(self):
+        return self.hdebut is not None
+
+    @property
+    def getDateTimeHeureDebut(self):
+        return datetime.datetime.combine(datetime.date.today(), self.hdebut)
+
+    @property
+    def getDateTimeHeureFin(self):
+        dhfin = datetime.datetime.combine(datetime.date.today(), self.hfin)
+        return dhfin if dhfin > self.getDateTimeHeureDebut else dhfin + datetime.timedelta(days=1)
 
     def __str__(self):
         return str(self.jours)
