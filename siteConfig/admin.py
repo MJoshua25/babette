@@ -2,6 +2,7 @@ from django.contrib import admin
 from . import models
 from django.utils.safestring import mark_safe
 
+
 # Register your models here.
 
 class AffichmenuAdmin(admin.ModelAdmin):
@@ -12,13 +13,12 @@ class AffichmenuAdmin(admin.ModelAdmin):
         'affiche_image',
         'status',
         'date_add',
-        
-        
+
     )
     list_filter = (
         'status',
         'date_add'
-       
+
     )
     search_fields = (
         'titre',
@@ -26,22 +26,19 @@ class AffichmenuAdmin(admin.ModelAdmin):
     list_per_pages = 50
     date_hierarchy = 'date_add'
     readonly_fields = ['affiche_image']
-   
-    
-   
 
     fieldsets = [
         ('Info ', {'fields': ['head',
-        'titre',
-        'message',]}),
-        ('Image', {'fields': ['cover', 'affiche_image',]}),
+                              'titre',
+                              'message', ]}),
+        ('Image', {'fields': ['cover', 'affiche_image', ]}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
+
     def affiche_image(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
-   
-    
+
+
 class MaineventAdmin(admin.ModelAdmin):
     list_display = (
         'head',
@@ -50,13 +47,12 @@ class MaineventAdmin(admin.ModelAdmin):
         'affiche_image',
         'status',
         'date_add',
-        
-        
+
     )
     list_filter = (
         'status',
         'date_add'
-       
+
     )
     search_fields = (
         'titre',
@@ -64,21 +60,17 @@ class MaineventAdmin(admin.ModelAdmin):
     list_per_pages = 50
     date_hierarchy = 'date_add'
     readonly_fields = ['affiche_image']
-   
-    
-   
 
     fieldsets = [
         ('Info ', {'fields': ['head',
-        'titre',
-        'message',]}),
-        ('Image', {'fields': ['cover', 'affiche_image',]}),
+                              'titre',
+                              'message', ]}),
+        ('Image', {'fields': ['cover', 'affiche_image', ]}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
+
     def affiche_image(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
-                                 
 
 
 class OuvertureAdmin(admin.ModelAdmin):
@@ -89,13 +81,12 @@ class OuvertureAdmin(admin.ModelAdmin):
         'affiche_image',
         'status',
         'date_add',
-        
-        
+
     )
     list_filter = (
         'status',
         'date_add'
-       
+
     )
     search_fields = (
         'titre',
@@ -103,33 +94,28 @@ class OuvertureAdmin(admin.ModelAdmin):
     list_per_pages = 50
     date_hierarchy = 'date_add'
     readonly_fields = ['affiche_image']
-   
-    
-   
 
     fieldsets = [
         ('Info ', {'fields': ['head',
-        'titre',
-        'message',]}),
-        ('Image', {'fields': ['cover', 'affiche_image',]}),
+                              'titre',
+                              'message', ]}),
+        ('Image', {'fields': ['cover', 'affiche_image', ]}),
         ('Status et Activations', {'fields': ['status', ]}),
     ]
-    
+
     def affiche_image(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.cover.url))
-    
+
 
 class FooterAdmin(admin.ModelAdmin):
-        
     list_display = (
-        
+
         'adress',
         'jours',
         'message',
         'email',
         'tel',
-        
-        
+
         'status',
         'date',
     )
@@ -142,18 +128,18 @@ class FooterAdmin(admin.ModelAdmin):
     )
     list_per_pages = 50
     date_hierarchy = 'date'
-    
+
     fieldsets = [
         ('Info ', {'fields': [
-        'adress',
-        'jours',
-        'message',
-        'email',
-        'tel',
-        'date',
+            'adress',
+            'jours',
+            'message',
+            'email',
+            'tel',
+            'date',
         ]
         }),
-        
+
         ('Status et Activations', {'fields': ['status', ]}),
     ]
 
@@ -179,22 +165,22 @@ class LogoAdmin(admin.ModelAdmin):
     readonly_fields = ['affiche_image_dark', 'affiche_image_light']
 
     fieldsets = [
-        ('Info ', {'fields': ['titre',]}),
-        ('Image', {'fields': ['logo_dark','affiche_image_dark', 'logo_light','affiche_image_light', ]}),
-        ('Status et Activations', {'fields': ['status', ]}),]
+        ('Info ', {'fields': ['titre', ]}),
+        ('Image', {'fields': ['logo_dark', 'affiche_image_dark', 'logo_light', 'affiche_image_light', ]}),
+        ('Status et Activations', {'fields': ['status', ]}), ]
 
     def affiche_image_dark(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.logo_dark.url))
 
     def affiche_image_light(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.logo_light.url))
-    
-    
+
+
 class SponsorAdmin(admin.ModelAdmin):
     list_display = (
         'titre',
         'affiche_image_1',
-        
+
         'status',
         'date_add',
         'date_upd'
@@ -211,17 +197,14 @@ class SponsorAdmin(admin.ModelAdmin):
     readonly_fields = ['affiche_image_1']
 
     fieldsets = [
-        ('Info ', {'fields': ['titre',]}),
-        ('Image', {'fields': ['logo_1','affiche_image_1']}),
-        ('Status et Activations', {'fields': ['status', ]}),]
+        ('Info ', {'fields': ['titre', ]}),
+        ('Image', {'fields': ['logo_1', 'affiche_image_1']}),
+        ('Status et Activations', {'fields': ['status', ]}), ]
 
     def affiche_image_1(self, obj):
         return mark_safe('<img src="{url}" width="100px" height="50px" />'.format(url=obj.logo_1.url))
 
-  
-    
-    
-    
+
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
