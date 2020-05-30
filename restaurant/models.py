@@ -5,7 +5,6 @@ import pytz
 from tinymce import HTMLField
 from django.utils.translation import ugettext as _
 
-
 DAY_OF_THE_WEEK = {
     '1': _(u'Monday'),
     '2': _(u'Tuesday'),
@@ -22,7 +21,6 @@ class DayOfTheWeekField(models.CharField):
         kwargs['choices'] = tuple(sorted(DAY_OF_THE_WEEK.items()))
         kwargs['max_length'] = 1
         super(DayOfTheWeekField, self).__init__(*args, **kwargs)
-
 
 
 # Create your models here.
@@ -205,6 +203,12 @@ class Phydata(models.Model):
     class Meta:
         verbose_name = "Phydata"
         verbose_name_plural = "Phydatas"
+
+    @property
+    def afficheHeure(self) -> tuple:
+        nom = "Weekdays" if self.jours == '1' else self.jours
+        heure = "{} - {}".format(self.hdebut, self.hfin) if self.hdebut is not None else "Fermé"
+        return nom, heure
 
     def __str__(self):
         return str(self.jours)
