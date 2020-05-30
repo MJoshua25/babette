@@ -349,12 +349,9 @@
                     <div class="form-group" action="{% url 'restaurant:reservation' %}" method="post" id="reserForm" novalidate="novalidate">
                       {% csrf_token %}
                       <select class="form-control"  id="place" name="place">
-                        <option value="2">2 people</option>
-                        <option value="3">3 people</option>
-                        <option value="4">4 people</option>
-                        <option value="5">5 people</option>
-                        <option value="6">6 people</option>
-                        <option value="7">7 people</option>
+                        {% for people in formData.people %}
+                        <option value="{{ people }}">{{ people }} people</option>
+                        {% endfor %}
                       </select>
                     </div>
                   </div><!-- /.col-lg-6 -->
