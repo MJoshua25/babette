@@ -314,12 +314,16 @@
               <div class="reservation__banner">
                 <img class="reservation__banner-img" src="{% static 'images/backgrounds/pattern/3.png' %}" alt="background">
                   
+                  {% for tel in tels  %}
+                    
+                  
+                    
                 <div class="reservation__banner-inner">
                   <span class="reservation__banner-inner-subtitle">{{tel.dispo}}</span>
                   <h5 class="reservation__banner-inner-title">{{tel.titre}}</h5>
                   {% for phydata in phydatas %}
                   <ul class="list-unstyled">
-                    <li><span>{{phydata.jours}}</span>{% if phydata.hdebut="" and phydata.hfin=""  %}<span>Day off</span> {% else %}<span> {{phydata.hdebut}} – {{phydata.hfin}}</span>{% endif %}</li>
+                    <li><span>{{phydata.jours}}</span><span>{{phydata.hdebut|default_if_none:"FERME"}}-{{phydata.hfin|default_if_none:"FERME"}}</span></li>
                    
                   </ul>
                   {% endfor %}
@@ -328,7 +332,7 @@
                     <a class="reservation__banner-contact-phone" href="tel:{{tel.tel}}">{{tel.tel}}</a>
                   </div><!-- /.reservation__banner-contact -->
                 </div><!-- /.reservation__banner-inner -->
-                
+                {% endfor %}
               </div><!-- /.reservation__banner -->
             </div><!-- /.col-lg-5 -->
             <div class="col-sm-12 col-md-12 col-lg-7">
