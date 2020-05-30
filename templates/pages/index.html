@@ -358,10 +358,9 @@
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <div class="form-group">
                       <select class="form-control" id="date" name="date">
-                        <option value="0">March 23, 2020</option>
-                        <option value="1">March 24, 2020</option>
-                        <option value="2">March 25, 2020</option>
-                        <option value="26">March 26, 2020</option>
+                        {% for day in formData.days %}
+                        <option value="{{ day.value }}">{{ day.libelle|date:"F j, Y" }}</option>
+                        {% endfor %}
                       </select>
                     </div>
                   </div><!-- /.col-lg-6 -->
