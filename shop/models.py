@@ -80,6 +80,30 @@ class Produit(models.Model):
     def getCategories(self) -> QuerySet:
         return self.categories.filter(status=True)
 
+
+class Review(models.Model):
+    """Model definition for Review."""
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    review = models.TextField()
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        """Meta definition for Review."""
+
+        verbose_name = 'Review'
+        verbose_name_plural = 'Reviews'
+
+    def __str__(self):
+        """Unicode representation of Review."""
+        return self.name
+
+
+
+
 #
 #
 # class Commande(models.Model):

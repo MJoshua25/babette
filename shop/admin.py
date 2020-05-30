@@ -96,6 +96,24 @@ class ProduitAdmin(admin.ModelAdmin):
 
 
 
+class ReviewAdmin(admin.ModelAdmin):
+    '''Admin View for Review '''
+
+    list_display = ('name','email','status','date_add','date_update',)
+    list_filter = ('name','status','date_add',)
+    search_fields = ('name',)
+    date_hierarchy = 'date_add'
+    fieldsets = (
+        ('Info', {
+            'fields': [
+                'name','email','review']
+                
+            ,
+        }),
+        ('Status et Activations', {'fields': ['status', ]}),
+    )
+   
+
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
@@ -104,3 +122,4 @@ def _register(model, admin_class):
 _register(models.Produit, ProduitAdmin)
 _register(models.Categorie, CategorieAdmin)
 _register(models.Tag, TagAdmin)
+_register(models.Review,ReviewAdmin)

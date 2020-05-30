@@ -16,9 +16,8 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-            <span class="pagetitle__subheading">Mar 21, 2018 - Mar 24, 2018</span>
-            <h1 class="pagetitle__heading">Brindleyplace Fine Harborne
-              Farmers' Market Food</h1>
+            <span class="pagetitle__subheading">{{evsing.date_deb}}- {{evsing.date_fin}}</span>
+            <h1 class="pagetitle__heading">{{evsing.titre}}</h1>
           </div><!-- /.col-lg-8 -->
         </div><!-- /.row -->
       </div><!-- /.container -->
@@ -34,24 +33,7 @@
             <div class="post-item">
               <div class="post__content">
                 <div class="post__desc">
-                  <p>We’ve all been dying to know which type of magic the Gaines would bring to the café, a landmark on
-                    Waco’s bustling traffic circle that closed down in February of 2016. The Fixer Upper stars’ Magnolia
-                    brand, which includes the Magnolia Market, a premium interior paint line, a bakery, and a quarterly
-                    home magazine, has already reshaped the culture and perception of Waco, Texas.</p>
-                  <p>The Elite Café, which was originally opened in 1919, has catered to Elvis Presley when he was
-                    training at Fort Hood in the 1950s, and previously served steaks, burgers, and salads. It was a
-                    landmark for locals and passersby traveling from Austin to Dallas, most recognizable by a baby-blue
-                    ’56 Cadillac parked right out front. “I’ve always been a breakfast connoisseur. I always do a heavy,
-                    bigger breakfast, but Jo is the exact opposite. She was kind enough to come with me on this one, and
-                    we are going to do up a breakfast joint here in town.” </p>
-                  <p>“The restaurant itself is literally one big giant kitchen. When we first got in there, it was all
-                    the things you can imagine—dingy, musky. But if I took you in there today, you’d be like ‘Oh! This
-                    is so clean, everything smells so great.’ Those are a few benefits of a little bit of elbow grease
-                    and hard work on the front end.” As Chip’s vision has come to fruition, he’s garnered a lot more
-                    support. We’ve all been dying to know which type of magic the Gaines would bring to the café, a
-                    landmark on Waco’s bustling traffic circle that closed down in February of 2016. The Fixer Upper
-                    stars’ Magnolia brand, which includes the Magnolia Market, a premium interior paint line, a bakery,
-                    and a quarterly home magazine, has already reshaped the culture and perception of Waco, Texas.</p>
+                  <p>{{evsing.description|safe}}.</p>
                 </div><!-- /.post-desc -->
               </div><!-- /.post-content -->
             </div><!-- /.post-item -->
@@ -60,71 +42,18 @@
             <div class="portfolio-gallery">
               <div class="row">
                 <!-- portfolio item #1 -->
+                {% for ev in evsing  %}
                 <div class="col-sm-6 col-md-6 col-lg-4">
                   <div class="portfolio-item">
                     <div class="portfolio__img">
-                      <img src="{% static 'images/gallery/1.jpg' %}" alt="portfolio img">
+                      <img src="{{evt.cover.url}}" alt="portfolio img">
                     </div><!-- /.portfolio-img -->
                     <div class="portfolio__hover">
-                      <a href="{% static 'images/gallery/1.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
+                      <a href="{{evt.cover.url}}" data-lightbox="lightbox" class="zoom__icon"></a>
                     </div><!-- /.portfolio__hover-->
                   </div><!-- /.portfolio-item -->
                 </div><!-- /.col-lg-4 -->
-                <!-- portfolio item #2 -->
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                  <div class="portfolio-item">
-                    <div class="portfolio__img">
-                      <img src="{% static 'images/gallery/2.jpg' %}" alt="portfolio img">
-                    </div><!-- /.portfolio-img -->
-                    <div class="portfolio__hover">
-                      <a href="{% static 'images/gallery/2.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-                    </div><!-- /.portfolio__hover-->
-                  </div><!-- /.portfolio-item -->
-                </div><!-- /.col-lg-4 -->
-                <!-- portfolio item #3 -->
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                  <div class="portfolio-item">
-                    <div class="portfolio__img">
-                      <img src="{% static 'images/gallery/3.jpg' %}" alt="portfolio img">
-                    </div><!-- /.portfolio-img -->
-                    <div class="portfolio__hover">
-                      <a href="{% static 'images/gallery/3.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-                    </div><!-- /.portfolio__hover-->
-                  </div><!-- /.portfolio-item -->
-                </div><!-- /.col-lg-4 -->
-                <!-- portfolio item #4 -->
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                  <div class="portfolio-item">
-                    <div class="portfolio__img">
-                      <img src="{% static 'images/gallery/4.jpg' %}" alt="portfolio img">
-                    </div><!-- /.portfolio-img -->
-                    <div class="portfolio__hover">
-                      <a href="{% static 'images/gallery/4.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-                    </div><!-- /.portfolio__hover-->
-                  </div><!-- /.portfolio-item -->
-                </div><!-- /.col-lg-4 -->
-                <!-- portfolio item #5 -->
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                  <div class="portfolio-item">
-                    <div class="portfolio__img">
-                      <img src="{% static 'images/gallery/5.jpg' %}" alt="portfolio img">
-                    </div><!-- /.portfolio-img -->
-                    <div class="portfolio__hover">
-                      <a href="{% static 'images/gallery/5.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-                    </div><!-- /.portfolio__hover-->
-                  </div><!-- /.portfolio-item -->
-                </div><!-- /.col-lg-4 -->
-                <!-- portfolio item #6 -->
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                  <div class="portfolio-item">
-                    <div class="portfolio__img">
-                      <img src="{% static 'images/gallery/6.jpg' %}" alt="portfolio img">
-                    </div><!-- /.portfolio-img -->
-                    <div class="portfolio__hover">
-                      <a href="{% static 'images/gallery/6.jpg' %}" data-lightbox="lightbox" class="zoom__icon"></a>
-                    </div><!-- /.portfolio__hover-->
-                  </div><!-- /.portfolio-item -->
-                </div><!-- /.col-lg-4 -->
+                {% endfor %}
               </div><!-- /.row -->
             </div><!-- /.portfolio Gallery -->
           </div><!-- /.col-lg-12 -->
@@ -137,8 +66,8 @@
                 </div><!-- /.col-xl-7 -->
                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-5 cta__actions">
                   <div class="cta__actions-text">
-                    <p class="mb-0">Tickets Available</p>
-                    <strong class="color-theme">$33.95</strong>
+                    <p class="mb-0">{{evsing.ticket}}</p>
+                    <strong class="color-theme">{{evsing.prix}}</strong>
                   </div><!-- /.cta__actions-text -->
                   <a href="#" class="btn btn__primary">Buy Tickets</a>
                 </div><!-- /.col-xl-5 -->
