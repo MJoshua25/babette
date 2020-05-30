@@ -350,7 +350,7 @@
                       {% csrf_token %}
                       <select class="form-control"  id="place" name="place">
                         {% for people in formData.people %}
-                        <option value="{{ people }}">{{ people }} people</option>
+                        <option value="{{ people }}">{{ people }} people{% if people > 1 %}s{% endif %} </option>
                         {% endfor %}
                       </select>
                     </div>
