@@ -95,9 +95,17 @@ WSGI_APPLICATION = 'projet.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dblce9m83naej9',
+        'USER': 'rcfkkehuzrnbmo',
+        'PASSWORD': 'edf174f647f9768aa33ff7b1c69a1f038497416938d20667ba159816df732fa5',
+        'HOST': 'ec2-35-171-31-33.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -167,12 +175,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+FILEBROWSER_DIRECTORY = 'media_cdn/'
+DIRECTORY = 'media_cdn/'
+
+FILEBROWSER_MAX_UPLOAD_SIZE = 10485760 * 100
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATIC AND MEDIA ROOT
+STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
+MEDIA_ROOT = os.path.join(BASE_DIR, "media_cdn")
