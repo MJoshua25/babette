@@ -7,7 +7,8 @@ def getConfig(request: HttpRequest) -> dict:
         'logo': models.Logo.objects.filter(status=True)[:1].get(),
         "ouvertures": models.Ouverture.objects.filter(status=True),
         "footers": models.Footer.objects.filter(status=True),
-        "sponsors": models.Sponsor.objects.filter(status=True)
+        "sponsors": models.Sponsor.objects.filter(status=True),
+        "mainevents": models.Mainevent.objects.filter(status=True),
         
     }
     return data

@@ -14,7 +14,7 @@ def index(request: HttpRequest) -> HttpResponse:
     
        
         "affichmenus": models.Affichmenu.objects.filter(status=True),
-        "mainevents": models.Mainevent.objects.filter(status=True),
+
        
 
     }

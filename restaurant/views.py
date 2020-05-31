@@ -102,7 +102,8 @@ def index(request: HttpRequest) -> HttpResponse:
             'phydatas': models.Phydata.objects.filter(status=True).order_by('-date_add'),
             'tels': models.Tel.objects.filter(status=True),
             'formData':formData,
-            'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
+            'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
+            'event': models.Event.objects.filter(status=True)
         }
         print(data)
         return render(request, 'pages/index.html', mergeData(request, data))
@@ -110,14 +111,14 @@ def index(request: HttpRequest) -> HttpResponse:
 
 def event(request: HttpRequest) -> HttpResponse:
     data = {
-        'event': models.Event.objects.filter(status=True).order_by('-date_add')[:6]
+        'event': rest_models.Event.objects.filter(status=True).order_by('-date_add')[:6]
     }
     return render(request, 'pages/events.html', data)
 
 
 def eventSingle(request: HttpRequest, titre_slug: str) -> HttpResponse:
     data = {
-        'evsing': models.Event.objects.filter(status=True, titre_slug=titre_slug)[:1].get()
+        'evsing': rest_models.Event.objects.filter(status=True, titre_slug=titre_slug)[:1].get()
 
     }
     return render(request, 'pages/event-single.html', data)

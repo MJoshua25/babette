@@ -179,8 +179,10 @@
     <!-- =====================
        Banner layout2
     ======================== -->
+
     <section id="bannerLayout2" class="banner banner-layout2 pb-130">
       <div class="bg-img"><img src="{% static 'images/backgrounds/pattern/1.png' %}" alt="background"></div>
+      {% for ev in mainevents %}
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12">
@@ -188,8 +190,8 @@
               <div class="banner__content-text" data-aos="fade-left">
                 <div class="banner__content-text-inner">
                   <div class="heading mb-40">
-                    <span class="heading__subtitle">A Warm, Charming Atmosphere</span>
-                    <h2 class="heading__title">Private Dining & Events</h2>
+                    <span class="heading__subtitle">{{ ev.head }}</span>
+                    <h2 class="heading__title">{{ ev.titre }}</h2>
                     <div class="heading__icon">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
                         <path
@@ -197,21 +199,21 @@
                           transform="translate(-505 -925)"></path>
                       </svg>
                     </div>
-                    <p class="heading__desc">Allow us to make your next special event extra special. We cater for all
-                      sized functions, ideal for your larger functions or an intimate gathering, our team can curate a
-                      menu to suit your taste.</p>
+                    <p class="heading__desc">{{ ev.message }}</p>
                   </div><!-- /.heading -->
                   <a href="{% url 'restaurant:event' %}" class="btn btn__secondary btn__link mx-2 my-1">Explore Events</a>
                   <a href="{% url 'restaurant:event' %}" class="btn btn__primary mx-2 my-1">Explore Events</a>
                 </div><!-- /.banner__content-text-inner -->
               </div><!-- /.banner__content-text -->
               <div class="banner__content-img" data-aos="fade-right">
-                <img src="{% static 'images/banners/2.png' %}" alt="banner">
+                <img src="{{ev.cover.url}}" alt="banner">
               </div><!-- /.banner__content-img -->
             </div><!-- /.banner__content -->
           </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->
       </div><!-- /.container -->
+      {% endfor %}
+
     </section><!-- /.Banner layout1 -->
 
     <!-- =========================== 

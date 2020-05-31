@@ -316,7 +316,7 @@ class TicketAdmin(admin.ModelAdmin):
 
     fieldsets = [
         ('Info ', {'fields': ['titre','ticket',
-        'tick_rest',
+        'tick_rest','prix',
         
                               ]}),
         ('Status et Activations', {'fields': ['status', ]}),
