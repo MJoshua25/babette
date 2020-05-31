@@ -102,21 +102,37 @@ class Review(models.Model):
         return self.name
 
 
+class Commande(models.Model):
+    client = models.OneToOneField(User, on_delete=models.CASCADE, related_name='commandes')
+    produit = models.ManyToManyField(Produit, related_name='commandes', through='CommandeContenu')
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Commande"
+        verbose_name_plural = "Commandes"
+
+    def __str__(self) -> str:
+        return str(self.client)
 
 
-#
-#
-# class Commande(models.Model):
-#     client = models.OneToOneField(User, on_delete=models.CASCADE, related_name='commandes')
-#     produit = models.ManyToManyField(Produit, related_name='commande')
-#
-#     status = models.BooleanField(default=True)
-#     date_add = models.DateTimeField(auto_now_add=True)
-#     date_update = models.DateTimeField(auto_now=True)
-#
-#     class Meta:
-#         verbose_name = "Commande"
-#         verbose_name_plural = "Commandes"
-#
-#     def __str__(self) -> str:
-#         return str(self.produit)
+
+
+class CommandeContenu(models.Model):
+    commande = models.ForeignKey(Commande, related_name='contenu', on_delete=models.CASCADE)
+    produit = models.ForeignKey(Produit, related_name='commandes_contenu', on_delete=models.CASCADE)
+    prixUnitaire = models.IntegerField(default=0)
+    quantité = models.IntegerField()
+
+    status = models.BooleanField(default=True)
+    date_add = models.DateTimeField(auto_now_add=True)
+    date_update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "CommandeContenu"
+        verbose_name_plural = "CommandeContenus"
+
+    def __str__(self):
+        return '{}: ({}){}'.format(self.commande, self.quantité, self.produit)
