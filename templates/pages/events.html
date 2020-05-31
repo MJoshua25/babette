@@ -6,7 +6,7 @@
        page title 
     =========================== -->
     <section id="page-title" class="page-title page-title-layout1 text-center bg-overlay bg-overlay-2 bg-parallax">
-      <div class="bg-img"><img src="{% static 'assets/images/backgrounds/11.jpg' %}" alt="background"></div>
+      <div class="bg-img"><img src="{% static 'images/backgrounds/11.jpg' %}" alt="background"></div>
       <svg class="pagetitle__divider-shape" xmlns="http://www.w3.org/2000/svg" width="22" height="61"
         viewBox="0 0 22 61">
         <path
@@ -35,7 +35,7 @@
           <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="post-item">
               <div class="post__img">
-                <a href="{% url 'restaurant : event' event.titre_slug %}">
+                <a href="{% url 'restaurant:event' event.titre_slug %}">
                   <img src="{{evt.cover.url}}" alt="post image">
                 </a>
               </div><!-- /.post__img -->
@@ -44,7 +44,7 @@
                   <span class="post__meta-date">{{evt.titre_deb}} - {{evt.titre_fin}}</span>
                   <div class="post__meta-tag"><span>{{evt.ticket}}</span></div><!-- /.post-meta-cat -->
                 </div><!-- /.post-meta -->
-                <h4 class="post__title"><a href="{% url 'restaurant : event' event.titre_slug %}">{{evt.titre}}</a></h4>
+                <h4 class="post__title"><a href="{% url 'restaurant:event' event.titre_slug %}">{{evt.titre}}</a></h4>
               </div><!-- /.post__content -->
             </div><!-- /.post-item -->
           </div><!-- /.col-lg-4 -->
