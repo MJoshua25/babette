@@ -109,11 +109,6 @@ def index(request: HttpRequest) -> HttpResponse:
         return render(request, 'pages/index.html', mergeData(request, data))
 
 
-def event(request: HttpRequest) -> HttpResponse:
-    data = {
-        'event': rest_models.Event.objects.filter(status=True).order_by('-date_add')[:6]
-    }
-    return render(request, 'pages/events.html', data)
 
 
 def eventSingle(request: HttpRequest, titre_slug: str) -> HttpResponse:
@@ -122,6 +117,12 @@ def eventSingle(request: HttpRequest, titre_slug: str) -> HttpResponse:
 
     }
     return render(request, 'pages/event-single.html', data)
+
+def event(request: HttpRequest) -> HttpResponse:
+    data = {
+        'events': models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
+    }
+    return render(request, 'pages/events.html', data)
 
 
 def faqs(request: HttpRequest) -> HttpResponse:
