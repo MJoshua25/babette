@@ -426,71 +426,30 @@
         </div><!-- /.row -->
         <div class="row">
           <!-- Post Item #1 -->
+          
+          {% for sev in somev %}
+            
           <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="post-item">
               <div class="post__img">
                 <a href="#">
-                  <img src="{% static 'images/blog/grid/1.jpg' %}" alt="post image">
+                  <img src="{{sev.cover.url}}" alt="post image">
                 </a>
               </div><!-- /.post__img -->
               <div class="post__content">
                 <div class="post__meta">
-                  <span class="post__meta-date">Jan 20, 2020</span>
+                  <span class="post__meta-date">{{sev.date_deb}} - {{sev.date_fin}} </span>
                   <div class="post__meta-cat">
-                    <a href="#">Business</a><a href="#">Tips</a>
+                    <a href="#">{{sev.ticket}}</a>
                   </div><!-- /.post-meta-cat -->
                 </div><!-- /.post-meta -->
-                <h4 class="post__title"><a href="#">Simple Recipes for Spring</a></h4>
-                <p class="post__desc">My favorite form of cold-weather exercise is snow-shoeing, but by chance I haven’t
-                  been able to go this year. Busy working at the computer when fresh snow fell...</p>
-                <a href="#" class="btn btn__secondary btn__link">Read More</a>
+                <h4 class="post__title"><a href="{% url 'restaurant:event' sev.titre_slug %}">{{sev.titre}}</a></h4>
+                <p class="post__desc">{{sev.description|safe}}...</p>
+                <a href="{% url 'restaurant:event' sev.titre_slug %}" class="btn btn__secondary btn__link">Read More</a>
               </div><!-- /.post__content -->
             </div><!-- /.post-item -->
           </div><!-- /.col-lg-4 -->
-          <!-- Post Item #2 -->
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="post-item">
-              <div class="post__img">
-                <a href="#">
-                  <img src="{% static 'images/blog/grid/2.jpg' %}" alt="post image">
-                </a>
-              </div><!-- /.post__img -->
-              <div class="post__content">
-                <div class="post__meta">
-                  <span class="post__meta-date">Oct 18, 2020</span>
-                  <div class="post__meta-cat">
-                    <a href="#">Chef</a><a href="#">Dinner</a>
-                  </div><!-- /.post-meta-cat -->
-                </div><!-- /.post-meta -->
-                <h4 class="post__title"><a href="#">Dinner Partty for a Chef!</a></h4>
-                <p class="post__desc">I began my career as a recipe tester for cookbooks, and I did that work for years.
-                  We loved cookbooks and loved browsing for them at thrift stores...</p>
-                <a href="#" class="btn btn__secondary btn__link">Read More</a>
-              </div><!-- /.post__content -->
-            </div><!-- /.post-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- Post Item #3 -->
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="post-item">
-              <div class="post__img">
-                <a href="#">
-                  <img src="{% static 'images/blog/grid/3.jpg' %}" alt="post image">
-                </a>
-              </div><!-- /.post__img -->
-              <div class="post__content">
-                <div class="post__meta">
-                  <span class="post__meta-date">Jan 20, 2020</span>
-                  <div class="post__meta-cat">
-                    <a href="#">Food</a><a href="#">Cheese</a>
-                  </div><!-- /.post-meta-cat -->
-                </div><!-- /.post-meta -->
-                <h4 class="post__title"><a href="#">Cake with Cream Cheese</a></h4>
-                <p class="post__desc">I’ve been baking this cake for many years, and have experimented with making it
-                  into cupcakes, as a layer cake, serving it dusted with confectioner’s sugar...</p>
-                <a href="#" class="btn btn__secondary btn__link">Read More</a>
-              </div><!-- /.post__content -->
-            </div><!-- /.post-item -->
-          </div><!-- /.col-lg-4 -->
+          {% endfor %}
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.blog Grid -->

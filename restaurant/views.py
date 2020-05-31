@@ -102,7 +102,8 @@ def index(request: HttpRequest) -> HttpResponse:
             'phydatas': models.Phydata.objects.filter(status=True).order_by('-date_add'),
             'tels': models.Tel.objects.filter(status=True),
             'formData':formData,
-            'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8]
+            'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
+            'somev': models.Event.objects.filter(status=True).order_by('-date_add')[:3]
         }
         print(data)
         return render(request, 'pages/index.html', mergeData(request, data))
