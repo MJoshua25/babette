@@ -4,6 +4,8 @@ from django.db.models.query import QuerySet
 import pytz
 from tinymce import HTMLField
 from django.utils.translation import ugettext as _
+import hashlib
+from django.utils.text import slugify
 
 DAY_OF_THE_WEEK = {
     '1': _(u'Monday'),
@@ -264,3 +266,9 @@ class Event(models.Model):
 
     def __str__(self):
         return self.titre
+
+    def save(self, *args, **kwargs):
+        super(Event, self).save(*args, **kwargs)
+        encoding_id = hashlib.md5(str(self.id).encode())
+        self.titre_slug = slugify(str(self.titre) + ' ' + str(encoding_id.hexdigest()))
+        super(Event, self).save(*args, **kwargs)
