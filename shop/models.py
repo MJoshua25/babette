@@ -105,7 +105,7 @@ class Review(models.Model):
 class Commande(models.Model):
     client = models.CharField(max_length=255)
     produit = models.ManyToManyField(Produit, related_name='commandes', through='CommandeContenu')
-    isValide = models.BooleanField
+    isValide = models.BooleanField()
 
     status = models.BooleanField(default=True)
     date_add = models.DateTimeField(auto_now_add=True)
