@@ -2,10 +2,11 @@ from django.http.request import HttpRequest
 from . import models
 from shop import models as shop_models
 
+
 def getCard(request: HttpRequest):
     try:
         card = shop_models.Commande.objects.get(id=request.session['card'])
-    except :
+    except:
         card = None
     return card
 
@@ -17,7 +18,7 @@ def getConfig(request: HttpRequest) -> dict:
         "footers": models.Footer.objects.filter(status=True),
         "sponsors": models.Sponsor.objects.filter(status=True),
         "mainevents": models.Mainevent.objects.filter(status=True),
-        "card":getCard(request)
+        "card": getCard(request)
     }
     return data
 
