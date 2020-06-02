@@ -11,3 +11,8 @@ requests==2.23.0
 sqlparse==0.3.1
 urllib3==1.25.9
 django-debug-toolbar
+
+
+gunicorn==20.0.4
+whitenoise==5.0.1
+Brotli==1.0.7
