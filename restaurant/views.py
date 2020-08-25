@@ -94,7 +94,7 @@ def index(request: HttpRequest) -> HttpResponse:
         formData = {
             'people': range(1, 8),
             'days': li,
-            'hours':hours
+            'hours': hours
         }
         data = {
             'categories': rest_models.Categorie.objects.filter(status=True),
@@ -102,14 +102,12 @@ def index(request: HttpRequest) -> HttpResponse:
             'titreguests': models.Titreguest.objects.filter(status=True),
             'phydatas': models.Phydata.objects.filter(status=True).order_by('-date_add'),
             'tels': models.Tel.objects.filter(status=True),
-            'formData':formData,
+            'formData': formData,
             'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
             'event': models.Event.objects.filter(status=True)
         }
         print(data)
         return render(request, 'pages/index.html', mergeData(request, data))
-
-
 
 
 def eventSingle(request: HttpRequest, titre_slug: str) -> HttpResponse:
@@ -118,6 +116,7 @@ def eventSingle(request: HttpRequest, titre_slug: str) -> HttpResponse:
 
     }
     return render(request, 'pages/event-single.html', data)
+
 
 def event(request: HttpRequest) -> HttpResponse:
     data = {
