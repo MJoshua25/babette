@@ -89,8 +89,7 @@ def index(request: HttpRequest) -> HttpResponse:
                 'libelle': heureDebut,
                 'value': heureDebut.hour,
             })
-            heureDebut += date
-            time.timedelta(hours=1)
+            heureDebut += datetime.timedelta(hours=1)
         formData = {
             'people': range(1, 8),
             'days': li,
