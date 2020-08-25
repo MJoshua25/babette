@@ -65,9 +65,7 @@ def index(request: HttpRequest) -> HttpResponse:
         i = 1
         li = []
         while len(li) < 5:
-            print(i, demain)
             if isOpen(demain):
-                print('enter')
                 if len(li) == 0:
                     heureDebut = getHeureDebut(demain)
                     heureFin = getHeureFin(demain)
