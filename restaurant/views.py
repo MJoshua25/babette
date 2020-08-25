@@ -105,7 +105,6 @@ def index(request: HttpRequest) -> HttpResponse:
             'photo': models.Menu.objects.filter(status=True).order_by('-date_add')[:8],
             'event': models.Event.objects.filter(status=True)
         }
-        print(data)
         return render(request, 'pages/index.html', mergeData(request, data))
 
 
